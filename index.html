@@ -3,24 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiTienda - Compras Globales</title>
+    <title>LuxeShop - Tienda Premium</title>
     <style>
+        :root {
+            --primary-color: #6a1b9a;
+            --secondary-color: #9c27b0;
+            --accent-color: #ffeb3b;
+            --light-purple: #f3e5f5;
+            --dark-purple: #4a148c;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-white: #fff;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f9f4ff;
+            background-color: var(--light-purple);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
         
+        /* Header Premium */
         header {
-            background-color: #6a1b9a; /* Morado principal */
-            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-purple));
+            color: var(--text-light);
+            padding: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top-bar {
+            background-color: rgba(0,0,0,0.1);
+            padding: 8px 0;
+            font-size: 13px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .top-bar-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 15px;
+            transition: opacity 0.3s;
+        }
+        
+        .top-bar-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .main-header {
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .container {
@@ -29,19 +75,16 @@
             margin: 0 auto;
         }
         
-        .header-top {
+        .header-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            justify-content: space-between;
             flex-wrap: wrap;
         }
         
         .logo-container {
-            order: 1;
-            width: 160px;
-            height: 80px; /* Reducido a 80px */
-            margin-right: 20px;
+            flex: 0 0 180px;
+            height: 70px;
             display: flex;
             align-items: center;
         }
@@ -52,560 +95,572 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(255,255,255,0.15);
-            border-radius: 6px;
-            padding: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .logo:hover {
-            background-color: rgba(255,255,255,0.25);
         }
         
         .logo img {
             max-height: 100%;
             max-width: 100%;
             object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
         
         .search-bar {
-            order: 3;
-            flex-grow: 1;
-            margin: 15px 0;
+            flex: 1;
+            margin: 0 30px;
             display: flex;
             min-width: 300px;
+            max-width: 600px;
         }
         
         .search-bar input {
             width: 100%;
-            padding: 12px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 16px;
+            border-radius: 30px 0 0 30px;
+            font-size: 15px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
         
         .search-bar button {
-            background-color: #9c27b0; /* Morado más claro */
-            color: white;
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            color: var(--text-light);
             border: none;
-            padding: 0 20px;
-            border-radius: 0 4px 4px 0;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
             cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
         }
         
         .search-bar button:hover {
-            background-color: #7b1fa2;
+            opacity: 0.9;
+            transform: translateX(2px);
         }
         
         .user-actions {
-            order: 2;
             display: flex;
             align-items: center;
-            margin-left: auto;
         }
         
-        .user-actions a {
-            color: white;
+        .user-action {
+            color: var(--text-light);
             text-decoration: none;
-            margin-left: 15px;
-            white-space: nowrap;
-            font-size: 14px;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            transition: transform 0.3s;
         }
         
-        .user-actions a:hover {
-            background-color: rgba(255,255,255,0.2);
+        .user-action i {
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+        
+        .user-action:hover {
+            transform: translateY(-3px);
+        }
+        
+        .cart-count {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            position: absolute;
+            top: -5px;
+            right: -5px;
         }
         
         nav {
-            order: 4;
+            background-color: rgba(0,0,0,0.1);
             width: 100%;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            justify-content: center;
         }
         
         nav ul li {
-            margin: 0 12px;
             position: relative;
         }
         
         nav ul li a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            padding: 8px 0;
+            padding: 15px 20px;
             display: block;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         nav ul li a:hover {
-            color: #ffeb3b; /* Amarillo para contraste */
+            background-color: rgba(255,255,255,0.1);
         }
         
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #ffeb3b;
-            transition: width 0.3s;
+        nav ul li.active a {
+            background-color: var(--secondary-color);
         }
         
-        nav ul li a:hover::after {
-            width: 100%;
+        /* Main Content */
+        main {
+            padding: 30px 0;
         }
         
         .banner {
-            margin: 20px 0;
-            border-radius: 8px;
+            margin: 20px 0 30px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            height: 400px;
         }
         
         .banner img {
             width: 100%;
-            display: block;
-        }
-        
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 25px 0;
-            justify-content: center;
-        }
-        
-        .category {
-            width: 16%;
-            padding: 12px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .category:hover {
-            transform: translateY(-5px);
-        }
-        
-        .category img {
-            width: 70px;
-            height: 70px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 50%;
+        }
+        
+        .banner-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 30px;
+            color: white;
+        }
+        
+        .banner-title {
+            font-size: 2.5rem;
             margin-bottom: 10px;
-            border: 2px solid #9c27b0;
-            padding: 5px;
-            background-color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
-        .category p {
-            font-weight: 500;
-            color: #4a148c;
-        }
-        
-        .products-section {
-            margin: 30px 0;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .section-title {
-            font-size: 22px;
+        .banner-subtitle {
+            font-size: 1.2rem;
             margin-bottom: 20px;
-            color: #4a148c;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .banner-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .banner-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer Premium */
+        footer {
+            background: linear-gradient(135deg, var(--dark-purple), var(--primary-color));
+            color: var(--text-light);
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
         
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: #9c27b0;
-            bottom: 0;
-            left: 0;
-        }
-        
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -10px;
-        }
-        
-        .product {
-            width: 20%;
-            padding: 15px;
-            background-color: white;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            position: relative;
-            border: 1px solid #e1bee7;
-        }
-        
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: #9c27b0;
-        }
-        
-        .product-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #9c27b0;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .product-image {
-            width: 100%;
-            height: 160px;
-            object-fit: contain;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            background-color: #f9f4ff;
-            padding: 10px;
-        }
-        
-        .product-title {
-            font-size: 14px;
-            margin-bottom: 8px;
-            height: 40px;
-            overflow: hidden;
-            color: #4a148c;
-            font-weight: 500;
-        }
-        
-        .product-price {
-            color: #9c27b0;
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 17px;
-        }
-        
-        .product-old-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 13px;
-            margin-left: 5px;
-        }
-        
-        .product-rating {
-            color: #ffb300;
-            font-size: 13px;
-            margin-bottom: 5px;
-        }
-        
-        .product-sold {
-            font-size: 12px;
-            color: #7e57c2;
-        }
-        
-        footer {
-            background-color: #4a148c;
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 40px;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        
-        .footer-section {
-            width: 30%;
-            margin-bottom: 25px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 18px;
-            font-size: 17px;
-            color: #ffeb3b;
-            position: relative;
-            padding-bottom: 8px;
-        }
-        
-        .footer-section h3::after {
+        .footer-column h3::after {
             content: '';
             position: absolute;
             width: 40px;
             height: 2px;
-            background-color: #ba68c8;
+            background-color: var(--accent-color);
             bottom: 0;
             left: 0;
         }
         
-        .footer-section ul {
+        .footer-column ul {
             list-style: none;
         }
         
-        .footer-section ul li {
-            margin-bottom: 10px;
+        .footer-column ul li {
+            margin-bottom: 12px;
         }
         
-        .footer-section ul li a {
+        .footer-column ul li a {
             color: #e1bee7;
             text-decoration: none;
-            font-size: 13px;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            display: inline-block;
         }
         
-        .footer-section ul li a:hover {
-            color: white;
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-newsletter {
+            grid-column: span 2;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: var(--text-light);
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .payment-method {
+            width: 50px;
+            height: 30px;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        
+        .payment-method img {
+            max-width: 100%;
+            max-height: 100%;
         }
         
         .copyright {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #7e57c2;
-            font-size: 12px;
+            font-size: 13px;
             color: #ce93d8;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
         }
         
+        /* Responsive */
         @media (max-width: 1024px) {
-            .category, .product {
-                width: 25%;
+            .banner {
+                height: 350px;
+            }
+            
+            .banner-title {
+                font-size: 2rem;
             }
         }
         
         @media (max-width: 768px) {
-            .header-top {
+            .header-content {
                 flex-direction: column;
-                align-items: stretch;
             }
             
             .logo-container {
-                order: 1;
-                width: 100%;
-                height: 70px;
-                margin: 0 0 15px;
-                justify-content: center;
-            }
-            
-            .logo {
-                width: auto;
-                max-width: 200px;
-                margin: 0 auto;
-            }
-            
-            .user-actions {
-                order: 2;
-                margin: 15px 0;
-                justify-content: center;
+                margin-bottom: 15px;
             }
             
             .search-bar {
-                order: 3;
-                margin: 10px 0 20px;
+                margin: 15px 0;
+                width: 100%;
+            }
+            
+            .user-actions {
+                margin-top: 15px;
             }
             
             nav ul {
                 flex-wrap: wrap;
+                justify-content: center;
             }
             
             nav ul li {
-                margin: 5px 8px;
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
             }
             
-            .category, .product {
-                width: 33.33%;
+            .banner {
+                height: 300px;
+            }
+            
+            .banner-content {
+                padding: 20px;
+            }
+            
+            .banner-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-newsletter {
+                grid-column: span 1;
             }
         }
         
         @media (max-width: 480px) {
-            .category, .product {
-                width: 50%;
+            .top-bar-content {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .footer-section {
-                width: 100%;
+            .top-bar-links {
+                margin-top: 5px;
+            }
+            
+            .top-bar-links a {
+                margin: 0 8px;
+            }
+            
+            .banner {
+                height: 250px;
+            }
+            
+            .banner-title {
+                font-size: 1.5rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Header Premium -->
     <header>
-        <div class="container">
-            <div class="header-top">
-                <div class="logo-container">
-                    <div class="logo">
-                        <img src="0.png" alt="MiTienda">
+        <div class="header-top-bar">
+            <div class="top-bar-content">
+                <div class="top-bar-text">
+                    ¡Envíos gratis en compras mayores a $50!
+                </div>
+                <div class="top-bar-links">
+                    <a href="#"><i class="fas fa-phone-alt"></i> +1 234 567 890</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Localizador de tiendas</a>
+                    <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <img src="0.png" alt="LuxeShop">
+                        </div>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <input type="text" placeholder="Buscar productos, marcas y más...">
+                        <button><i class="fas fa-search"></i> Buscar</button>
+                    </div>
+                    
+                    <div class="user-actions">
+                        <a href="#" class="user-action">
+                            <i class="far fa-user"></i>
+                            <span>Mi cuenta</span>
+                        </a>
+                        <a href="#" class="user-action">
+                            <i class="far fa-heart"></i>
+                            <span>Favoritos</span>
+                        </a>
+                        <a href="#" class="user-action" style="position: relative;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Carrito</span>
+                            <span class="cart-count">3</span>
+                        </a>
                     </div>
                 </div>
-                
-                <div class="user-actions">
-                    <a href="#">Mi cuenta</a>
-                    <a href="#">Carrito</a>
-                    <a href="#">Mis pedidos</a>
-                </div>
-                
-                <div class="search-bar">
-                    <input type="text" placeholder="Buscar productos...">
-                    <button>Buscar</button>
-                </div>
-                
-                <nav>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="container">
+                <div class="nav-container">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
+                        <li class="active"><a href="#">Inicio</a></li>
                         <li><a href="#">Categorías</a></li>
                         <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Nuevos</a></li>
                         <li><a href="#">Tendencias</a></li>
+                        <li><a href="#">Marcas</a></li>
+                        <li><a href="#">Colecciones</a></li>
                     </ul>
-                </nav>
+                </div>
             </div>
-        </div>
+        </nav>
     </header>
     
+    <!-- Main Content -->
     <main class="container">
         <div class="banner">
-            <img src="https://via.placeholder.com/1200x300/6a1b9a/ffffff?text=Ofertas+Especiales" alt="Ofertas especiales">
-        </div>
-        
-        <div class="categories">
-            <div class="category">
-                <img src="https://via.placeholder.com/80/9c27b0/ffffff?text=EL" alt="Electrónica">
-                <p>Electrónica</p>
-            </div>
-            <div class="category">
-                <img src="https://via.placeholder.com/80/9c27b0/ffffff?text=MD" alt="Moda">
-                <p>Moda</p>
-            </div>
-            <div class="category">
-                <img src="https://via.placeholder.com/80/9c27b0/ffffff?text=HG" alt="Hogar">
-                <p>Hogar</p>
-            </div>
-            <div class="category">
-                <img src="https://via.placeholder.com/80/9c27b0/ffffff?text=BL" alt="Belleza">
-                <p>Belleza</p>
-            </div>
-            <div class="category">
-                <img src="https://via.placeholder.com/80/9c27b0/ffffff?text=DP" alt="Deportes">
-                <p>Deportes</p>
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Colección de Verano">
+            <div class="banner-content">
+                <h1 class="banner-title">Colección Premium 2023</h1>
+                <p class="banner-subtitle">Descubre los productos más exclusivos con hasta 40% de descuento</p>
+                <a href="#" class="banner-btn">Comprar ahora</a>
             </div>
         </div>
         
-        <div class="products-section">
-            <h2 class="section-title">Productos populares</h2>
-            <div class="products">
-                <div class="product">
-                    <span class="product-badge">Nuevo</span>
-                    <img src="https://via.placeholder.com/200/e1bee7/6a1b9a?text=Producto" class="product-image" alt="Producto 1">
-                    <h3 class="product-title">Reloj inteligente con pantalla táctil a color</h3>
-                    <div class="product-price">$25.99</div>
-                    <div class="product-rating">★★★★☆ <span style="color: #666; font-size: 12px;">(128)</span></div>
-                    <div class="product-sold">+500 vendidos</div>
-                </div>
-                <div class="product">
-                    <span class="product-badge">-30%</span>
-                    <img src="https://via.placeholder.com/200/e1bee7/6a1b9a?text=Producto" class="product-image" alt="Producto 2">
-                    <h3 class="product-title">Auriculares inalámbricos Bluetooth</h3>
-                    <div class="product-price">$18.50 <span class="product-old-price">$26.50</span></div>
-                    <div class="product-rating">★★★★★ <span style="color: #666; font-size: 12px;">(342)</span></div>
-                    <div class="product-sold">+1K vendidos</div>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/200/e1bee7/6a1b9a?text=Producto" class="product-image" alt="Producto 3">
-                    <h3 class="product-title">Cargador portátil 10000mAh dual USB</h3>
-                    <div class="product-price">$12.99</div>
-                    <div class="product-rating">★★★☆☆ <span style="color: #666; font-size: 12px;">(87)</span></div>
-                    <div class="product-sold">+200 vendidos</div>
-                </div>
-                <div class="product">
-                    <span class="product-badge">Top</span>
-                    <img src="https://via.placeholder.com/200/e1bee7/6a1b9a?text=Producto" class="product-image" alt="Producto 4">
-                    <h3 class="product-title">Funda para teléfono anti-impacto</h3>
-                    <div class="product-price">$5.99</div>
-                    <div class="product-rating">★★★★☆ <span style="color: #666; font-size: 12px;">(1.2K)</span></div>
-                    <div class="product-sold">+3K vendidos</div>
-                </div>
-            </div>
-        </div>
+        <!-- Aquí iría el resto del contenido de productos que teníamos antes -->
         
-        <div class="products-section">
-            <h2 class="section-title">Ofertas del día</h2>
-            <div class="products">
-                <div class="product">
-                    <span class="product-badge">-50%</span>
-                    <img src="https://via.placeholder.com/200/e1bee7/6a1b9a?text=Oferta" class="product-image" alt="Oferta 1">
-                    <h3 class="product-title">Teclado inalámbrico ergonómico</h3>
-                    <div class="product-price">$19.99 <span class="product-old-price">$39.99</span></div>
-                    <div class="product-rating">★★★★☆ <span style="color: #666; font-size: 12px;">(89)</span></div>
-                    <div class="product-sold">Oferta por tiempo limitado</div>
-                </div>
-                <div class="product">
-                    <span class="product-badge">-35%</span>
-                    <img src="https://via.placeholder.com/200/e1bee7/6a1b9a?text=Oferta" class="product-image" alt="Oferta 2">
-                    <h3 class="product-title">Mouse gaming RGB 7 botones</h3>
-                    <div class="product-price">$16.50 <span class="product-old-price">$25.50</span></div>
-                    <div class="product-rating">★★★★★ <span style="color: #666; font-size: 12px;">(134)</span></div>
-                    <div class="product-sold">Solo hoy</div>
-                </div>
-                <div class="product">
-                    <span class="product-badge">-30%</span>
-                    <img src="https://via.placeholder.com/200/e1bee7/6a1b9a?text=Oferta" class="product-image" alt="Oferta 3">
-                    <h3 class="product-title">Soporte para laptop ajustable</h3>
-                    <div class="product-price">$12.99 <span class="product-old-price">$18.99</span></div>
-                    <div class="product-rating">★★★☆☆ <span style="color: #666; font-size: 12px;">(67)</span></div>
-                    <div class="product-sold">Últimas unidades</div>
-                </div>
-            </div>
-        </div>
     </main>
     
+    <!-- Footer Premium -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Compra con confianza</h3>
+                <div class="footer-column">
+                    <h3>LuxeShop</h3>
+                    <p style="color: #e1bee7; margin-bottom: 15px;">Tu tienda online premium con los mejores productos y marcas exclusivas.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Comprar</h3>
                     <ul>
-                        <li><a href="#">Protección al comprador</a></li>
-                        <li><a href="#">Reembolsos</a></li>
-                        <li><a href="#">Garantías</a></li>
-                        <li><a href="#">Ayuda al cliente</a></li>
+                        <li><a href="#">Productos nuevos</a></li>
+                        <li><a href="#">Ofertas especiales</a></li>
+                        <li><a href="#">Colecciones</a></li>
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Regalos</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Sobre nosotros</h3>
+                
+                <div class="footer-column">
+                    <h3>Servicio al cliente</h3>
                     <ul>
-                        <li><a href="#">Quiénes somos</a></li>
-                        <li><a href="#">Términos y condiciones</a></li>
-                        <li><a href="#">Privacidad</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contáctanos</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Envíos y entregas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                        <li><a href="#">Guía de tallas</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Métodos de pago</h3>
-                    <ul>
-                        <li><a href="#">Tarjetas de crédito</a></li>
-                        <li><a href="#">PayPal</a></li>
-                        <li><a href="#">Transferencia bancaria</a></li>
-                        <li><a href="#">Pago contra entrega</a></li>
-                    </ul>
+                
+                <div class="footer-column footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p style="color: #e1bee7;">Suscríbete para recibir ofertas exclusivas y novedades.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
                 </div>
             </div>
-            <div class="copyright">
-                © 2023 MiTienda. Todos los derechos reservados.
+            
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <img src="https://via.placeholder.com/30x20/fff/6a1b9a?text=VISA" alt="Visa">
+                    </div>
+                    <div class="payment-method">
+                        <img src="https://via.placeholder.com/30x20/fff/6a1b9a?text=MC" alt="Mastercard">
+                    </div>
+                    <div class="payment-method">
+                        <img src="https://via.placeholder.com/30x20/fff/6a1b9a?text=PP" alt="PayPal">
+                    </div>
+                    <div class="payment-method">
+                        <img src="https://via.placeholder.com/30x20/fff/6a1b9a?text=AE" alt="American Express">
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    © 2023 LuxeShop. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart" style="color: #ff4081;"></i> para tus compras premium
+                </div>
             </div>
         </div>
     </footer>
