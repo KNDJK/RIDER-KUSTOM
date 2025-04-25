@@ -19,8 +19,8 @@
         header {
             background-color: #ff0036;
             color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px 0; /* Aumentado el padding */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .container {
@@ -34,88 +34,167 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
         
-        .logo {
-            height: 60px; /* Tamaño aumentado de 40px a 60px */
+        .logo-container {
+            order: 1;
+            width: 200px;
+            height: 100px;
+            margin-right: 30px;
             display: flex;
             align-items: center;
         }
         
-        .logo img {
+        .logo {
             height: 100%;
-            width: auto;
-            object-fit: contain;
-            transition: transform 0.3s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 5px;
+            transition: all 0.3s ease;
         }
         
-        .logo img:hover {
-            transform: scale(1.05);
+        .logo:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: scale(1.02);
+        }
+        
+        .logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
         }
         
         .search-bar {
+            order: 3;
             flex-grow: 1;
-            margin: 0 20px;
+            margin: 15px 0;
             display: flex;
+            min-width: 300px;
         }
         
         .search-bar input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 4px 0 0 4px;
+            font-size: 16px;
         }
         
         .search-bar button {
             background-color: #ff0036;
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 0 20px;
             border-radius: 0 4px 4px 0;
             cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background-color: #e60031;
+        }
+        
+        .user-actions {
+            order: 2;
+            display: flex;
+            align-items: center;
+            margin-left: auto;
         }
         
         .user-actions a {
             color: white;
             text-decoration: none;
-            margin-left: 15px;
+            margin-left: 20px;
             white-space: nowrap;
+            font-size: 15px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .user-actions a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        nav {
+            order: 4;
+            width: 100%;
         }
         
         nav ul {
             display: flex;
             list-style: none;
+            justify-content: center;
         }
         
         nav ul li {
-            margin-right: 20px;
+            margin: 0 15px;
+            position: relative;
         }
         
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffcc00;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
         }
         
         .banner {
-            margin: 20px 0;
+            margin: 25px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .banner img {
             width: 100%;
-            border-radius: 4px;
+            display: block;
         }
         
         .categories {
             display: flex;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin: 30px 0;
+            justify-content: center;
         }
         
         .category {
-            width: 20%;
-            padding: 10px;
+            width: 16%;
+            padding: 15px;
             text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .category:hover {
+            transform: translateY(-5px);
         }
         
         .category img {
@@ -124,79 +203,148 @@
             object-fit: cover;
             border-radius: 50%;
             margin-bottom: 10px;
+            border: 2px solid #ff0036;
+        }
+        
+        .category p {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .products-section {
+            margin: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #ff0036;
+            bottom: 0;
+            left: 0;
         }
         
         .products {
             display: flex;
             flex-wrap: wrap;
-            margin: 20px -10px;
+            margin: 0 -10px;
         }
         
         .product {
             width: 20%;
-            padding: 10px;
+            padding: 15px;
             background-color: white;
-            border-radius: 4px;
+            border-radius: 8px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            position: relative;
         }
         
         .product:hover {
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
         }
         
-        .product img {
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff0036;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .product-image {
             width: 100%;
             height: 180px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            padding: 10px;
         }
         
         .product-title {
-            font-size: 14px;
-            margin-bottom: 5px;
+            font-size: 15px;
+            margin-bottom: 8px;
             height: 40px;
             overflow: hidden;
+            color: #333;
+            font-weight: 500;
         }
         
         .product-price {
             color: #ff0036;
             font-weight: bold;
             margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .product-old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            margin-left: 5px;
         }
         
         .product-rating {
             color: #ffb400;
-            font-size: 12px;
+            font-size: 14px;
             margin-bottom: 5px;
         }
         
         .product-sold {
-            font-size: 12px;
-            color: #999;
+            font-size: 13px;
+            color: #666;
         }
         
         footer {
-            background-color: #333;
+            background-color: #222;
             color: white;
-            padding: 30px 0;
-            margin-top: 30px;
+            padding: 50px 0 20px;
+            margin-top: 50px;
         }
         
         .footer-content {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
         
         .footer-section {
             width: 30%;
+            margin-bottom: 30px;
         }
         
         .footer-section h3 {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-size: 18px;
+            color: #ffcc00;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: #ff0036;
+            bottom: 0;
+            left: 0;
         }
         
         .footer-section ul {
@@ -204,13 +352,18 @@
         }
         
         .footer-section ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-section ul li a {
             color: #ccc;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #ffcc00;
         }
         
         .copyright {
@@ -218,31 +371,66 @@
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid #444;
-            font-size: 12px;
+            font-size: 13px;
             color: #999;
         }
         
+        @media (max-width: 1024px) {
+            .category, .product {
+                width: 25%;
+            }
+        }
+        
         @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .logo-container {
+                order: 1;
+                width: 100%;
+                height: 80px;
+                margin: 0 0 15px;
+                justify-content: center;
+            }
+            
+            .logo {
+                width: auto;
+                padding: 0 20px;
+            }
+            
+            .user-actions {
+                order: 2;
+                margin: 15px 0;
+                justify-content: center;
+            }
+            
+            .search-bar {
+                order: 3;
+                margin: 10px 0 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .category, .product {
+                width: 33.33%;
+            }
+        }
+        
+        @media (max-width: 480px) {
             .category, .product {
                 width: 50%;
             }
             
-            .header-top {
-                flex-direction: column;
-            }
-            
-            .logo {
-                height: 50px;
-                margin-bottom: 15px;
-            }
-            
-            .search-bar {
-                margin: 15px 0;
+            .footer-section {
                 width: 100%;
-            }
-            
-            .user-actions {
-                margin-top: 15px;
             }
         }
     </style>
@@ -251,33 +439,37 @@
     <header>
         <div class="container">
             <div class="header-top">
-                <div class="logo">
-                    <img src="0.png" alt="MiTienda">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="0.png" alt="MiTienda">
+                    </div>
                 </div>
-                <div class="search-bar">
-                    <input type="text" placeholder="Buscar productos...">
-                    <button>Buscar</button>
-                </div>
+                
                 <div class="user-actions">
                     <a href="#">Mi cuenta</a>
                     <a href="#">Carrito</a>
                     <a href="#">Mis pedidos</a>
                 </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar productos...">
+                    <button>Buscar</button>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="#">Nuevos</a></li>
+                        <li><a href="#">Tendencias</a></li>
+                        <li><a href="#">Supermercado</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Categorías</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Nuevos</a></li>
-                    <li><a href="#">Tendencias</a></li>
-                    <li><a href="#">Supermercado</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
     
-    <!-- Resto del contenido permanece igual -->
     <main class="container">
         <div class="banner">
             <img src="https://via.placeholder.com/1200x300" alt="Ofertas especiales">
@@ -304,90 +496,83 @@
                 <img src="https://via.placeholder.com/80" alt="Deportes">
                 <p>Deportes</p>
             </div>
-        </div>
-        
-        <h2>Productos populares</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Producto 1">
-                <h3 class="product-title">Reloj inteligente con pantalla táctil a color</h3>
-                <div class="product-price">$25.99</div>
-                <div class="product-rating">★★★★☆</div>
-                <div class="product-sold">128 vendidos</div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Producto 2">
-                <h3 class="product-title">Auriculares inalámbricos Bluetooth</h3>
-                <div class="product-price">$18.50</div>
-                <div class="product-rating">★★★★★</div>
-                <div class="product-sold">256 vendidos</div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Producto 3">
-                <h3 class="product-title">Cargador portátil 10000mAh</h3>
-                <div class="product-price">$12.99</div>
-                <div class="product-rating">★★★☆☆</div>
-                <div class="product-sold">87 vendidos</div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Producto 4">
-                <h3 class="product-title">Funda para teléfono anti-impacto</h3>
-                <div class="product-price">$5.99</div>
-                <div class="product-rating">★★★★☆</div>
-                <div class="product-sold">342 vendidos</div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Producto 5">
-                <h3 class="product-title">Lámpara LED USB con cambio de color</h3>
-                <div class="product-price">$8.75</div>
-                <div class="product-rating">★★★★☆</div>
-                <div class="product-sold">194 vendidos</div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Producto 6">
-                <h3 class="product-title">Kit de herramientas multiusos</h3>
-                <div class="product-price">$15.20</div>
-                <div class="product-rating">★★★☆☆</div>
-                <div class="product-sold">76 vendidos</div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Producto 7">
-                <h3 class="product-title">Pulsera de actividad fitness</h3>
-                <div class="product-price">$11.99</div>
-                <div class="product-rating">★★★★★</div>
-                <div class="product-sold">421 vendidos</div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Producto 8">
-                <h3 class="product-title">Organizador de cables</h3>
-                <div class="product-price">$3.50</div>
-                <div class="product-rating">★★★☆☆</div>
-                <div class="product-sold">112 vendidos</div>
+            <div class="category">
+                <img src="https://via.placeholder.com/80" alt="Juguetes">
+                <p>Juguetes</p>
             </div>
         </div>
         
-        <h2>Ofertas del día</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Oferta 1">
-                <h3 class="product-title">Teclado inalámbrico</h3>
-                <div class="product-price"><span style="text-decoration: line-through; color: #999;">$29.99</span> $19.99</div>
-                <div class="product-rating">★★★★☆</div>
-                <div class="product-sold">89 vendidos</div>
+        <div class="products-section">
+            <h2 class="section-title">Productos populares</h2>
+            <div class="products">
+                <div class="product">
+                    <span class="product-badge">Nuevo</span>
+                    <img src="https://via.placeholder.com/200" class="product-image" alt="Producto 1">
+                    <h3 class="product-title">Reloj inteligente con pantalla táctil a color y monitor de salud</h3>
+                    <div class="product-price">$25.99</div>
+                    <div class="product-rating">★★★★☆ <span style="color: #666; font-size: 12px;">(128)</span></div>
+                    <div class="product-sold">+500 vendidos</div>
+                </div>
+                <div class="product">
+                    <span class="product-badge">-30%</span>
+                    <img src="https://via.placeholder.com/200" class="product-image" alt="Producto 2">
+                    <h3 class="product-title">Auriculares inalámbricos Bluetooth con cancelación de ruido</h3>
+                    <div class="product-price">$18.50 <span class="product-old-price">$26.50</span></div>
+                    <div class="product-rating">★★★★★ <span style="color: #666; font-size: 12px;">(342)</span></div>
+                    <div class="product-sold">+1K vendidos</div>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/200" class="product-image" alt="Producto 3">
+                    <h3 class="product-title">Cargador portátil 10000mAh dual USB rápido</h3>
+                    <div class="product-price">$12.99</div>
+                    <div class="product-rating">★★★☆☆ <span style="color: #666; font-size: 12px;">(87)</span></div>
+                    <div class="product-sold">+200 vendidos</div>
+                </div>
+                <div class="product">
+                    <span class="product-badge">Top</span>
+                    <img src="https://via.placeholder.com/200" class="product-image" alt="Producto 4">
+                    <h3 class="product-title">Funda para teléfono anti-impacto militar</h3>
+                    <div class="product-price">$5.99</div>
+                    <div class="product-rating">★★★★☆ <span style="color: #666; font-size: 12px;">(1.2K)</span></div>
+                    <div class="product-sold">+3K vendidos</div>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/200" class="product-image" alt="Producto 5">
+                    <h3 class="product-title">Lámpara LED USB con cambio de color y control remoto</h3>
+                    <div class="product-price">$8.75</div>
+                    <div class="product-rating">★★★★☆ <span style="color: #666; font-size: 12px;">(194)</span></div>
+                    <div class="product-sold">+500 vendidos</div>
+                </div>
             </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Oferta 2">
-                <h3 class="product-title">Mouse gaming RGB</h3>
-                <div class="product-price"><span style="text-decoration: line-through; color: #999;">$24.99</span> $16.50</div>
-                <div class="product-rating">★★★★★</div>
-                <div class="product-sold">134 vendidos</div>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="Oferta 3">
-                <h3 class="product-title">Soporte para laptop</h3>
-                <div class="product-price"><span style="text-decoration: line-through; color: #999;">$18.99</span> $12.99</div>
-                <div class="product-rating">★★★☆☆</div>
-                <div class="product-sold">67 vendidos</div>
+        </div>
+        
+        <div class="products-section">
+            <h2 class="section-title">Ofertas del día</h2>
+            <div class="products">
+                <div class="product">
+                    <span class="product-badge">-50%</span>
+                    <img src="https://via.placeholder.com/200" class="product-image" alt="Oferta 1">
+                    <h3 class="product-title">Teclado inalámbrico ergonómico</h3>
+                    <div class="product-price">$19.99 <span class="product-old-price">$39.99</span></div>
+                    <div class="product-rating">★★★★☆ <span style="color: #666; font-size: 12px;">(89)</span></div>
+                    <div class="product-sold">Oferta por tiempo limitado</div>
+                </div>
+                <div class="product">
+                    <span class="product-badge">-35%</span>
+                    <img src="https://via.placeholder.com/200" class="product-image" alt="Oferta 2">
+                    <h3 class="product-title">Mouse gaming RGB 7 botones</h3>
+                    <div class="product-price">$16.50 <span class="product-old-price">$25.50</span></div>
+                    <div class="product-rating">★★★★★ <span style="color: #666; font-size: 12px;">(134)</span></div>
+                    <div class="product-sold">Solo hoy</div>
+                </div>
+                <div class="product">
+                    <span class="product-badge">-30%</span>
+                    <img src="https://via.placeholder.com/200" class="product-image" alt="Oferta 3">
+                    <h3 class="product-title">Soporte para laptop ajustable</h3>
+                    <div class="product-price">$12.99 <span class="product-old-price">$18.99</span></div>
+                    <div class="product-rating">★★★☆☆ <span style="color: #666; font-size: 12px;">(67)</span></div>
+                    <div class="product-sold">Últimas unidades</div>
+                </div>
             </div>
         </div>
     </main>
@@ -402,6 +587,7 @@
                         <li><a href="#">Reembolsos</a></li>
                         <li><a href="#">Garantías</a></li>
                         <li><a href="#">Ayuda al cliente</a></li>
+                        <li><a href="#">Devoluciones fáciles</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -411,20 +597,22 @@
                         <li><a href="#">Términos y condiciones</a></li>
                         <li><a href="#">Privacidad</a></li>
                         <li><a href="#">Blog</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Métodos de pago</h3>
                     <ul>
-                        <li><a href="#">Tarjetas de crédito</a></li>
+                        <li><a href="#">Tarjetas de crédito/débito</a></li>
                         <li><a href="#">PayPal</a></li>
                         <li><a href="#">Transferencia bancaria</a></li>
                         <li><a href="#">Pago contra entrega</a></li>
+                        <li><a href="#">Criptomonedas</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                © 2023 MiTienda. Todos los derechos reservados.
+                © 2023 MiTienda. Todos los derechos reservados. | Diseñado con ❤️ para tus compras en línea
             </div>
         </div>
     </footer>
