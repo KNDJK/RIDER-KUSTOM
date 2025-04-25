@@ -37,12 +37,20 @@
         }
         
         .logo {
-            height: 40px;
+            height: 60px; /* Tamaño aumentado de 40px a 60px */
+            display: flex;
+            align-items: center;
         }
         
         .logo img {
             height: 100%;
+            width: auto;
             object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
         }
         
         .search-bar {
@@ -71,6 +79,7 @@
             color: white;
             text-decoration: none;
             margin-left: 15px;
+            white-space: nowrap;
         }
         
         nav ul {
@@ -222,6 +231,11 @@
                 flex-direction: column;
             }
             
+            .logo {
+                height: 50px;
+                margin-bottom: 15px;
+            }
+            
             .search-bar {
                 margin: 15px 0;
                 width: 100%;
@@ -263,6 +277,7 @@
         </div>
     </header>
     
+    <!-- Resto del contenido permanece igual -->
     <main class="container">
         <div class="banner">
             <img src="https://via.placeholder.com/1200x300" alt="Ofertas especiales">
