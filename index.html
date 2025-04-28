@@ -30,7 +30,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding-top: 140px; /* Espacio para el header fijo */
+            padding-top: 140px;
         }
         
         /* Header Fijo */
@@ -44,13 +44,19 @@
             right: 0;
             z-index: 1000;
             width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .header-scrolled {
+            background: var(--dark-purple);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .container {
             width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 10px;
+            padding: 0 15px;
         }
         
         .header-content {
@@ -89,6 +95,7 @@
             margin: 0 20px;
             display: flex;
             min-width: 200px;
+            max-width: 500px;
         }
         
         .search-bar input {
@@ -122,6 +129,11 @@
             flex-direction: column;
             align-items: center;
             font-size: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .user-action:hover {
+            transform: translateY(-3px);
         }
         
         .user-action i {
@@ -148,6 +160,7 @@
         nav {
             width: 100%;
             background-color: rgba(0,0,0,0.1);
+            transition: all 0.3s;
         }
         
         .nav-container ul {
@@ -263,6 +276,9 @@
         /* Productos */
         .products-section {
             margin: 40px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
         
         .section-title {
@@ -295,6 +311,7 @@
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: all 0.3s;
+            position: relative;
         }
         
         .product-card:hover {
@@ -312,6 +329,7 @@
             border-radius: 4px;
             font-size: 12px;
             font-weight: bold;
+            z-index: 1;
         }
         
         .product-image-container {
@@ -401,6 +419,229 @@
             border-color: var(--secondary-color);
         }
         
+        /* Categorías Destacadas */
+        .categories-section {
+            margin: 60px 0 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .category-card {
+            background-color: var(--bg-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .category-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover .category-image img {
+            transform: scale(1.05);
+        }
+        
+        .category-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .category-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .category-info span {
+            color: var(--secondary-color);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Marcas Destacadas */
+        .brands-section {
+            margin: 60px 0;
+            padding: 30px 0;
+            background-color: var(--bg-white);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .brands-slider {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .brand-logo {
+            flex: 0 0 auto;
+            padding: 15px;
+            background-color: var(--light-purple);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .brand-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .brand-logo img {
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .brand-logo:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        /* Testimonios */
+        .testimonials-section {
+            margin: 60px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--bg-white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-rating {
+            color: var(--accent-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .testimonial-author h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-author span {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-purple));
+            color: var(--text-light);
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .newsletter-content h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-content p {
+            margin-bottom: 25px;
+            color: #e1bee7;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0 30px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #fff;
+        }
+        
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--dark-purple), var(--primary-color));
@@ -456,12 +697,12 @@
             grid-column: span 2;
         }
         
-        .newsletter-form {
+        .footer-newsletter-form {
             display: flex;
             margin-top: 15px;
         }
         
-        .newsletter-form input {
+        .footer-newsletter-form input {
             flex: 1;
             padding: 12px 15px;
             border: none;
@@ -469,7 +710,7 @@
             font-size: 14px;
         }
         
-        .newsletter-form button {
+        .footer-newsletter-form button {
             background-color: var(--accent-color);
             color: var(--primary-color);
             border: none;
@@ -515,9 +756,26 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .search-bar {
+                order: 3;
+                width: 100%;
+                margin: 15px 0;
+                max-width: 100%;
+            }
+            
+            .user-actions {
+                margin-left: auto;
+            }
+            
+            .footer-newsletter {
+                grid-column: span 1;
+            }
+        }
+        
         @media (max-width: 768px) {
             body {
-                padding-top: 180px; /* Más espacio para header en móviles */
+                padding-top: 180px;
             }
             
             .header-content {
@@ -527,22 +785,27 @@
             .mobile-menu-btn {
                 display: block;
                 order: 2;
+                position: absolute;
+                right: 15px;
+                top: 15px;
             }
             
             .logo-container {
                 order: 1;
                 margin-bottom: 10px;
+                width: 100%;
+                justify-content: center;
             }
             
             .user-actions {
                 order: 3;
                 margin: 10px 0;
+                width: 100%;
+                justify-content: space-around;
             }
             
             .search-bar {
                 order: 4;
-                margin: 10px 0;
-                width: 100%;
             }
             
             nav {
@@ -557,6 +820,7 @@
             
             .nav-container ul {
                 flex-direction: column;
+                text-align: center;
             }
             
             .banner {
@@ -576,16 +840,26 @@
                 gap: 15px;
             }
             
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             .product-image-container {
                 height: 160px;
             }
             
-            .footer-content {
-                grid-template-columns: 1fr;
+            .newsletter-form {
+                flex-direction: column;
             }
             
-            .footer-newsletter {
-                grid-column: span 1;
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 30px;
+                width: 100%;
+            }
+            
+            .newsletter-form input {
+                margin-bottom: 10px;
             }
             
             .whatsapp-float {
@@ -615,7 +889,8 @@
             }
             
             .user-action {
-                margin-left: 10px;
+                margin-left: 5px;
+                margin-right: 5px;
                 font-size: 10px;
             }
             
@@ -631,6 +906,14 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .whatsapp-float {
                 width: 45px;
                 height: 45px;
@@ -644,7 +927,7 @@
 </head>
 <body>
     <!-- Header Fijo -->
-    <header>
+    <header id="mainHeader">
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
@@ -847,6 +1130,128 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Categorías Destacadas -->
+        <div class="categories-section">
+            <h2 class="section-title">Categorías Destacadas</h2>
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <img src="https://via.placeholder.com/400x300/e1bee7/6a1b9a?text=Electrónica" alt="Electrónica">
+                    </div>
+                    <div class="category-info">
+                        <h3>Electrónica</h3>
+                        <span>Ver productos</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <img src="https://via.placeholder.com/400x300/e1bee7/6a1b9a?text=Moda" alt="Moda">
+                    </div>
+                    <div class="category-info">
+                        <h3>Moda</h3>
+                        <span>Ver productos</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <img src="https://via.placeholder.com/400x300/e1bee7/6a1b9a?text=Hogar" alt="Hogar">
+                    </div>
+                    <div class="category-info">
+                        <h3>Hogar</h3>
+                        <span>Ver productos</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <img src="https://via.placeholder.com/400x300/e1bee7/6a1b9a?text=Belleza" alt="Belleza">
+                    </div>
+                    <div class="category-info">
+                        <h3>Belleza</h3>
+                        <span>Ver productos</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Marcas Destacadas -->
+        <div class="brands-section">
+            <h2 class="section-title">Nuestras Marcas</h2>
+            <div class="brands-slider">
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/6a1b9a?text=Marca1" alt="Marca 1">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/6a1b9a?text=Marca2" alt="Marca 2">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/6a1b9a?text=Marca3" alt="Marca 3">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/6a1b9a?text=Marca4" alt="Marca 4">
+                </div>
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/6a1b9a?text=Marca5" alt="Marca 5">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonios -->
+        <div class="testimonials-section">
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Excelente calidad de productos y atención al cliente. Mi pedido llegó antes de lo esperado."</p>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/50/e1bee7/6a1b9a?text=Usuario" alt="Cliente 1">
+                        <div>
+                            <h4>Ana Martínez</h4>
+                            <span>Cliente desde 2021</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★☆</div>
+                    <p class="testimonial-text">"Siempre encuentro lo que busco y los precios son competitivos. Muy satisfecho con mis compras."</p>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/50/e1bee7/6a1b9a?text=Usuario" alt="Cliente 2">
+                        <div>
+                            <h4>Carlos Rodríguez</h4>
+                            <span>Cliente desde 2022</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"La mejor tienda online que he encontrado. Productos premium con garantía y envíos rápidos."</p>
+                    <div class="testimonial-author">
+                        <img src="https://via.placeholder.com/50/e1bee7/6a1b9a?text=Usuario" alt="Cliente 3">
+                        <div>
+                            <h4>Laura Gómez</h4>
+                            <span>Cliente desde 2020</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Newsletter -->
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>Suscríbete a nuestro newsletter</h2>
+                <p>Recibe ofertas exclusivas y novedades directamente en tu correo.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+        </div>
     </main>
     
     <!-- Footer -->
@@ -886,7 +1291,7 @@
                 <div class="footer-column footer-newsletter">
                     <h3>Newsletter</h3>
                     <p style="color: #e1bee7;">Suscríbete para recibir ofertas exclusivas y novedades.</p>
-                    <form class="newsletter-form">
+                    <form class="footer-newsletter-form">
                         <input type="email" placeholder="Tu correo electrónico">
                         <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>
@@ -919,6 +1324,103 @@
                 icon.classList.add('fa-bars');
             }
         });
+        
+        // Header Scroll Effect
+        const header = document.getElementById('mainHeader');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('header-scrolled');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('header-scrolled')) {
+                // Scrolling down
+                header.classList.add('header-scrolled');
+            } else if (currentScroll < lastScroll && header.classList.contains('header-scrolled')) {
+                // Scrolling up
+                header.classList.remove('header-scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Slider de marcas (simulado)
+        const brandsSlider = document.querySelector('.brands-slider');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        brandsSlider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - brandsSlider.offsetLeft;
+            scrollLeft = brandsSlider.scrollLeft;
+            brandsSlider.style.cursor = 'grabbing';
+        });
+
+        brandsSlider.addEventListener('mouseleave', () => {
+            isDown = false;
+            brandsSlider.style.cursor = 'grab';
+        });
+
+        brandsSlider.addEventListener('mouseup', () => {
+            isDown = false;
+            brandsSlider.style.cursor = 'grab';
+        });
+
+        brandsSlider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - brandsSlider.offsetLeft;
+            const walk = (x - startX) * 2;
+            brandsSlider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Animación para las secciones al hacer scroll
+        const sections = document.querySelectorAll('.products-section, .categories-section, .brands-section, .testimonials-section, .newsletter-section');
+
+        function checkSections() {
+            const triggerBottom = window.innerHeight / 5 * 4;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if(sectionTop < triggerBottom) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Inicializar animaciones
+        window.addEventListener('load', function() {
+            checkSections();
+            
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.6s ease';
+            });
+        });
+
+        window.addEventListener('scroll', checkSections);
+
+        // Validación del formulario de newsletter
+        const newsletterForm = document.querySelector('.newsletter-section form');
+        if(newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('input[type="email"]');
+                
+                if(emailInput.value && emailInput.checkValidity()) {
+                    // Simular envío
+                    this.innerHTML = '<p style="color:white; font-size:18px;">¡Gracias por suscribirte!</p>';
+                }
+            });
+        }
     </script>
 </body>
 </html>
