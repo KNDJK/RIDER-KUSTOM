@@ -42,13 +42,6 @@
             z-index: 1000;
         }
         
-        .header-top-bar {
-            background-color: rgba(0,0,0,0.1);
-            padding: 8px 0;
-            font-size: 13px;
-            display: none;
-        }
-        
         .container {
             width: 95%;
             max-width: 1200px;
@@ -234,6 +227,147 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
+        /* Productos */
+        .products-section {
+            margin: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark-purple);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            background-color: var(--bg-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .product-image-container {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .product-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .product-old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        
+        .product-rating {
+            color: var(--accent-color);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .add-to-cart {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            flex-grow: 1;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .wishlist-btn {
+            background-color: transparent;
+            border: 1px solid #ddd;
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .wishlist-btn:hover {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--dark-purple), var(--primary-color));
@@ -400,6 +534,15 @@
                 font-size: 1.8rem;
             }
             
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            
+            .product-image-container {
+                height: 160px;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
             }
@@ -430,6 +573,14 @@
             .user-action i {
                 font-size: 18px;
             }
+            
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -456,7 +607,7 @@
                     </a>
                     <a href="#" class="user-action" title="Favoritos">
                         <i class="far fa-heart"></i>
-                        <span>Favoritos</span>
+                        <span>Favs</span>
                     </a>
                     <a href="#" class="user-action" title="Carrito" style="position: relative;">
                         <i class="fas fa-shopping-cart"></i>
@@ -497,8 +648,143 @@
             </div>
         </div>
         
-        <!-- Aquí puedes agregar más secciones de productos -->
+        <!-- Productos Destacados -->
+        <div class="products-section">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badge">Nuevo</div>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/e1bee7/6a1b9a?text=Producto+1" alt="Producto 1" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Reloj Inteligente Premium</h3>
+                        <div class="product-price">$199.99</div>
+                        <div class="product-rating">★★★★☆</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge" style="background-color: var(--accent-color); color: var(--dark-purple);">-20%</div>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/e1bee7/6a1b9a?text=Producto+2" alt="Producto 2" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Auriculares Inalámbricos</h3>
+                        <div class="product-price">$89.99 <span class="product-old-price">$112.99</span></div>
+                        <div class="product-rating">★★★★★</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/e1bee7/6a1b9a?text=Producto+3" alt="Producto 3" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cámara Digital Profesional</h3>
+                        <div class="product-price">$459.99</div>
+                        <div class="product-rating">★★★★☆</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Más Vendido</div>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/e1bee7/6a1b9a?text=Producto+4" alt="Producto 4" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Smartphone Ultra HD</h3>
+                        <div class="product-price">$699.99</div>
+                        <div class="product-rating">★★★★★</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge" style="background-color: #ff5722;">Oferta</div>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/e1bee7/6a1b9a?text=Producto+5" alt="Producto 5" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Tablet Pro 10.5"</h3>
+                        <div class="product-price">$329.99 <span class="product-old-price">$399.99</span></div>
+                        <div class="product-rating">★★★☆☆</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/e1bee7/6a1b9a?text=Producto+6" alt="Producto 6" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Smartwatch Deportivo</h3>
+                        <div class="product-price">$149.99</div>
+                        <div class="product-rating">★★★★☆</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
+        <!-- Ofertas Especiales -->
+        <div class="products-section">
+            <h2 class="section-title">Ofertas Especiales</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badge" style="background-color: #f44336;">-30%</div>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/e1bee7/6a1b9a?text=Oferta+1" alt="Oferta 1" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Portátil Ultraligero</h3>
+                        <div class="product-price">$599.99 <span class="product-old-price">$849.99</span></div>
+                        <div class="product-rating">★★★★☆</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge" style="background-color: #4caf50;">Nuevo</div>
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300/e1bee7/6a1b9a?text=Oferta+2" alt="Oferta 2" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Altavoz Bluetooth</h3>
+                        <div class="product-price">$79.99</div>
+                        <div class="product-rating">★★★★★</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Añadir al carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     
     <!-- Footer -->
