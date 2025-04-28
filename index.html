@@ -30,7 +30,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding-top: 140px;
+            padding-top: 80px; /* Reducido para header más compacto */
         }
         
         /* Header Fijo */
@@ -44,12 +44,12 @@
             right: 0;
             z-index: 1000;
             width: 100%;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
+            height: 80px; /* Altura fija para el header */
         }
         
-        .header-scrolled {
-            background: var(--dark-purple);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        .header-hidden {
+            transform: translateY(-100%);
         }
         
         .container {
@@ -65,6 +65,7 @@
             justify-content: space-between;
             padding: 10px 0;
             flex-wrap: wrap;
+            height: 80px;
         }
         
         .logo-container {
@@ -88,6 +89,7 @@
             font-size: 24px;
             cursor: pointer;
             padding: 5px 10px;
+            order: 1; /* Lo movemos a la izquierda */
         }
         
         .search-bar {
@@ -96,6 +98,7 @@
             display: flex;
             min-width: 200px;
             max-width: 500px;
+            order: 3; /* Reordenamos para móviles */
         }
         
         .search-bar input {
@@ -119,6 +122,7 @@
         .user-actions {
             display: flex;
             align-items: center;
+            order: 2; /* Reordenamos para móviles */
         }
         
         .user-action {
@@ -161,12 +165,20 @@
             width: 100%;
             background-color: rgba(0,0,0,0.1);
             transition: all 0.3s;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            height: 0;
+            overflow: hidden;
         }
         
         .nav-container ul {
             display: flex;
             list-style: none;
             justify-content: center;
+            flex-direction: column; /* Cambiado a columna para móviles */
+            padding: 0;
         }
         
         nav ul li {
@@ -181,24 +193,31 @@
             padding: 15px 20px;
             display: block;
             transition: all 0.3s;
+            text-align: center;
         }
         
         nav ul li a:hover {
             background-color: rgba(255,255,255,0.1);
         }
         
+        .nav-active {
+            height: auto;
+            padding: 10px 0;
+            background-color: var(--dark-purple);
+        }
+        
         /* Botón de WhatsApp Flotante */
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
+            width: 50px;
+            height: 50px;
+            bottom: 20px;
+            right: 20px;
             background-color: #25d366;
             color: #FFF;
-            border-radius: 50px;
+            border-radius: 50%;
             text-align: center;
-            font-size: 30px;
+            font-size: 24px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             z-index: 100;
             display: flex;
@@ -210,16 +229,17 @@
         .whatsapp-float:hover {
             background-color: #128C7E;
             transform: scale(1.1);
+            text-decoration: none;
         }
         
         .whatsapp-float i {
-            margin-top: 3px;
+            margin-top: 2px;
         }
         
         /* Main Content */
         main {
             flex: 1;
-            padding: 30px 0;
+            padding: 20px 0;
         }
         
         .banner {
@@ -775,52 +795,43 @@
         
         @media (max-width: 768px) {
             body {
-                padding-top: 180px;
+                padding-top: 80px;
             }
             
             .header-content {
-                flex-direction: column;
+                flex-direction: row;
+                justify-content: space-between;
             }
             
             .mobile-menu-btn {
                 display: block;
-                order: 2;
-                position: absolute;
-                right: 15px;
-                top: 15px;
+                order: 1;
             }
             
             .logo-container {
-                order: 1;
-                margin-bottom: 10px;
-                width: 100%;
+                order: 2;
+                margin-bottom: 0;
                 justify-content: center;
+                flex: 1;
             }
             
             .user-actions {
                 order: 3;
-                margin: 10px 0;
-                width: 100%;
-                justify-content: space-around;
+                margin: 0;
             }
             
             .search-bar {
                 order: 4;
+                margin-top: 10px;
+                width: 100%;
             }
             
             nav {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-            }
-            
-            .nav-active {
-                max-height: 500px;
+                top: 80px;
             }
             
             .nav-container ul {
                 flex-direction: column;
-                text-align: center;
             }
             
             .banner {
@@ -861,19 +872,11 @@
             .newsletter-form input {
                 margin-bottom: 10px;
             }
-            
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 25px;
-            }
         }
         
         @media (max-width: 480px) {
             body {
-                padding-top: 160px;
+                padding-top: 80px;
             }
             
             .banner {
@@ -889,8 +892,7 @@
             }
             
             .user-action {
-                margin-left: 5px;
-                margin-right: 5px;
+                margin-left: 10px;
                 font-size: 10px;
             }
             
@@ -913,14 +915,6 @@
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .whatsapp-float {
-                width: 45px;
-                height: 45px;
-                bottom: 15px;
-                right: 15px;
-                font-size: 22px;
-            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -930,15 +924,15 @@
     <header id="mainHeader">
         <div class="container">
             <div class="header-content">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
                 <div class="logo-container">
                     <div class="logo">
                         <img src="0.png" alt="LuxeShop">
                     </div>
                 </div>
-                
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
                 
                 <div class="user-actions">
                     <a href="#" class="user-action" title="Mi cuenta">
@@ -1325,24 +1319,25 @@
             }
         });
         
-        // Header Scroll Effect
+        // Header Scroll Effect - Se oculta al hacer scroll hacia abajo, aparece al hacer scroll hacia arriba
         const header = document.getElementById('mainHeader');
         let lastScroll = 0;
+        const headerHeight = header.offsetHeight;
         
         window.addEventListener('scroll', function() {
             const currentScroll = window.pageYOffset;
             
             if (currentScroll <= 0) {
-                header.classList.remove('header-scrolled');
+                header.classList.remove('header-hidden');
                 return;
             }
             
-            if (currentScroll > lastScroll && !header.classList.contains('header-scrolled')) {
+            if (currentScroll > lastScroll && currentScroll > headerHeight) {
                 // Scrolling down
-                header.classList.add('header-scrolled');
-            } else if (currentScroll < lastScroll && header.classList.contains('header-scrolled')) {
+                header.classList.add('header-hidden');
+            } else if (currentScroll < lastScroll) {
                 // Scrolling up
-                header.classList.remove('header-scrolled');
+                header.classList.remove('header-hidden');
             }
             
             lastScroll = currentScroll;
