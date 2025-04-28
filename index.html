@@ -33,7 +33,6 @@
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-purple));
             color: var(--text-light);
-            padding: 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -44,136 +43,103 @@
             background-color: rgba(0,0,0,0.1);
             padding: 8px 0;
             font-size: 13px;
-        }
-        
-        .top-bar-content {
-            display: flex;
-            justify-content: space-between;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .top-bar-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 15px;
-            transition: opacity 0.3s;
-        }
-        
-        .top-bar-links a:hover {
-            opacity: 0.8;
-        }
-        
-        .main-header {
-            padding: 15px 0;
+            display: none; /* Ocultamos en móvil */
         }
         
         .container {
-            width: 90%;
+            width: 95%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 10px;
         }
         
         .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 10px 0;
             flex-wrap: wrap;
         }
         
         .logo-container {
-            flex: 0 0 180px;
-            height: 70px;
+            flex: 0 0 120px;
+            height: 50px;
             display: flex;
             align-items: center;
-        }
-        
-        .logo {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            order: 1;
         }
         
         .logo img {
             max-height: 100%;
             max-width: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            order: 2;
         }
         
         .search-bar {
-            flex: 1;
-            margin: 0 30px;
+            order: 4;
+            width: 100%;
+            margin: 10px 0;
             display: flex;
-            min-width: 300px;
-            max-width: 600px;
         }
         
         .search-bar input {
             width: 100%;
-            padding: 12px 20px;
+            padding: 10px 15px;
             border: none;
-            border-radius: 30px 0 0 30px;
-            font-size: 15px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 20px 0 0 20px;
+            font-size: 14px;
         }
         
         .search-bar button {
             background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
             color: var(--text-light);
             border: none;
-            padding: 0 25px;
-            border-radius: 0 30px 30px 0;
+            padding: 0 15px;
+            border-radius: 0 20px 20px 0;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        
-        .search-bar button:hover {
-            opacity: 0.9;
-            transform: translateX(2px);
         }
         
         .user-actions {
             display: flex;
             align-items: center;
+            order: 3;
         }
         
         .user-action {
             color: var(--text-light);
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 12px;
-            transition: transform 0.3s;
+            font-size: 10px;
         }
         
         .user-action i {
-            font-size: 22px;
-            margin-bottom: 3px;
-        }
-        
-        .user-action:hover {
-            transform: translateY(-3px);
+            font-size: 18px;
+            margin-bottom: 2px;
         }
         
         .cart-count {
             background-color: var(--accent-color);
             color: var(--primary-color);
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
             position: absolute;
             top: -5px;
@@ -181,38 +147,29 @@
         }
         
         nav {
-            background-color: rgba(0,0,0,0.1);
             width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
         }
         
-        .nav-container {
+        .nav-container ul {
             display: flex;
-            justify-content: center;
-        }
-        
-        nav ul {
-            display: flex;
+            flex-direction: column;
             list-style: none;
         }
         
         nav ul li {
-            position: relative;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
         nav ul li a {
             color: var(--text-light);
             text-decoration: none;
             font-size: 14px;
-            font-weight: 500;
-            padding: 15px 20px;
+            padding: 12px 15px;
             display: block;
             transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        nav ul li a:hover {
-            background-color: rgba(255,255,255,0.1);
         }
         
         nav ul li.active a {
@@ -221,16 +178,15 @@
         
         /* Main Content */
         main {
-            padding: 30px 0;
+            padding: 20px 0;
         }
         
         .banner {
-            margin: 20px 0 30px;
-            border-radius: 10px;
+            margin: 15px 0;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             position: relative;
-            height: 400px;
+            height: 200px;
         }
         
         .banner img {
@@ -245,339 +201,302 @@
             left: 0;
             right: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            padding: 30px;
+            padding: 15px;
             color: white;
         }
         
         .banner-title {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
         }
         
         .banner-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
         }
         
         .banner-btn {
             background-color: var(--accent-color);
             color: var(--primary-color);
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 8px 15px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.8rem;
             display: inline-block;
-            transition: all 0.3s;
-        }
-        
-        .banner-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         /* Footer Premium */
         footer {
             background: linear-gradient(135deg, var(--dark-purple), var(--primary-color));
             color: var(--text-light);
-            padding: 60px 0 30px;
-            margin-top: 60px;
+            padding: 30px 0 20px;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
         }
         
         .footer-column h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
+            font-size: 16px;
+            margin-bottom: 15px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
         
         .footer-column h3::after {
             content: '';
             position: absolute;
-            width: 40px;
+            width: 30px;
             height: 2px;
             background-color: var(--accent-color);
             bottom: 0;
             left: 0;
         }
         
-        .footer-column ul {
-            list-style: none;
-        }
-        
         .footer-column ul li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .footer-column ul li a {
             color: #e1bee7;
             text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--accent-color);
-            transform: translateX(5px);
-        }
-        
-        .footer-newsletter {
-            grid-column: span 2;
+            font-size: 13px;
         }
         
         .newsletter-form {
             display: flex;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         
         .newsletter-form input {
             flex: 1;
-            padding: 12px 15px;
+            padding: 10px;
             border: none;
             border-radius: 4px 0 0 4px;
-            font-size: 14px;
+            font-size: 13px;
         }
         
         .newsletter-form button {
             background-color: var(--accent-color);
             color: var(--primary-color);
             border: none;
-            padding: 0 20px;
+            padding: 0 15px;
             border-radius: 0 4px 4px 0;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .newsletter-form button:hover {
-            opacity: 0.9;
         }
         
         .social-links {
             display: flex;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
         .social-link {
             color: var(--text-light);
             background-color: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 10px;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            transform: translateY(-3px);
+            margin-right: 8px;
         }
         
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            padding-top: 20px;
         }
         
         .payment-methods {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 15px;
         }
         
         .payment-method {
-            width: 50px;
-            height: 30px;
+            width: 45px;
+            height: 28px;
             background-color: rgba(255,255,255,0.9);
             border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5px;
-        }
-        
-        .payment-method img {
-            max-width: 100%;
-            max-height: 100%;
+            padding: 3px;
         }
         
         .copyright {
-            font-size: 13px;
+            font-size: 11px;
             color: #ce93d8;
             text-align: center;
-            width: 100%;
-            margin-top: 20px;
         }
         
-        /* Responsive */
-        @media (max-width: 1024px) {
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            .header-top-bar {
+                display: block;
+            }
+            
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            .header-content {
+                padding: 15px 0;
+                flex-wrap: nowrap;
+            }
+            
+            .logo-container {
+                flex: 0 0 180px;
+                height: 70px;
+                order: 1;
+            }
+            
+            .search-bar {
+                order: 2;
+                margin: 0 20px;
+                flex: 1;
+            }
+            
+            .user-actions {
+                order: 3;
+            }
+            
+            nav {
+                max-height: none;
+                background-color: rgba(0,0,0,0.1);
+            }
+            
+            .nav-container ul {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                border-top: none;
+            }
+            
+            nav ul li a {
+                padding: 15px 20px;
+            }
+            
             .banner {
                 height: 350px;
+            }
+            
+            .banner-content {
+                padding: 30px;
             }
             
             .banner-title {
                 font-size: 2rem;
             }
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-            
-            .logo-container {
-                margin-bottom: 15px;
-            }
-            
-            .search-bar {
-                margin: 15px 0;
-                width: 100%;
-            }
-            
-            .user-actions {
-                margin-top: 15px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                flex: 1;
-                min-width: 120px;
-                text-align: center;
-            }
-            
-            .banner {
-                height: 300px;
-            }
-            
-            .banner-content {
-                padding: 20px;
-            }
-            
-            .banner-title {
-                font-size: 1.8rem;
-            }
-            
-            .footer-newsletter {
-                grid-column: span 1;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .top-bar-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .top-bar-links {
-                margin-top: 5px;
-            }
-            
-            .top-bar-links a {
-                margin: 0 8px;
-            }
-            
-            .banner {
-                height: 250px;
-            }
-            
-            .banner-title {
-                font-size: 1.5rem;
-            }
             
             .banner-subtitle {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             
             .footer-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
+            
+            .footer-newsletter {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                width: 90%;
+                padding: 0;
+            }
+            
+            .banner {
+                height: 400px;
+            }
+            
+            .banner-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Mobile Menu Active */
+        .nav-active {
+            max-height: 500px;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header Premium -->
+    <!-- Header Premium Responsive -->
     <header>
         <div class="header-top-bar">
-            <div class="top-bar-content">
-                <div class="top-bar-text">
-                    ¡Envíos gratis en compras mayores a $50!
-                </div>
-                <div class="top-bar-links">
-                    <a href="#"><i class="fas fa-phone-alt"></i> +1 234 567 890</a>
-                    <a href="#"><i class="fas fa-map-marker-alt"></i> Localizador de tiendas</a>
-                    <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="main-header">
             <div class="container">
-                <div class="header-content">
-                    <div class="logo-container">
-                        <div class="logo">
-                            <img src="0.png" alt="LuxeShop">
-                        </div>
+                <div class="top-bar-content">
+                    <div class="top-bar-text">
+                        ¡Envíos gratis en compras mayores a $50!
                     </div>
-                    
-                    <div class="search-bar">
-                        <input type="text" placeholder="Buscar productos, marcas y más...">
-                        <button><i class="fas fa-search"></i> Buscar</button>
-                    </div>
-                    
-                    <div class="user-actions">
-                        <a href="#" class="user-action">
-                            <i class="far fa-user"></i>
-                            <span>Mi cuenta</span>
-                        </a>
-                        <a href="#" class="user-action">
-                            <i class="far fa-heart"></i>
-                            <span>Favoritos</span>
-                        </a>
-                        <a href="#" class="user-action" style="position: relative;">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span>Carrito</span>
-                            <span class="cart-count">3</span>
-                        </a>
+                    <div class="top-bar-links">
+                        <a href="#"><i class="fas fa-phone-alt"></i> +1 234 567 890</a>
+                        <a href="#"><i class="fas fa-map-marker-alt"></i> Localizador</a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <nav>
-            <div class="container">
-                <div class="nav-container">
-                    <ul>
-                        <li class="active"><a href="#">Inicio</a></li>
-                        <li><a href="#">Categorías</a></li>
-                        <li><a href="#">Ofertas</a></li>
-                        <li><a href="#">Nuevos</a></li>
-                        <li><a href="#">Tendencias</a></li>
-                        <li><a href="#">Marcas</a></li>
-                        <li><a href="#">Colecciones</a></li>
-                    </ul>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="0.png" alt="LuxeShop">
+                    </div>
                 </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="user-actions">
+                    <a href="#" class="user-action" title="Mi cuenta">
+                        <i class="far fa-user"></i>
+                        <span class="action-text">Cuenta</span>
+                    </a>
+                    <a href="#" class="user-action" title="Favoritos">
+                        <i class="far fa-heart"></i>
+                        <span class="action-text">Favs</span>
+                    </a>
+                    <a href="#" class="user-action" title="Carrito" style="position: relative;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="action-text">Carrito</span>
+                        <span class="cart-count">3</span>
+                    </a>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar productos...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <nav id="mainNav">
+                    <div class="nav-container">
+                        <ul>
+                            <li class="active"><a href="#">Inicio</a></li>
+                            <li><a href="#">Categorías</a></li>
+                            <li><a href="#">Ofertas</a></li>
+                            <li><a href="#">Nuevos</a></li>
+                            <li><a href="#">Tendencias</a></li>
+                            <li><a href="#">Marcas</a></li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-        </nav>
+        </div>
     </header>
     
     <!-- Main Content -->
@@ -586,27 +505,26 @@
             <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Colección de Verano">
             <div class="banner-content">
                 <h1 class="banner-title">Colección Premium 2023</h1>
-                <p class="banner-subtitle">Descubre los productos más exclusivos con hasta 40% de descuento</p>
+                <p class="banner-subtitle">Hasta 40% de descuento</p>
                 <a href="#" class="banner-btn">Comprar ahora</a>
             </div>
         </div>
         
-        <!-- Aquí iría el resto del contenido de productos que teníamos antes -->
+        <!-- Aquí iría el resto del contenido de productos -->
         
     </main>
     
-    <!-- Footer Premium -->
+    <!-- Footer Premium Responsive -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>LuxeShop</h3>
-                    <p style="color: #e1bee7; margin-bottom: 15px;">Tu tienda online premium con los mejores productos y marcas exclusivas.</p>
+                    <p style="color: #e1bee7; margin-bottom: 15px; font-size: 14px;">Tu tienda online premium con los mejores productos.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
                     </div>
                 </div>
                 
@@ -614,29 +532,24 @@
                     <h3>Comprar</h3>
                     <ul>
                         <li><a href="#">Productos nuevos</a></li>
-                        <li><a href="#">Ofertas especiales</a></li>
-                        <li><a href="#">Colecciones</a></li>
+                        <li><a href="#">Ofertas</a></li>
                         <li><a href="#">Categorías</a></li>
-                        <li><a href="#">Regalos</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Servicio al cliente</h3>
+                    <h3>Ayuda</h3>
                     <ul>
                         <li><a href="#">Contáctanos</a></li>
                         <li><a href="#">Preguntas frecuentes</a></li>
-                        <li><a href="#">Envíos y entregas</a></li>
-                        <li><a href="#">Devoluciones</a></li>
-                        <li><a href="#">Guía de tallas</a></li>
+                        <li><a href="#">Envíos</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-column footer-newsletter">
+                <div class="footer-column">
                     <h3>Newsletter</h3>
-                    <p style="color: #e1bee7;">Suscríbete para recibir ofertas exclusivas y novedades.</p>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico">
+                        <input type="email" placeholder="Tu correo">
                         <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
@@ -653,16 +566,46 @@
                     <div class="payment-method">
                         <img src="https://via.placeholder.com/30x20/fff/6a1b9a?text=PP" alt="PayPal">
                     </div>
-                    <div class="payment-method">
-                        <img src="https://via.placeholder.com/30x20/fff/6a1b9a?text=AE" alt="American Express">
-                    </div>
                 </div>
                 
                 <div class="copyright">
-                    © 2023 LuxeShop. Todos los derechos reservados. | Diseñado con <i class="fas fa-heart" style="color: #ff4081;"></i> para tus compras premium
+                    © 2023 LuxeShop. Todos los derechos reservados.
                 </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('nav-active');
+            
+            // Cambiar icono
+            const icon = this.querySelector('i');
+            if (mainNav.classList.contains('nav-active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Ajustar altura del banner en móviles
+        function adjustBannerHeight() {
+            const banner = document.querySelector('.banner');
+            if (window.innerWidth < 768) {
+                banner.style.height = (window.innerWidth * 0.6) + 'px';
+            } else {
+                banner.style.height = '';
+            }
+        }
+        
+        window.addEventListener('resize', adjustBannerHeight);
+        window.addEventListener('load', adjustBannerHeight);
+    </script>
 </body>
 </html>
