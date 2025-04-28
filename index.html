@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiTienda - Compras Premium</title>
+    <title>LuxeShop - Tienda Premium</title>
     <style>
         :root {
             --primary-color: #6a1b9a;
@@ -27,21 +27,550 @@
             background-color: var(--light-purple);
             color: var(--text-dark);
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         /* Header */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-purple));
             color: var(--text-light);
-            padding: 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         
+        .header-top-bar {
+            background-color: rgba(0,0,0,0.1);
+            padding: 8px 0;
+            font-size: 13px;
+            display: none;
+        }
+        
         .container {
             width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding:
+            padding: 0 10px;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            flex: 0 0 150px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        
+        .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
+            min-width: 200px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px 0 0 20px;
+            font-size: 14px;
+        }
+        
+        .search-bar button {
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            color: var(--text-light);
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-action {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .user-action i {
+            font-size: 20px;
+            margin-bottom: 3px;
+        }
+        
+        .cart-count {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        
+        nav {
+            width: 100%;
+            background-color: rgba(0,0,0,0.1);
+        }
+        
+        .nav-container ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 15px 20px;
+            display: block;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 30px 0;
+        }
+        
+        .banner {
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            height: 400px;
+        }
+        
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .banner-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 30px;
+            color: white;
+        }
+        
+        .banner-title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .banner-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .banner-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .banner-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-purple), var(--primary-color));
+            color: var(--text-light);
+            padding: 50px 0 20px;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #e1bee7;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .footer-newsletter {
+            grid-column: span 2;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: var(--text-light);
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #ce93d8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                order: 2;
+            }
+            
+            .logo-container {
+                order: 1;
+                margin-bottom: 10px;
+            }
+            
+            .user-actions {
+                order: 3;
+                margin: 10px 0;
+            }
+            
+            .search-bar {
+                order: 4;
+                margin: 10px 0;
+                width: 100%;
+            }
+            
+            nav {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            
+            .nav-active {
+                max-height: 500px;
+            }
+            
+            .nav-container ul {
+                flex-direction: column;
+            }
+            
+            .banner {
+                height: 300px;
+            }
+            
+            .banner-content {
+                padding: 20px;
+            }
+            
+            .banner-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-newsletter {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner {
+                height: 250px;
+            }
+            
+            .banner-title {
+                font-size: 1.5rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+            
+            .user-action {
+                margin-left: 10px;
+                font-size: 10px;
+            }
+            
+            .user-action i {
+                font-size: 18px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="0.png" alt="LuxeShop">
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="user-actions">
+                    <a href="#" class="user-action" title="Mi cuenta">
+                        <i class="far fa-user"></i>
+                        <span>Cuenta</span>
+                    </a>
+                    <a href="#" class="user-action" title="Favoritos">
+                        <i class="far fa-heart"></i>
+                        <span>Favoritos</span>
+                    </a>
+                    <a href="#" class="user-action" title="Carrito" style="position: relative;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Carrito</span>
+                        <span class="cart-count">3</span>
+                    </a>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar productos...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <nav id="mainNav">
+                    <div class="nav-container">
+                        <ul>
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Categorías</a></li>
+                            <li><a href="#">Ofertas</a></li>
+                            <li><a href="#">Nuevos</a></li>
+                            <li><a href="#">Tendencias</a></li>
+                            <li><a href="#">Marcas</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <div class="banner">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Colección de Verano">
+            <div class="banner-content">
+                <h1 class="banner-title">Colección Premium 2023</h1>
+                <p class="banner-subtitle">Descubre los productos más exclusivos</p>
+                <a href="#" class="banner-btn">Ver Colección</a>
+            </div>
+        </div>
+        
+        <!-- Aquí puedes agregar más secciones de productos -->
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LuxeShop</h3>
+                    <p style="color: #e1bee7; margin-bottom: 15px;">Tu tienda online premium con los mejores productos y marcas exclusivas.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Comprar</h3>
+                    <ul>
+                        <li><a href="#">Productos nuevos</a></li>
+                        <li><a href="#">Ofertas especiales</a></li>
+                        <li><a href="#">Colecciones</a></li>
+                        <li><a href="#">Categorías</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Servicio al cliente</h3>
+                    <ul>
+                        <li><a href="#">Contáctanos</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Envíos y entregas</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p style="color: #e1bee7;">Suscríbete para recibir ofertas exclusivas y novedades.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2023 LuxeShop. Todos los derechos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('nav-active');
+            
+            // Cambiar icono
+            const icon = this.querySelector('i');
+            if (mainNav.classList.contains('nav-active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
