@@ -575,7 +575,7 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <img src="https://via.placeholder.com/150x50?text=AquaStream" alt="AquaStream" class="logo-img" onclick="location.href='index.html'">
+                <img src="00.png" alt="AquaStream" class="logo-img" onclick="location.href='index.html'">
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Inicio</a></li>
@@ -669,6 +669,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Episodio 3 -->
+                    <div class="episode-card">
+                        <div class="episode-poster">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMTMxMjQ5MjQyN15BMl5BanBnXkFtZTgwODk0MjA0MzE@._V1_FMjpg_UX600_.jpg" alt="Episodio 3">
+                            <button class="btn-play-episode" data-episode="1-3">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <span class="episode-number">3</span>
+                        </div>
+                        <div class="episode-info">
+                            <h4 class="episode-title">El templo de aire del sur</h4>
+                            <p class="episode-desc">Aang regresa al Templo de Aire del Sur y descubre el destino de su pueblo.</p>
+                            <div class="episode-meta">
+                                <span class="duration">24 min</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -688,6 +706,24 @@
                         <div class="episode-info">
                             <h4 class="episode-title">El estado Avatar</h4>
                             <p class="episode-desc">Aang busca un maestro tierra mientras el General Fong intenta forzarlo a entrar en el Estado Avatar.</p>
+                            <div class="episode-meta">
+                                <span class="duration">24 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Episodio 2 -->
+                    <div class="episode-card">
+                        <div class="episode-poster">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMTM0MTk0NDU0N15BMl5BanBnXkFtZTgwOTM0MjA0MzE@._V1_FMjpg_UX600_.jpg" alt="Episodio 2">
+                            <button class="btn-play-episode" data-episode="2-2">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <span class="episode-number">2</span>
+                        </div>
+                        <div class="episode-info">
+                            <h4 class="episode-title">La cueva de los dos enamorados</h4>
+                            <p class="episode-desc">El grupo se adentra en una cueva mítica mientras Aang y Katara exploran sus sentimientos.</p>
                             <div class="episode-meta">
                                 <span class="duration">24 min</span>
                             </div>
@@ -729,18 +765,28 @@
         const episodeDatabase = {
             "1-1": {
                 title: "El niño en el iceberg",
-                videoUrl: "https://www.youtube.com/embed/d1EnW4kn1kg?autoplay=1&controls=1&modestbranding=1&rel=0",
-                backupUrl: "https://player.vimeo.com/video/148751763?autoplay=1"
+                videoUrl: "https://archive.org/embed/01-el-nino-en-el-iceberg",
+                backupUrl: "https://archive.org/embed/01-el-nino-en-el-iceberg"
             },
             "1-2": {
                 title: "El regreso del Avatar",
-                videoUrl: "https://www.youtube.com/embed/5MkPae3A6l0?autoplay=1&controls=1&modestbranding=1&rel=0",
-                backupUrl: "https://player.vimeo.com/video/148751764?autoplay=1"
+                videoUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur/02+%E2%80%93+El+Regreso+Del+Avatar.mp4",
+                backupUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur/02+%E2%80%93+El+Regreso+Del+Avatar.mp4"
+            },
+            "1-3": {
+                title: "El templo de aire del sur",
+                videoUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur",
+                backupUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur"
             },
             "2-1": {
                 title: "El estado Avatar",
                 videoUrl: "https://www.youtube.com/embed/9hUUsqhetWQ?autoplay=1&controls=1&modestbranding=1&rel=0",
                 backupUrl: "https://player.vimeo.com/video/148751765?autoplay=1"
+            },
+            "2-2": {
+                title: "La cueva de los dos enamorados",
+                videoUrl: "https://www.youtube.com/embed/example1?autoplay=1&controls=1&modestbranding=1&rel=0",
+                backupUrl: "https://player.vimeo.com/video/example1?autoplay=1"
             }
         };
 
@@ -759,33 +805,48 @@
             videoModal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Cargar la URL principal del video
-            videoIframe.src = episode.videoUrl;
-            
-            // Verificar si el iframe carga correctamente
-            const checkLoad = setInterval(() => {
-                try {
-                    // Si el iframe no carga después de 3 segundos, usar backup
-                    if (!videoIframe.contentWindow || videoIframe.contentWindow.location.href === 'about:blank') {
+            // Configurar el iframe según el episodio
+            if (episodeId === "1-1" || episodeId === "1-2" || episodeId === "1-3") {
+                // Configuración especial para episodios de archive.org
+                videoIframe.src = episode.videoUrl;
+                videoIframe.style.width = "100%";
+                videoIframe.style.height = "100%";
+                videoIframe.setAttribute('webkitallowfullscreen', 'true');
+                videoIframe.setAttribute('mozallowfullscreen', 'true');
+                videoIframe.setAttribute('allowfullscreen', 'true');
+                
+                // Ocultar loader después de un breve retraso
+                setTimeout(() => {
+                    videoLoader.style.display = 'none';
+                    videoIframe.style.display = 'block';
+                }, 1000);
+            } else {
+                // Configuración para otros episodios
+                videoIframe.src = episode.videoUrl;
+                
+                // Verificar si el iframe carga correctamente
+                const checkLoad = setInterval(() => {
+                    try {
+                        if (!videoIframe.contentWindow || videoIframe.contentWindow.location.href === 'about:blank') {
+                            clearInterval(checkLoad);
+                            useBackupSource();
+                        }
+                    } catch (e) {
                         clearInterval(checkLoad);
-                        useBackupSource();
+                        onVideoLoaded();
                     }
-                } catch (e) {
-                    // Error de política de mismo origen, considerar como carga exitosa
+                }, 3000);
+                
+                videoIframe.onload = function() {
                     clearInterval(checkLoad);
                     onVideoLoaded();
-                }
-            }, 3000);
-            
-            videoIframe.onload = function() {
-                clearInterval(checkLoad);
-                onVideoLoaded();
-            };
-            
-            videoIframe.onerror = function() {
-                clearInterval(checkLoad);
-                useBackupSource();
-            };
+                };
+                
+                videoIframe.onerror = function() {
+                    clearInterval(checkLoad);
+                    useBackupSource();
+                };
+            }
             
             function onVideoLoaded() {
                 videoLoader.style.display = 'none';
