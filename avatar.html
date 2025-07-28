@@ -575,7 +575,7 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <img src="00.png" alt="AquaStream" class="logo-img" onclick="location.href='index.html'">
+                <img src="https://via.placeholder.com/150x50?text=AquaStream" alt="AquaStream" class="logo-img" onclick="location.href='index.html'">
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Inicio</a></li>
@@ -765,28 +765,28 @@
         const episodeDatabase = {
             "1-1": {
                 title: "El niño en el iceberg",
-                videoUrl: "https://archive.org/embed/01-el-nino-en-el-iceberg",
-                backupUrl: "https://archive.org/embed/01-el-nino-en-el-iceberg"
+                videoUrl: "https://archive.org/embed/01-el-nino-en-el-iceberg?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0",
+                backupUrl: "https://archive.org/embed/01-el-nino-en-el-iceberg?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0"
             },
             "1-2": {
                 title: "El regreso del Avatar",
-                videoUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur/02+%E2%80%93+El+Regreso+Del+Avatar.mp4",
-                backupUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur/02+%E2%80%93+El+Regreso+Del+Avatar.mp4"
+                videoUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur/02+%E2%80%93+El+Regreso+Del+Avatar.mp4?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0",
+                backupUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur/02+%E2%80%93+El+Regreso+Del+Avatar.mp4?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0"
             },
             "1-3": {
                 title: "El templo de aire del sur",
-                videoUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur",
-                backupUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur"
+                videoUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0",
+                backupUrl: "https://archive.org/embed/03-el-templo-de-aire-del-sur?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0"
             },
             "2-1": {
                 title: "El estado Avatar",
-                videoUrl: "https://www.youtube.com/embed/9hUUsqhetWQ?autoplay=1&controls=1&modestbranding=1&rel=0",
-                backupUrl: "https://player.vimeo.com/video/148751765?autoplay=1"
+                videoUrl: "https://archive.org/embed/example1?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0",
+                backupUrl: "https://archive.org/embed/example1?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0"
             },
             "2-2": {
                 title: "La cueva de los dos enamorados",
-                videoUrl: "https://www.youtube.com/embed/example1?autoplay=1&controls=1&modestbranding=1&rel=0",
-                backupUrl: "https://player.vimeo.com/video/example1?autoplay=1"
+                videoUrl: "https://archive.org/embed/example2?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0",
+                backupUrl: "https://archive.org/embed/example2?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0"
             }
         };
 
@@ -805,50 +805,16 @@
             videoModal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Configurar el iframe según el episodio
-            if (episodeId === "1-1" || episodeId === "1-2" || episodeId === "1-3") {
-                // Configuración especial para episodios de archive.org
-                videoIframe.src = episode.videoUrl;
-                videoIframe.style.width = "100%";
-                videoIframe.style.height = "100%";
-                videoIframe.setAttribute('webkitallowfullscreen', 'true');
-                videoIframe.setAttribute('mozallowfullscreen', 'true');
-                videoIframe.setAttribute('allowfullscreen', 'true');
-                
-                // Ocultar loader después de un breve retraso
-                setTimeout(() => {
-                    videoLoader.style.display = 'none';
-                    videoIframe.style.display = 'block';
-                }, 1000);
-            } else {
-                // Configuración para otros episodios
-                videoIframe.src = episode.videoUrl;
-                
-                // Verificar si el iframe carga correctamente
-                const checkLoad = setInterval(() => {
-                    try {
-                        if (!videoIframe.contentWindow || videoIframe.contentWindow.location.href === 'about:blank') {
-                            clearInterval(checkLoad);
-                            useBackupSource();
-                        }
-                    } catch (e) {
-                        clearInterval(checkLoad);
-                        onVideoLoaded();
-                    }
-                }, 3000);
-                
-                videoIframe.onload = function() {
-                    clearInterval(checkLoad);
-                    onVideoLoaded();
-                };
-                
-                videoIframe.onerror = function() {
-                    clearInterval(checkLoad);
-                    useBackupSource();
-                };
-            }
+            // Configurar el iframe para todos los episodios
+            videoIframe.src = episode.videoUrl;
+            videoIframe.style.width = "100%";
+            videoIframe.style.height = "100%";
+            videoIframe.setAttribute('webkitallowfullscreen', 'true');
+            videoIframe.setAttribute('mozallowfullscreen', 'true');
+            videoIframe.setAttribute('allowfullscreen', 'true');
             
-            function onVideoLoaded() {
+            // Ocultar loader después de un breve retraso
+            setTimeout(() => {
                 videoLoader.style.display = 'none';
                 videoIframe.style.display = 'block';
                 
@@ -856,25 +822,16 @@
                 if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
                     videoIframe.requestFullscreen().catch(e => console.log(e));
                 }
-            }
+            }, 1000);
             
-            function useBackupSource() {
+            videoIframe.onload = function() {
+                videoLoader.style.display = 'none';
+                videoIframe.style.display = 'block';
+            };
+            
+            videoIframe.onerror = function() {
                 videoIframe.src = episode.backupUrl;
-                videoIframe.onload = onVideoLoaded;
-                videoIframe.onerror = showError;
-            }
-            
-            function showError() {
-                videoLoader.innerHTML = `
-                    <div style="color:white;text-align:center;">
-                        <h3>Error al cargar el video</h3>
-                        <p>No se pudo cargar el contenido solicitado.</p>
-                        <button onclick="location.reload()" style="margin-top:20px;padding:10px 20px;background:#00a8ff;border:none;border-radius:4px;cursor:pointer;">
-                            Reintentar
-                        </button>
-                    </div>
-                `;
-            }
+            };
         }
 
         // Configuración inicial cuando el DOM está listo
@@ -905,15 +862,6 @@
                 if (e.key === 'Escape') {
                     document.querySelector('.btn-close-player').click();
                 }
-            });
-            
-            // Prevenir clics en enlaces sospechosos
-            document.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (this.href.includes('ad') || this.href.includes('popup')) {
-                        e.preventDefault();
-                    }
-                });
             });
             
             // Configuración de temporadas
