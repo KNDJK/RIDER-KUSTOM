@@ -3,140 +3,1208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaStream | Películas y Series</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>BandLab - Estilo Facebook</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="theme-color" content="#0f0f1a">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #7e57c2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            position: relative;
+            max-width: 500px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            font-size: 15px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-actions a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        
+        .user-actions a:hover {
+            background-color: #2d2d2d;
+        }
+        
+        .user-actions a i {
+            margin-right: 5px;
+            font-size: 18px;
+        }
+        
+        .user-actions .sign-up {
+            background-color: #7e57c2;
+            color: white;
+            padding: 8px 15px;
+        }
+        
+        /* Left Sidebar */
+        .left-sidebar {
+            width: 300px;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+        
+        .sidebar-section {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #7e57c2;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: #e0e0e0;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: #2d2d2d;
+        }
+        
+        .sidebar-menu a i {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #7e57c2;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .sidebar-menu a.active {
+            background-color: #7e57c2;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            max-width: 680px;
+            padding: 20px 0;
+        }
+        
+        .create-post {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .post-input {
+            display: flex;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 10px;
+        }
+        
+        .post-input img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .post-input input {
+            flex-grow: 1;
+            background-color: #2d2d2d;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 15px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border-radius: 6px;
+            color: #aaa;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .post-action:hover {
+            background-color: #2d2d2d;
+        }
+        
+        .post-action i {
+            margin-right: 5px;
+            font-size: 18px;
+        }
+        
+        .post-action.video i {
+            color: #f3425f;
+        }
+        
+        .post-action.photo i {
+            color: #45bd62;
+        }
+        
+        .post-action.music i {
+            color: #7e57c2;
+        }
+        
+        /* Feed */
+        .feed {
+            margin-bottom: 20px;
+        }
+        
+        .feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e0e0e0;
+        }
+        
+        .filters button {
+            background-color: #2d2d2d;
+            border: none;
+            color: #e0e0e0;
+            padding: 8px 15px;
+            border-radius: 6px;
+            margin-left: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .filters button.active {
+            background-color: #7e57c2;
+            color: white;
+        }
+        
+        /* Post Cards */
+        .post-card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .post-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .post-user-info {
+            flex-grow: 1;
+        }
+        
+        .post-user-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #e0e0e0;
+        }
+        
+        .post-time {
+            font-size: 13px;
+            color: #aaa;
+        }
+        
+        .post-content {
+            margin-bottom: 12px;
+        }
+        
+        .post-text {
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.4;
+            color: #e0e0e0;
+        }
+        
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .post-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            margin-bottom: 5px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .post-actions-buttons {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 5px;
+        }
+        
+        .post-action-button {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 6px;
+            color: #aaa;
+            font-weight: 500;
+            cursor: pointer;
+            flex-grow: 1;
+            justify-content: center;
+        }
+        
+        .post-action-button:hover {
+            background-color: #2d2d2d;
+        }
+        
+        .post-action-button i {
+            margin-right: 5px;
+            font-size: 18px;
+        }
+        
+        /* Right Sidebar */
+        .right-sidebar {
+            width: 300px;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+        
+        .sponsored {
+            margin-bottom: 20px;
+        }
+        
+        .sponsored-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .sponsored-item:hover {
+            background-color: #2d2d2d;
+        }
+        
+        .sponsored-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .sponsored-info {
+            flex-grow: 1;
+        }
+        
+        .sponsored-title {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #e0e0e0;
+        }
+        
+        .sponsored-desc {
+            font-size: 13px;
+            color: #aaa;
+        }
+        
+        .birthdays {
+            margin-bottom: 20px;
+        }
+        
+        .birthday-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .birthday-item:hover {
+            background-color: #2d2d2d;
+        }
+        
+        .birthday-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #7e57c2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .contacts {
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-item:hover {
+            background-color: #2d2d2d;
+        }
+        
+        .contact-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .contact-name {
+            font-weight: 500;
+            font-size: 15px;
+            color: #e0e0e0;
+        }
+        
+        /* Chat Global Section */
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            z-index: 1000;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            max-height: 450px;
+            border: 1px solid #333;
+        }
+        
+        .chat-header {
+            background-color: #7e57c2;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .chat-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .online-count {
+            background-color: #121212;
+            color: #7e57c2;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .message.received {
+            background-color: #2d2d2d;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            color: #e0e0e0;
+        }
+        
+        .message.sent {
+            background-color: #7e57c2;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            color: white;
+        }
+        
+        .message-sender {
+            font-weight: bold;
+            margin-bottom: 3px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .message.sent .message-sender {
+            text-align: right;
+            color: #d0b8ff;
+        }
+        
+        .chat-input {
+            padding: 15px;
+            background-color: #1e1e1e;
+            border-top: 1px solid #333;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 20px;
+            border: none;
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+        }
+        
+        .chat-input button {
+            background-color: #7e57c2;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chat-minimized {
+            height: auto;
+        }
+        
+        .chat-minimized .chat-messages,
+        .chat-minimized .chat-input {
+            display: none;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00b894 0%, #7e57c2 100%);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 90%;
+        }
+        
+        .notification.show {
+            opacity: 1;
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #d63031 0%, #e84393 100%);
+        }
+
+        .notification.warning {
+            background: linear-gradient(135deg, #fdcb6e 0%, #fd79a8 100%);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .left-sidebar, .right-sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+            }
+            
+            .main-content {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                margin: 10px 0;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .post-actions {
+                flex-wrap: wrap;
+            }
+            
+            .post-action {
+                margin-bottom: 5px;
+            }
+            
+            .chat-container {
+                width: 300px;
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Efectos de iluminación -->
-    <div class="glow-effect" style="top: 20%; right: 10%;"></div>
-    <div class="glow-effect" style="bottom: 30%; left: 15%; width: 400px; height: 400px;"></div>
-
-    <!-- Barra de navegación -->
-    <nav class="navbar">
-        <div class="navbar-container">
+    <!-- Header -->
+    <header>
+        <div class="header-content">
             <div class="logo">
-                <img src="00.png" alt="AquaStream" class="logo-img">
+                <i class="fas fa-music"></i>
+                <span>BandLab</span>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#" class="nav-link active">Inicio</a></li>
-                <li><a href="#" class="nav-link">Series</a></li>
-                <li><a href="#" class="nav-link">Películas</a></li>
-                <li><a href="#" class="nav-link">Novedades</a></li>
-            </ul>
-            <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Buscar series, películas..." class="search-input">
-                <i class="fas fa-search search-icon"></i>
-                <div class="search-results" id="searchResults"></div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar en BandLab">
             </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+            <div class="user-actions">
+                <a href="#"><i class="fas fa-home"></i> <span class="desktop-text">Inicio</span></a>
+                <a href="#"><i class="fas fa-users"></i> <span class="desktop-text">Comunidad</span></a>
+                <a href="#" class="sign-up">Crear publicación</a>
             </div>
         </div>
-    </nav>
-
-    <!-- Hero Banner -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title fade-in">AVATAR: LA LEYENDA DE AANG</h1>
-            <div class="hero-details fade-in delay-1">
-                <span class="detail rating">98% coincidencia</span>
-                <span class="detail year">2005-2008</span>
-                <span class="detail age">+7</span>
-                <span class="detail seasons">3 temporadas</span>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <div class="sidebar-section">
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#"><i class="fas fa-fire"></i> Trending</a></li>
+                    <li><a href="#"><i class="fas fa-compass"></i> Descubrir</a></li>
+                    <li><a href="#"><i class="fas fa-newspaper"></i> Feed</a></li>
+                    <li><a href="#"><i class="fas fa-sliders-h"></i> Mixes</a></li>
+                    <li><a href="#"><i class="fas fa-user-friends"></i> Artistas</a></li>
+                    <li><a href="#"><i class="fas fa-database"></i> Sample Library</a></li>
+                </ul>
             </div>
-            <p class="hero-description fade-in delay-2">Un niño llamado Aang debe asumir su rol como el Avatar y dominar los cuatro elementos para restaurar el equilibrio en un mundo devastado por la guerra.</p>
-            <div class="hero-buttons fade-in delay-3">
-                <button class="btn btn-play">
-                    <i class="fas fa-play"></i> Reproducir
-                </button>
-                <button class="btn btn-info" onclick="location.href='avatar.html'">
-                    <i class="fas fa-info-circle"></i> Más información
-                </button>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Tus proyectos</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-plus-circle"></i> Crear nuevo proyecto</a></li>
+                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Midnight Vibes</a></li>
+                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Summer Dreams</a></li>
+                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Ocean Breeze</a></li>
+                    <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Tus grupos</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-plus-circle"></i> Crear grupo</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Productores Urbanos</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Synth Enthusiasts</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Beatmakers MX</a></li>
+                    <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Create Post -->
+            <div class="create-post">
+                <div class="post-input">
+                    <img src="https://picsum.photos/seed/100/40/40" alt="User">
+                    <input type="text" placeholder="¿Qué estás creando hoy?">
+                </div>
+                <div class="post-actions">
+                    <div class="post-action video">
+                        <i class="fas fa-video"></i>
+                        <span>Video en vivo</span>
+                    </div>
+                    <div class="post-action photo">
+                        <i class="fas fa-image"></i>
+                        <span>Foto/Video</span>
+                    </div>
+                    <div class="post-action music">
+                        <i class="fas fa-music"></i>
+                        <span>Audio</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feed -->
+            <div class="feed">
+                <div class="feed-header">
+                    <h2 class="section-title">Trending ahora</h2>
+                    <div class="filters">
+                        <button class="active">Todos</button>
+                        <button>Música</button>
+                        <button>Beats</button>
+                    </div>
+                </div>
+                
+                <!-- Post 1 -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="https://picsum.photos/seed/1/40/40" alt="User">
+                        <div class="post-user-info">
+                            <div class="post-user-name">DJ Nova</div>
+                            <div class="post-time">Hace 3 horas · <i class="fas fa-globe-americas"></i></div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-text">Acabo de publicar mi nuevo track "Midnight Vibes". ¡Déjenme saber qué opinan!</p>
+                        <img src="https://picsum.photos/seed/1/600/300" alt="Post" class="post-image">
+                    </div>
+                    <div class="post-stats">
+                        <div><i class="fas fa-thumbs-up"></i> 12K</div>
+                        <div>245K reproducciones · 845 comentarios</div>
+                    </div>
+                    <div class="post-actions-buttons">
+                        <div class="post-action-button">
+                            <i class="fas fa-play"></i> Reproducir
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-thumbs-up"></i> Me gusta
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-comment"></i> Comentar
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-share"></i> Compartir
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 2 -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="https://picsum.photos/seed/2/40/40" alt="User">
+                        <div class="post-user-info">
+                            <div class="post-user-name">Luna</div>
+                            <div class="post-time">Ayer · <i class="fas fa-globe-americas"></i></div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-text">"Summer Dreams" ya está disponible en todas las plataformas. ¡Gracias por todo el apoyo!</p>
+                        <img src="https://picsum.photos/seed/2/600/300" alt="Post" class="post-image">
+                    </div>
+                    <div class="post-stats">
+                        <div><i class="fas fa-thumbs-up"></i> 9.5K</div>
+                        <div>189K reproducciones · 621 comentarios</div>
+                    </div>
+                    <div class="post-actions-buttons">
+                        <div class="post-action-button">
+                            <i class="fas fa-play"></i> Reproducir
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-thumbs-up"></i> Me gusta
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-comment"></i> Comentar
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-share"></i> Compartir
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 3 -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="https://picsum.photos/seed/3/40/40" alt="User">
+                        <div class="post-user-info">
+                            <div class="post-user-name">The Beatmakers</div>
+                            <div class="post-time">Hace 2 días · <i class="fas fa-globe-americas"></i></div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-text">Nuestro nuevo álbum "Urban Rhythm" ya está disponible. Incluye 12 tracks originales.</p>
+                        <img src="https://picsum.photos/seed/3/600/300" alt="Post" class="post-image">
+                    </div>
+                    <div class="post-stats">
+                        <div><i class="fas fa-thumbs-up"></i> 15K</div>
+                        <div>312K reproducciones · 1.2K comentarios</div>
+                    </div>
+                    <div class="post-actions-buttons">
+                        <div class="post-action-button">
+                            <i class="fas fa-play"></i> Reproducir
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-thumbs-up"></i> Me gusta
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-comment"></i> Comentar
+                        </div>
+                        <div class="post-action-button">
+                            <i class="fas fa-share"></i> Compartir
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="sidebar-section sponsored">
+                <h3 class="sidebar-title">Patrocinado</h3>
+                <div class="sponsored-item">
+                    <img src="https://picsum.photos/seed/1000/120/120" alt="Sponsored" class="sponsored-img">
+                    <div class="sponsored-info">
+                        <div class="sponsored-title">Nuevos Samples Pack</div>
+                        <div class="sponsored-desc">Descarga gratis 50 samples exclusivos</div>
+                    </div>
+                </div>
+                <div class="sponsored-item">
+                    <img src="https://picsum.photos/seed/1001/120/120" alt="Sponsored" class="sponsored-img">
+                    <div class="sponsored-info">
+                        <div class="sponsored-title">Mastering Profesional</div>
+                        <div class="sponsored-desc">Oferta especial: 20% de descuento</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section birthdays">
+                <h3 class="sidebar-title">Cumpleaños</h3>
+                <div class="birthday-item">
+                    <div class="birthday-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="birthday-info">
+                        <div class="birthday-text">Es el cumpleaños de <strong>Carlos Rodríguez</strong> y <strong>2 personas más</strong>.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section contacts">
+                <h3 class="sidebar-title">Contactos</h3>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/10/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">Alex Rivera</div>
+                </div>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/11/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">Maya Chen</div>
+                </div>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/12/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">Carlos Rodríguez</div>
+                </div>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/13/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">Sofia Martínez</div>
+                </div>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/14/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">David Kim</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Chat Global -->
+    <div class="chat-container">
+        <div class="chat-header" id="chatToggle">
+            <div class="chat-title">Chat Global</div>
+            <div class="online-count">24 Online</div>
+        </div>
+        
+        <div class="chat-messages">
+            <div class="message received">
+                <div class="message-sender">DJ Nova</div>
+                <div class="message-text">¿Alguien quiere colaborar en un proyecto de deep house?</div>
+            </div>
+            
+            <div class="message received">
+                <div class="message-sender">Luna</div>
+                <div class="message-text">¡Acabo de subir un nuevo track! Échenle un vistazo</div>
+            </div>
+            
+            <div class="message sent">
+                <div class="message-sender">Tú</div>
+                <div class="message-text">Me encanta la nueva canción, Luna</div>
+            </div>
+            
+            <div class="message received">
+                <div class="message-sender">SynthWave</div>
+                <div class="message-text">¿Recomiendan algún plugin bueno para sintetizadores?</div>
+            </div>
+            
+            <div class="message received">
+                <div class="message-sender">The Beatmakers</div>
+                <div class="message-text">Tenemos sesión de colaboración este viernes. ¡Únanse!</div>
             </div>
         </div>
-    </section>
-
-    <!-- Contenido principal -->
-    <main class="main-content">
-        <section class="content-section fade-in delay-4">
-            <h2 class="section-title">Continuar viendo</h2>
-            <div class="carousel">
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BODc5YTBhMTItMjhkNi00ZTIxLWI0YjAtNTZmOTY0YjRlZGQ0XkEyXkFqcGdeQXVyODUwNjEzMzg@._V1_FMjpg_UX600_.jpg" alt="Avatar" class="carousel-img">
-                    <div class="progress-bar" style="width: 65%"></div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNzhlY2E5NDUtYjJjYy00ODg3LWFkZWQtYTVmMzU4ZWZmOWJkXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX600_.jpg" alt="Lost" class="carousel-img">
-                    <div class="progress-bar" style="width: 45%"></div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BZDhlMzY0ZGItZTcyNS00ZTAxLWIyMmYtZGQ2ODg5OWZiYmJkXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_FMjpg_UX600_.jpg" alt="The Mandalorian" class="carousel-img">
-                    <div class="progress-bar" style="width: 30%"></div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMDZkYmVhNjMtNWU4MC00MDQxLWE3MjYtZGMzZWI1ZjhlOWJmXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX600_.jpg" alt="Stranger Things" class="carousel-img">
-                    <div class="progress-bar" style="width: 80%"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section fade-in delay-5">
-            <h2 class="section-title">Series populares</h2>
-            <div class="carousel">
-                <div class="carousel-item" onclick="location.href='avatar.html'">
-                    <img src="https://m.media-amazon.com/images/M/MV5BODc5YTBhMTItMjhkNi00ZTIxLWI0YjAtNTZmOTY0YjRlZGQ0XkEyXkFqcGdeQXVyODUwNjEzMzg@._V1_FMjpg_UX600_.jpg" alt="Avatar" class="carousel-img">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNzhlY2E5NDUtYjJjYy00ODg3LWFkZWQtYTVmMzU4ZWZmOWJkXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX600_.jpg" alt="Lost" class="carousel-img">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BZDhlMzY0ZGItZTcyNS00ZTAxLWIyMmYtZGQ2ODg5OWZiYmJkXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_FMjpg_UX600_.jpg" alt="The Mandalorian" class="carousel-img">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMDZkYmVhNjMtNWU4MC00MDQxLWE3MjYtZGMzZWI1ZjhlOWJmXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX600_.jpg" alt="Stranger Things" class="carousel-img">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BN2IzYzBiOTQtNGZmMi00NDI5LTgxMzMtN2EzZjA1NjhlOGMxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX600_.jpg" alt="The Witcher" class="carousel-img">
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2 class="section-title">Películas destacadas</h2>
-            <div class="carousel">
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX600_.jpg" alt="Avengers: Endgame" class="carousel-img">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_FMjpg_UX600_.jpg" alt="Spider-Man: Into the Spider-Verse" class="carousel-img">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX600_.jpg" alt="The Dark Knight" class="carousel-img">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX600_.jpg" alt="The Shawshank Redemption" class="carousel-img">
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#" class="footer-link">Términos de uso</a>
-                <a href="#" class="footer-link">Privacidad</a>
-                <a href="#" class="footer-link">Ayuda</a>
-                <a href="#" class="footer-link">Dispositivos</a>
-                <a href="#" class="footer-link">Sobre nosotros</a>
-            </div>
-            <p class="copyright">© 2023 AquaStream. Todos los derechos reservados.</p>
+        
+        <div class="chat-input">
+            <input type="text" placeholder="Escribe un mensaje..." id="messageInput">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
         </div>
-    </footer>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="notification" id="notification">
+        <span id="notification-message"></span>
+    </div>
+
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAH4I4XbzqAph5yq9MUILtu118y5os-oJc",
+            authDomain: "smilechat-8afea.firebaseapp.com",
+            databaseURL: "https://smilechat-8afea-default-rtdb.firebaseio.com",
+            projectId: "smilechat-8afea",
+            storageBucket: "smilechat-8afea.firebasestorage.app",
+            messagingSenderId: "88368495681",
+            appId: "1:88368495681:web:bf70881957a0a819f81ac0",
+            measurementId: "G-NKE2WRMT83"
+        };
+
+        // Elementos del DOM
+        const elements = {
+            messageInput: document.getElementById('message-input'),
+            sendButton: document.getElementById('send-button'),
+            chatMessages: document.getElementById('chat-messages'),
+            notification: document.getElementById('notification'),
+            notificationMessage: document.getElementById('notification-message'),
+            onlineCount: document.getElementById('online-count'),
+            onlineUsers: document.getElementById('online-users'),
+            chatToggle: document.getElementById('chatToggle'),
+            chatContainer: document.querySelector('.chat-container')
+        };
+
+        // Variables globales
+        let username = '';
+        let database, messagesRef, presenceRef;
+        let myMessages = new Set();
+        let onlineUsers = [];
+
+        // Función para mostrar notificaciones
+        function showNotification(message, type = 'success') {
+            clearTimeout(elements.notification.timeout);
+            
+            elements.notificationMessage.textContent = message;
+            elements.notification.className = 'notification';
+            elements.notification.classList.add(type);
+            elements.notification.classList.add('show');
+            
+            elements.notification.timeout = setTimeout(() => {
+                elements.notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Función para escapar HTML
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;")
+                .replace(/\//g, "&#x2F;");
+        }
+
+        // Función para formatear timestamp
+        function formatTime(date) {
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Función para establecer el nombre de usuario
+        function setUsername() {
+            const newUsername = prompt("Por favor ingresa tu nombre de usuario:");
+            
+            if (!newUsername) {
+                showNotification("Por favor ingresa un nombre válido", "warning");
+                return;
+            }
+            
+            if (newUsername.length > 20) {
+                showNotification("El nombre no puede tener más de 20 caracteres", "warning");
+                return;
+            }
+            
+            username = newUsername;
+            showNotification(`¡Bienvenido, ${username}!`);
+        }
+
+        // Función para enviar mensaje
+        function sendMessage() {
+            const message = elements.messageInput.value.trim();
+            if (message && username) {
+                const messageObj = {
+                    sender: username,
+                    content: message,
+                    timestamp: firebase.database.ServerValue.TIMESTAMP
+                };
+                
+                const newMessageRef = messagesRef.push();
+                const messageId = newMessageRef.key;
+                
+                displayMessage({
+                    ...messageObj,
+                    id: messageId
+                }, messageId, true);
+                
+                newMessageRef.set(messageObj)
+                    .then(() => {
+                        showNotification('Mensaje enviado');
+                        setTimeout(() => {
+                            newMessageRef.remove().catch(e => console.error("Error al eliminar mensaje:", e));
+                            myMessages.delete(messageId);
+                        }, 3600000);
+                    })
+                    .catch(error => {
+                        console.error("Error al enviar mensaje:", error);
+                        showNotification("Error al enviar mensaje", "error");
+                    });
+                
+                elements.messageInput.value = '';
+            }
+        }
+
+        // Función para mostrar mensajes
+        function displayMessage(data, messageId, isCurrentUser) {
+            if (messageId && document.getElementById(`msg-${messageId}`)) return;
+            
+            const messageType = isCurrentUser ? 'sent' : 'received';
+            
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${messageType}`;
+            if (messageId) messageElement.id = `msg-${messageId}`;
+            
+            const timestamp = new Date(data.timestamp);
+            const time = formatTime(timestamp);
+            
+            messageElement.innerHTML = `
+                <div class="message-sender">${data.sender}</div>
+                <div class="message-text">${escapeHtml(data.content)}</div>
+            `;
+            
+            elements.chatMessages.appendChild(messageElement);
+            
+            const timeLeft = 3600000 - (Date.now() - timestamp.getTime());
+            if (timeLeft > 0) {
+                setTimeout(() => {
+                    if (messageElement.parentNode) {
+                        messageElement.style.opacity = '0';
+                        setTimeout(() => {
+                            if (messageElement.parentNode) {
+                                messageElement.remove();
+                            }
+                        }, 300);
+                    }
+                    if (messageId) {
+                        messagesRef.child(messageId).remove()
+                            .catch(e => console.error("Error al eliminar mensaje:", e));
+                        myMessages.delete(messageId);
+                    }
+                }, timeLeft);
+            }
+            
+            setTimeout(() => {
+                messageElement.style.opacity = '1';
+                scrollToBottom();
+            }, 50);
+        }
+
+        // Función para desplazarse al final del chat
+        function scrollToBottom() {
+            const { scrollHeight, clientHeight } = elements.chatMessages;
+            const maxScrollTop = scrollHeight - clientHeight;
+            elements.chatMessages.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+        }
+
+        // Inicialización de la aplicación
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                // Inicializar Firebase
+                const firebaseApp = firebase.initializeApp(firebaseConfig);
+                database = firebase.database();
+                messagesRef = database.ref('messages');
+                presenceRef = database.ref('presence');
+
+                // Configurar event listeners
+                elements.messageInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        sendMessage();
+                    }
+                });
+                
+                elements.sendButton.addEventListener('click', sendMessage);
+                
+                elements.chatToggle.addEventListener('click', () => {
+                    elements.chatContainer.classList.toggle('chat-minimized');
+                });
+
+                // Configurar listeners de Firebase
+                messagesRef.orderByChild('timestamp').on('child_added', (snapshot) => {
+                    const data = snapshot.val();
+                    const messageId = snapshot.key;
+                    
+                    if (data.sender !== username || myMessages.has(messageId)) {
+                        displayMessage(data, messageId, myMessages.has(messageId));
+                    }
+                });
+                
+                presenceRef.on('value', (snapshot) => {
+                    const users = snapshot.val() || {};
+                    onlineUsers = Object.keys(users);
+                    const count = onlineUsers.length;
+                    document.querySelector('.online-count').textContent = count + ' Online';
+                });
+
+                // Solicitar nombre de usuario
+                setUsername();
+
+                showNotification("Chat cargado correctamente");
+
+            } catch (error) {
+                console.error("Error de inicialización:", error);
+                showNotification("Error de conexión. Recarga la página.", "error");
+            }
+        });
+    </script>
 </body>
 </html>
