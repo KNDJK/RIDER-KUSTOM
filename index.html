@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BandLab - Estilo Facebook</title>
+    <title>Smile - Conectando Músicos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -17,6 +17,7 @@
             background-color: #121212;
             color: #e0e0e0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -30,11 +31,11 @@
         /* Header Styles */
         header {
             background-color: #1e1e1e;
-            padding: 10px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
             border-bottom: 1px solid #333;
         }
         
@@ -48,15 +49,22 @@
         }
         
         .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #7e57c2;
             display: flex;
             align-items: center;
+            gap: 10px;
+            text-decoration: none;
         }
         
-        .logo i {
-            margin-right: 8px;
+        .logo-img {
+            height: 36px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #7e57c2;
+            margin-top: 2px;
         }
         
         .search-bar {
@@ -74,6 +82,13 @@
             background-color: #2d2d2d;
             color: #e0e0e0;
             font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            background-color: #383838;
+            box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.5);
         }
         
         .search-bar i {
@@ -87,17 +102,18 @@
         .user-actions {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
         
         .user-actions a {
             color: #e0e0e0;
             text-decoration: none;
-            margin-left: 15px;
             font-weight: 500;
             display: flex;
             align-items: center;
-            padding: 8px 12px;
+            padding: 8px 15px;
             border-radius: 6px;
+            transition: all 0.2s ease;
         }
         
         .user-actions a:hover {
@@ -105,19 +121,22 @@
         }
         
         .user-actions a i {
-            margin-right: 5px;
-            font-size: 18px;
+            margin-right: 6px;
+            font-size: 16px;
         }
         
         .user-actions .sign-up {
             background-color: #7e57c2;
             color: white;
-            padding: 8px 15px;
+        }
+        
+        .user-actions .sign-up:hover {
+            background-color: #6c5ce7;
         }
         
         /* Left Sidebar */
         .left-sidebar {
-            width: 300px;
+            width: 280px;
             position: sticky;
             top: 80px;
             height: calc(100vh - 80px);
@@ -127,10 +146,10 @@
         
         .sidebar-section {
             background-color: #1e1e1e;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
         
         .sidebar-title {
@@ -138,6 +157,8 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: #7e57c2;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #333;
         }
         
         .sidebar-menu {
@@ -145,25 +166,27 @@
         }
         
         .sidebar-menu li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .sidebar-menu a {
             display: flex;
             align-items: center;
-            padding: 8px 10px;
+            padding: 10px 12px;
             text-decoration: none;
             color: #e0e0e0;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 15px;
+            transition: all 0.2s ease;
         }
         
         .sidebar-menu a:hover {
             background-color: #2d2d2d;
+            transform: translateX(5px);
         }
         
         .sidebar-menu a i {
-            margin-right: 10px;
+            margin-right: 12px;
             font-size: 18px;
             color: #7e57c2;
             width: 24px;
@@ -176,6 +199,10 @@
             font-weight: 600;
         }
         
+        .sidebar-menu a.active i {
+            color: white;
+        }
+        
         /* Main Content */
         .main-content {
             flex-grow: 1;
@@ -185,10 +212,10 @@
         
         .create-post {
             background-color: #1e1e1e;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         .post-input {
@@ -196,15 +223,16 @@
             align-items: center;
             padding-bottom: 15px;
             border-bottom: 1px solid #333;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .post-input img {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
             object-fit: cover;
+            border: 2px solid #7e57c2;
         }
         
         .post-input input {
@@ -212,10 +240,15 @@
             background-color: #2d2d2d;
             border: none;
             border-radius: 20px;
-            padding: 10px 15px;
+            padding: 12px 18px;
             font-size: 15px;
             color: #aaa;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .post-input input:hover {
+            background-color: #383838;
         }
         
         .post-actions {
@@ -226,24 +259,23 @@
         .post-action {
             display: flex;
             align-items: center;
-            padding: 8px 15px;
-            border-radius: 6px;
+            padding: 10px 16px;
+            border-radius: 8px;
             color: #aaa;
             font-weight: 500;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
         
         .post-action:hover {
             background-color: #2d2d2d;
+            color: #e0e0e0;
+            transform: translateY(-2px);
         }
         
         .post-action i {
-            margin-right: 5px;
+            margin-right: 8px;
             font-size: 18px;
-        }
-        
-        .post-action.video i {
-            color: #f3425f;
         }
         
         .post-action.photo i {
@@ -263,24 +295,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .section-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             color: #e0e0e0;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 8px;
         }
         
         .filters button {
             background-color: #2d2d2d;
             border: none;
             color: #e0e0e0;
-            padding: 8px 15px;
-            border-radius: 6px;
-            margin-left: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .filters button:hover {
+            background-color: #383838;
         }
         
         .filters button.active {
@@ -291,24 +332,30 @@
         /* Post Cards */
         .post-card {
             background-color: #1e1e1e;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-3px);
         }
         
         .post-header {
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         
         .post-header img {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
             object-fit: cover;
+            border: 2px solid #7e57c2;
         }
         
         .post-user-info {
@@ -317,8 +364,9 @@
         
         .post-user-name {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 16px;
             color: #e0e0e0;
+            margin-bottom: 2px;
         }
         
         .post-time {
@@ -327,29 +375,30 @@
         }
         
         .post-content {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
         
         .post-text {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             font-size: 15px;
-            line-height: 1.4;
+            line-height: 1.5;
             color: #e0e0e0;
         }
         
         .post-image {
             width: 100%;
-            border-radius: 8px;
-            margin-bottom: 12px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         .post-stats {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 12px 0;
             border-top: 1px solid #333;
             border-bottom: 1px solid #333;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: #aaa;
             font-size: 14px;
         }
@@ -357,28 +406,30 @@
         .post-actions-buttons {
             display: flex;
             justify-content: space-around;
-            padding-top: 5px;
+            padding-top: 8px;
         }
         
         .post-action-button {
             display: flex;
             align-items: center;
-            padding: 8px;
-            border-radius: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
             color: #aaa;
             font-weight: 500;
             cursor: pointer;
             flex-grow: 1;
             justify-content: center;
+            transition: all 0.2s ease;
         }
         
         .post-action-button:hover {
             background-color: #2d2d2d;
+            color: #e0e0e0;
         }
         
         .post-action-button i {
-            margin-right: 5px;
-            font-size: 18px;
+            margin-right: 8px;
+            font-size: 16px;
         }
         
         /* Right Sidebar */
@@ -392,26 +443,28 @@
         }
         
         .sponsored {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         
         .sponsored-item {
             display: flex;
             align-items: center;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
         }
         
         .sponsored-item:hover {
             background-color: #2d2d2d;
+            transform: translateX(5px);
         }
         
         .sponsored-img {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 8px;
-            margin-right: 10px;
+            margin-right: 12px;
             object-fit: cover;
         }
         
@@ -422,7 +475,7 @@
         .sponsored-title {
             font-weight: 600;
             font-size: 15px;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: #e0e0e0;
         }
         
@@ -432,15 +485,16 @@
         }
         
         .birthdays {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         
         .birthday-item {
             display: flex;
             align-items: center;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
         }
         
         .birthday-item:hover {
@@ -455,9 +509,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 10px;
+            margin-right: 12px;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
         }
         
         .contacts {
@@ -467,21 +521,24 @@
         .contact-item {
             display: flex;
             align-items: center;
-            padding: 8px 10px;
-            border-radius: 8px;
-            margin-bottom: 5px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
         }
         
         .contact-item:hover {
             background-color: #2d2d2d;
+            transform: translateX(5px);
         }
         
         .contact-img {
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
             object-fit: cover;
+            border: 2px solid #7e57c2;
         }
         
         .contact-name {
@@ -498,18 +555,19 @@
             width: 350px;
             z-index: 1000;
             background-color: #1e1e1e;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
             max-height: 450px;
             border: 1px solid #333;
+            transition: all 0.3s ease;
         }
         
         .chat-header {
             background-color: #7e57c2;
-            padding: 15px;
+            padding: 14px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -525,7 +583,7 @@
         .online-count {
             background-color: #121212;
             color: #7e57c2;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 12px;
             font-size: 12px;
             font-weight: bold;
@@ -533,39 +591,45 @@
         
         .chat-messages {
             flex: 1;
-            padding: 15px;
+            padding: 16px;
             overflow-y: auto;
             max-height: 300px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
         
         .message {
             max-width: 80%;
-            padding: 10px 15px;
+            padding: 12px 16px;
             border-radius: 18px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             font-size: 14px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .message.received {
             background-color: #2d2d2d;
             align-self: flex-start;
-            border-bottom-left-radius: 5px;
+            border-bottom-left-radius: 6px;
             color: #e0e0e0;
         }
         
         .message.sent {
             background-color: #7e57c2;
             align-self: flex-end;
-            border-bottom-right-radius: 5px;
+            border-bottom-right-radius: 6px;
             color: white;
         }
         
         .message-sender {
             font-weight: bold;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
             font-size: 12px;
             color: #aaa;
         }
@@ -576,7 +640,7 @@
         }
         
         .chat-input {
-            padding: 15px;
+            padding: 16px;
             background-color: #1e1e1e;
             border-top: 1px solid #333;
             display: flex;
@@ -585,24 +649,36 @@
         
         .chat-input input {
             flex: 1;
-            padding: 12px 15px;
+            padding: 12px 16px;
             border-radius: 20px;
             border: none;
             background-color: #2d2d2d;
             color: #e0e0e0;
+            font-size: 14px;
+        }
+        
+        .chat-input input:focus {
+            outline: none;
+            background-color: #383838;
         }
         
         .chat-input button {
             background-color: #7e57c2;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             color: white;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .chat-input button:hover {
+            background-color: #6c5ce7;
+            transform: scale(1.05);
         }
         
         .chat-minimized {
@@ -621,15 +697,15 @@
             transform: translateX(-50%);
             background: linear-gradient(135deg, #00b894 0%, #7e57c2 100%);
             color: white;
-            padding: 14px 28px;
-            border-radius: 16px;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            padding: 14px 24px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             z-index: 100;
             opacity: 0;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             max-width: 90%;
         }
         
@@ -676,10 +752,13 @@
             
             .post-actions {
                 flex-wrap: wrap;
+                gap: 5px;
             }
             
             .post-action {
                 margin-bottom: 5px;
+                flex: 1;
+                justify-content: center;
             }
             
             .chat-container {
@@ -687,6 +766,43 @@
                 right: 10px;
                 bottom: 10px;
             }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-actions a span {
+                display: none;
+            }
+            
+            .user-actions a i {
+                margin-right: 0;
+            }
+            
+            .chat-container {
+                width: calc(100% - 20px);
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: #7e57c2;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #6c5ce7;
         }
     </style>
 </head>
@@ -694,13 +810,13 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-music"></i>
-                <span>BandLab</span>
-            </div>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Smile Logo" class="logo-img">
+                <span class="logo-text">Smile</span>
+            </a>
             <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Buscar en BandLab">
+                <input type="text" placeholder="Buscar en Smile">
             </div>
             <div class="user-actions">
                 <a href="#"><i class="fas fa-home"></i> <span class="desktop-text">Inicio</span></a>
@@ -754,14 +870,10 @@
             <!-- Create Post -->
             <div class="create-post">
                 <div class="post-input">
-                    <img src="https://picsum.photos/seed/100/40/40" alt="User">
+                    <img src="https://picsum.photos/seed/100/42/42" alt="User">
                     <input type="text" placeholder="¿Qué estás creando hoy?">
                 </div>
                 <div class="post-actions">
-                    <div class="post-action video">
-                        <i class="fas fa-video"></i>
-                        <span>Video en vivo</span>
-                    </div>
                     <div class="post-action photo">
                         <i class="fas fa-image"></i>
                         <span>Foto/Video</span>
@@ -787,7 +899,7 @@
                 <!-- Post 1 -->
                 <div class="post-card">
                     <div class="post-header">
-                        <img src="https://picsum.photos/seed/1/40/40" alt="User">
+                        <img src="https://picsum.photos/seed/1/44/44" alt="User">
                         <div class="post-user-info">
                             <div class="post-user-name">DJ Nova</div>
                             <div class="post-time">Hace 3 horas · <i class="fas fa-globe-americas"></i></div>
@@ -798,15 +910,15 @@
                         <img src="https://picsum.photos/seed/1/600/300" alt="Post" class="post-image">
                     </div>
                     <div class="post-stats">
-                        <div><i class="fas fa-thumbs-up"></i> 12K</div>
-                        <div>245K reproducciones · 845 comentarios</div>
+                        <div><i class="fas fa-play"></i> 245K</div>
+                        <div>12K me gusta · 845 comentarios</div>
                     </div>
                     <div class="post-actions-buttons">
                         <div class="post-action-button">
                             <i class="fas fa-play"></i> Reproducir
                         </div>
                         <div class="post-action-button">
-                            <i class="fas fa-thumbs-up"></i> Me gusta
+                            <i class="fas fa-heart"></i> Me gusta
                         </div>
                         <div class="post-action-button">
                             <i class="fas fa-comment"></i> Comentar
@@ -820,7 +932,7 @@
                 <!-- Post 2 -->
                 <div class="post-card">
                     <div class="post-header">
-                        <img src="https://picsum.photos/seed/2/40/40" alt="User">
+                        <img src="https://picsum.photos/seed/2/44/44" alt="User">
                         <div class="post-user-info">
                             <div class="post-user-name">Luna</div>
                             <div class="post-time">Ayer · <i class="fas fa-globe-americas"></i></div>
@@ -831,15 +943,15 @@
                         <img src="https://picsum.photos/seed/2/600/300" alt="Post" class="post-image">
                     </div>
                     <div class="post-stats">
-                        <div><i class="fas fa-thumbs-up"></i> 9.5K</div>
-                        <div>189K reproducciones · 621 comentarios</div>
+                        <div><i class="fas fa-play"></i> 189K</div>
+                        <div>9.5K me gusta · 621 comentarios</div>
                     </div>
                     <div class="post-actions-buttons">
                         <div class="post-action-button">
                             <i class="fas fa-play"></i> Reproducir
                         </div>
                         <div class="post-action-button">
-                            <i class="fas fa-thumbs-up"></i> Me gusta
+                            <i class="fas fa-heart"></i> Me gusta
                         </div>
                         <div class="post-action-button">
                             <i class="fas fa-comment"></i> Comentar
@@ -853,7 +965,7 @@
                 <!-- Post 3 -->
                 <div class="post-card">
                     <div class="post-header">
-                        <img src="https://picsum.photos/seed/3/40/40" alt="User">
+                        <img src="https://picsum.photos/seed/3/44/44" alt="User">
                         <div class="post-user-info">
                             <div class="post-user-name">The Beatmakers</div>
                             <div class="post-time">Hace 2 días · <i class="fas fa-globe-americas"></i></div>
@@ -864,15 +976,15 @@
                         <img src="https://picsum.photos/seed/3/600/300" alt="Post" class="post-image">
                     </div>
                     <div class="post-stats">
-                        <div><i class="fas fa-thumbs-up"></i> 15K</div>
-                        <div>312K reproducciones · 1.2K comentarios</div>
+                        <div><i class="fas fa-play"></i> 312K</div>
+                        <div>15K me gusta · 1.2K comentarios</div>
                     </div>
                     <div class="post-actions-buttons">
                         <div class="post-action-button">
                             <i class="fas fa-play"></i> Reproducir
                         </div>
                         <div class="post-action-button">
-                            <i class="fas fa-thumbs-up"></i> Me gusta
+                            <i class="fas fa-heart"></i> Me gusta
                         </div>
                         <div class="post-action-button">
                             <i class="fas fa-comment"></i> Comentar
@@ -890,14 +1002,14 @@
             <div class="sidebar-section sponsored">
                 <h3 class="sidebar-title">Patrocinado</h3>
                 <div class="sponsored-item">
-                    <img src="https://picsum.photos/seed/1000/120/120" alt="Sponsored" class="sponsored-img">
+                    <img src="https://picsum.photos/seed/1000/100/100" alt="Sponsored" class="sponsored-img">
                     <div class="sponsored-info">
                         <div class="sponsored-title">Nuevos Samples Pack</div>
                         <div class="sponsored-desc">Descarga gratis 50 samples exclusivos</div>
                     </div>
                 </div>
                 <div class="sponsored-item">
-                    <img src="https://picsum.photos/seed/1001/120/120" alt="Sponsored" class="sponsored-img">
+                    <img src="https://picsum.photos/seed/1001/100/100" alt="Sponsored" class="sponsored-img">
                     <div class="sponsored-info">
                         <div class="sponsored-title">Mastering Profesional</div>
                         <div class="sponsored-desc">Oferta especial: 20% de descuento</div>
@@ -947,38 +1059,18 @@
     <div class="chat-container">
         <div class="chat-header" id="chatToggle">
             <div class="chat-title">Chat Global</div>
-            <div class="online-count">24 Online</div>
+            <div class="online-count"><span id="onlineCount">0</span> Online</div>
         </div>
         
-        <div class="chat-messages">
+        <div class="chat-messages" id="chatMessages">
             <div class="message received">
-                <div class="message-sender">DJ Nova</div>
-                <div class="message-text">¿Alguien quiere colaborar en un proyecto de deep house?</div>
-            </div>
-            
-            <div class="message received">
-                <div class="message-sender">Luna</div>
-                <div class="message-text">¡Acabo de subir un nuevo track! Échenle un vistazo</div>
-            </div>
-            
-            <div class="message sent">
-                <div class="message-sender">Tú</div>
-                <div class="message-text">Me encanta la nueva canción, Luna</div>
-            </div>
-            
-            <div class="message received">
-                <div class="message-sender">SynthWave</div>
-                <div class="message-text">¿Recomiendan algún plugin bueno para sintetizadores?</div>
-            </div>
-            
-            <div class="message received">
-                <div class="message-sender">The Beatmakers</div>
-                <div class="message-text">Tenemos sesión de colaboración este viernes. ¡Únanse!</div>
+                <div class="message-sender">Sistema</div>
+                <div class="message-text">¡Bienvenido al chat global! Escribe un mensaje para comenzar.</div>
             </div>
         </div>
         
         <div class="chat-input">
-            <input type="text" placeholder="Escribe un mensaje..." id="messageInput">
+            <input type="text" placeholder="Escribe tu mensaje..." id="messageInput">
             <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
@@ -996,215 +1088,153 @@
             projectId: "smilechat-8afea",
             storageBucket: "smilechat-8afea.firebasestorage.app",
             messagingSenderId: "88368495681",
-            appId: "1:88368495681:web:bf70881957a0a819f81ac0",
-            measurementId: "G-NKE2WRMT83"
+            appId: "1:88368495681:web:bf70881957a0a819f81ac0"
         };
 
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        
         // Elementos del DOM
-        const elements = {
-            messageInput: document.getElementById('message-input'),
-            sendButton: document.getElementById('send-button'),
-            chatMessages: document.getElementById('chat-messages'),
-            notification: document.getElementById('notification'),
-            notificationMessage: document.getElementById('notification-message'),
-            onlineCount: document.getElementById('online-count'),
-            onlineUsers: document.getElementById('online-users'),
-            chatToggle: document.getElementById('chatToggle'),
-            chatContainer: document.querySelector('.chat-container')
-        };
-
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendMessage');
+        const chatToggle = document.getElementById('chatToggle');
+        const chatContainer = document.querySelector('.chat-container');
+        const notification = document.getElementById('notification');
+        const notificationMessage = document.getElementById('notification-message');
+        const onlineCount = document.getElementById('onlineCount');
+        
         // Variables globales
         let username = '';
-        let database, messagesRef, presenceRef;
-        let myMessages = new Set();
-        let onlineUsers = [];
-
+        let messagesRef, presenceRef;
+        
         // Función para mostrar notificaciones
         function showNotification(message, type = 'success') {
-            clearTimeout(elements.notification.timeout);
+            clearTimeout(notification.timeout);
             
-            elements.notificationMessage.textContent = message;
-            elements.notification.className = 'notification';
-            elements.notification.classList.add(type);
-            elements.notification.classList.add('show');
+            notificationMessage.textContent = message;
+            notification.className = 'notification';
+            notification.classList.add(type);
+            notification.classList.add('show');
             
-            elements.notification.timeout = setTimeout(() => {
-                elements.notification.classList.remove('show');
+            notification.timeout = setTimeout(() => {
+                notification.classList.remove('show');
             }, 3000);
         }
-
-        // Función para escapar HTML
-        function escapeHtml(unsafe) {
-            if (!unsafe) return '';
-            return unsafe
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;")
-                .replace(/\//g, "&#x2F;");
-        }
-
-        // Función para formatear timestamp
-        function formatTime(date) {
-            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        }
-
+        
         // Función para establecer el nombre de usuario
         function setUsername() {
             const newUsername = prompt("Por favor ingresa tu nombre de usuario:");
             
             if (!newUsername) {
                 showNotification("Por favor ingresa un nombre válido", "warning");
-                return;
+                return false;
             }
             
             if (newUsername.length > 20) {
                 showNotification("El nombre no puede tener más de 20 caracteres", "warning");
-                return;
+                return false;
             }
             
             username = newUsername;
             showNotification(`¡Bienvenido, ${username}!`);
+            return true;
         }
-
+        
         // Función para enviar mensaje
         function sendMessage() {
-            const message = elements.messageInput.value.trim();
+            const message = messageInput.value.trim();
             if (message && username) {
                 const messageObj = {
                     sender: username,
                     content: message,
-                    timestamp: firebase.database.ServerValue.TIMESTAMP
+                    timestamp: Date.now()
                 };
                 
-                const newMessageRef = messagesRef.push();
-                const messageId = newMessageRef.key;
-                
-                displayMessage({
-                    ...messageObj,
-                    id: messageId
-                }, messageId, true);
-                
-                newMessageRef.set(messageObj)
+                messagesRef.push(messageObj)
                     .then(() => {
-                        showNotification('Mensaje enviado');
-                        setTimeout(() => {
-                            newMessageRef.remove().catch(e => console.error("Error al eliminar mensaje:", e));
-                            myMessages.delete(messageId);
-                        }, 3600000);
+                        messageInput.value = '';
                     })
                     .catch(error => {
                         console.error("Error al enviar mensaje:", error);
                         showNotification("Error al enviar mensaje", "error");
                     });
-                
-                elements.messageInput.value = '';
+            } else if (!username) {
+                if (setUsername()) {
+                    // Reintentar enviar el mensaje después de establecer el nombre de usuario
+                    setTimeout(() => {
+                        messageInput.value = message;
+                        sendMessage();
+                    }, 100);
+                }
             }
         }
-
+        
         // Función para mostrar mensajes
-        function displayMessage(data, messageId, isCurrentUser) {
-            if (messageId && document.getElementById(`msg-${messageId}`)) return;
-            
-            const messageType = isCurrentUser ? 'sent' : 'received';
-            
+        function displayMessage(data) {
             const messageElement = document.createElement('div');
-            messageElement.className = `message ${messageType}`;
-            if (messageId) messageElement.id = `msg-${messageId}`;
+            const isCurrentUser = data.sender === username;
             
-            const timestamp = new Date(data.timestamp);
-            const time = formatTime(timestamp);
-            
+            messageElement.className = `message ${isCurrentUser ? 'sent' : 'received'}`;
             messageElement.innerHTML = `
                 <div class="message-sender">${data.sender}</div>
-                <div class="message-text">${escapeHtml(data.content)}</div>
+                <div class="message-text">${data.content}</div>
             `;
             
-            elements.chatMessages.appendChild(messageElement);
+            chatMessages.appendChild(messageElement);
             
-            const timeLeft = 3600000 - (Date.now() - timestamp.getTime());
-            if (timeLeft > 0) {
-                setTimeout(() => {
-                    if (messageElement.parentNode) {
-                        messageElement.style.opacity = '0';
-                        setTimeout(() => {
-                            if (messageElement.parentNode) {
-                                messageElement.remove();
-                            }
-                        }, 300);
-                    }
-                    if (messageId) {
-                        messagesRef.child(messageId).remove()
-                            .catch(e => console.error("Error al eliminar mensaje:", e));
-                        myMessages.delete(messageId);
-                    }
-                }, timeLeft);
-            }
-            
-            setTimeout(() => {
-                messageElement.style.opacity = '1';
-                scrollToBottom();
-            }, 50);
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-
-        // Función para desplazarse al final del chat
-        function scrollToBottom() {
-            const { scrollHeight, clientHeight } = elements.chatMessages;
-            const maxScrollTop = scrollHeight - clientHeight;
-            elements.chatMessages.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
-        }
-
+        
         // Inicialización de la aplicación
         document.addEventListener('DOMContentLoaded', () => {
-            try {
-                // Inicializar Firebase
-                const firebaseApp = firebase.initializeApp(firebaseConfig);
-                database = firebase.database();
-                messagesRef = database.ref('messages');
-                presenceRef = database.ref('presence');
-
-                // Configurar event listeners
-                elements.messageInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        sendMessage();
-                    }
-                });
-                
-                elements.sendButton.addEventListener('click', sendMessage);
-                
-                elements.chatToggle.addEventListener('click', () => {
-                    elements.chatContainer.classList.toggle('chat-minimized');
-                });
-
-                // Configurar listeners de Firebase
-                messagesRef.orderByChild('timestamp').on('child_added', (snapshot) => {
-                    const data = snapshot.val();
-                    const messageId = snapshot.key;
-                    
-                    if (data.sender !== username || myMessages.has(messageId)) {
-                        displayMessage(data, messageId, myMessages.has(messageId));
-                    }
-                });
-                
-                presenceRef.on('value', (snapshot) => {
-                    const users = snapshot.val() || {};
-                    onlineUsers = Object.keys(users);
-                    const count = onlineUsers.length;
-                    document.querySelector('.online-count').textContent = count + ' Online';
-                });
-
-                // Solicitar nombre de usuario
+            // Referencias de Firebase
+            messagesRef = database.ref('messages');
+            presenceRef = database.ref('presence');
+            
+            // Configurar event listeners
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            sendButton.addEventListener('click', sendMessage);
+            
+            chatToggle.addEventListener('click', () => {
+                chatContainer.classList.toggle('chat-minimized');
+            });
+            
+            // Escuchar nuevos mensajes
+            messagesRef.limitToLast(20).on('child_added', (snapshot) => {
+                const data = snapshot.val();
+                displayMessage(data);
+            });
+            
+            // Monitorear usuarios en línea
+            presenceRef.on('value', (snapshot) => {
+                const users = snapshot.val() || {};
+                const count = Object.keys(users).length;
+                onlineCount.textContent = count;
+            });
+            
+            // Establecer presencia del usuario
+            const userPresenceRef = presenceRef.push();
+            userPresenceRef.set(true);
+            userPresenceRef.onDisconnect().remove();
+            
+            // Solicitar nombre de usuario
+            setTimeout(() => {
                 setUsername();
-
-                showNotification("Chat cargado correctamente");
-
-            } catch (error) {
-                console.error("Error de inicialización:", error);
-                showNotification("Error de conexión. Recarga la página.", "error");
-            }
+            }, 1000);
+            
+            showNotification("Chat cargado correctamente");
         });
     </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </body>
 </html>
