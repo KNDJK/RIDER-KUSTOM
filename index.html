@@ -20,6 +20,153 @@
             overflow-x: hidden;
         }
         
+        /* Pantalla de Login */
+        #loginScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .login-container {
+            background-color: #1e1e1e;
+            border-radius: 16px;
+            padding: 40px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        
+        .login-logo {
+            margin-bottom: 30px;
+        }
+        
+        .login-logo img {
+            height: 80px;
+            width: auto;
+            margin-bottom: 15px;
+        }
+        
+        .login-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #7e57c2;
+            margin-bottom: 5px;
+        }
+        
+        .login-subtitle {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #e0e0e0;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #7e57c2;
+            box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.3);
+        }
+        
+        .auth-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #7e57c2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .auth-submit:hover {
+            background-color: #6c5ce7;
+            transform: translateY(-2px);
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .auth-tab.active {
+            color: #7e57c2;
+            border-bottom: 2px solid #7e57c2;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .auth-error {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .auth-switch {
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .auth-switch a {
+            color: #7e57c2;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        /* Contenido principal (oculto inicialmente) */
+        #mainContent {
+            display: none;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -56,7 +203,7 @@
         }
         
         .logo-img {
-            height: 42px;
+            height: 50px;
             width: auto;
         }
         
@@ -125,104 +272,6 @@
         
         .user-actions .sign-up:hover {
             background-color: #6c5ce7;
-        }
-        
-        /* Auth Modal */
-        .auth-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .auth-content {
-            background-color: #1e1e1e;
-            border-radius: 12px;
-            padding: 30px;
-            width: 400px;
-            max-width: 90%;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #333;
-        }
-        
-        .auth-tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .auth-tab.active {
-            color: #7e57c2;
-            border-bottom: 2px solid #7e57c2;
-        }
-        
-        .auth-form {
-            display: none;
-        }
-        
-        .auth-form.active {
-            display: block;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            background-color: #2d2d2d;
-            color: #e0e0e0;
-            font-size: 15px;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #7e57c2;
-        }
-        
-        .auth-submit {
-            width: 100%;
-            padding: 12px;
-            background-color: #7e57c2;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .auth-submit:hover {
-            background-color: #6c5ce7;
-        }
-        
-        .auth-error {
-            color: #e74c3c;
-            margin-top: 10px;
-            font-size: 14px;
-            display: none;
         }
         
         /* Left Sidebar */
@@ -307,7 +356,6 @@
             padding: 16px;
             margin-bottom: 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            display: none;
         }
         
         .post-input {
@@ -452,6 +500,7 @@
         
         .post-user-info {
             flex-grow: 1;
+            overflow: hidden;
         }
         
         .post-user-name {
@@ -459,6 +508,9 @@
             font-size: 16px;
             color: #e0e0e0;
             margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .post-time {
@@ -475,6 +527,7 @@
             font-size: 15px;
             line-height: 1.5;
             color: #e0e0e0;
+            word-break: break-word;
         }
         
         .post-image {
@@ -655,7 +708,6 @@
             max-height: 450px;
             border: 1px solid #333;
             transition: all 0.3s ease;
-            display: none;
         }
         
         .chat-header {
@@ -873,6 +925,14 @@
             .chat-container {
                 width: calc(100% - 20px);
             }
+            
+            .login-container {
+                padding: 30px 20px;
+            }
+            
+            .login-logo img {
+                height: 70px;
+            }
         }
         
         /* Custom scrollbar */
@@ -896,9 +956,15 @@
     </style>
 </head>
 <body>
-    <!-- Auth Modal -->
-    <div class="auth-modal" id="authModal">
-        <div class="auth-content">
+    <!-- Pantalla de Login -->
+    <div id="loginScreen">
+        <div class="login-container">
+            <div class="login-logo">
+                <img src="https://via.placeholder.com/80/7e57c2/ffffff?text=S" alt="Smile Logo" class="logo-img">
+                <div class="login-title">Smile</div>
+                <div class="login-subtitle">Conectando músicos alrededor del mundo</div>
+            </div>
+            
             <div class="auth-tabs">
                 <div class="auth-tab active" id="loginTab">Iniciar Sesión</div>
                 <div class="auth-tab" id="registerTab">Registrarse</div>
@@ -907,212 +973,221 @@
             <form class="auth-form active" id="loginForm">
                 <div class="form-group">
                     <label for="loginUsername">Usuario</label>
-                    <input type="text" id="loginUsername" required>
+                    <input type="text" id="loginUsername" required placeholder="Ingresa tu usuario">
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Contraseña</label>
-                    <input type="password" id="loginPassword" required>
+                    <input type="password" id="loginPassword" required placeholder="Ingresa tu contraseña">
                 </div>
                 <button type="submit" class="auth-submit">Ingresar</button>
                 <div class="auth-error" id="loginError"></div>
+                
+                <div class="auth-switch">
+                    ¿No tienes cuenta? <a id="switchToRegister">Regístrate aquí</a>
+                </div>
             </form>
             
             <form class="auth-form" id="registerForm">
                 <div class="form-group">
                     <label for="registerUsername">Usuario</label>
-                    <input type="text" id="registerUsername" required>
+                    <input type="text" id="registerUsername" required placeholder="Crea un nombre de usuario">
                 </div>
                 <div class="form-group">
                     <label for="registerPassword">Contraseña</label>
-                    <input type="password" id="registerPassword" required>
+                    <input type="password" id="registerPassword" required placeholder="Crea una contraseña segura">
                 </div>
                 <div class="form-group">
                     <label for="registerConfirmPassword">Confirmar Contraseña</label>
-                    <input type="password" id="registerConfirmPassword" required>
+                    <input type="password" id="registerConfirmPassword" required placeholder="Repite tu contraseña">
                 </div>
                 <button type="submit" class="auth-submit">Crear Cuenta</button>
                 <div class="auth-error" id="registerError"></div>
+                
+                <div class="auth-switch">
+                    ¿Ya tienes cuenta? <a id="switchToLogin">Inicia sesión aquí</a>
+                </div>
             </form>
         </div>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <a href="#" class="logo">
-                <img src="logo.png" alt="Smile Logo" class="logo-img">
-            </a>
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Buscar en Smile">
-            </div>
-            <div class="user-actions">
-                <a href="#" id="userProfileLink" style="display: none;">
-                    <i class="fas fa-user"></i> <span class="desktop-text" id="usernameDisplay"></span>
+    <!-- Contenido Principal (oculto inicialmente) -->
+    <div id="mainContent">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="https://via.placeholder.com/50/7e57c2/ffffff?text=S" alt="Smile Logo" class="logo-img">
                 </a>
-                <a href="#" id="loginLink"><i class="fas fa-sign-in-alt"></i> <span class="desktop-text">Ingresar</span></a>
-                <a href="#" class="sign-up" id="registerLink">Registrarse</a>
-                <a href="#" id="logoutLink" style="display: none;"><i class="fas fa-sign-out-alt"></i> <span class="desktop-text">Salir</span></a>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar en Smile">
+                </div>
+                <div class="user-actions">
+                    <a href="#" id="userProfileLink">
+                        <i class="fas fa-user"></i> <span class="desktop-text" id="usernameDisplay"></span>
+                    </a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> <span class="desktop-text">Salir</span></a>
+                </div>
             </div>
-        </div>
-    </header>
-    
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Left Sidebar -->
-        <aside class="left-sidebar">
-            <div class="sidebar-section">
-                <ul class="sidebar-menu">
-                    <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
-                    <li><a href="#"><i class="fas fa-fire"></i> Trending</a></li>
-                    <li><a href="#"><i class="fas fa-compass"></i> Descubrir</a></li>
-                    <li><a href="#"><i class="fas fa-newspaper"></i> Feed</a></li>
-                    <li><a href="#"><i class="fas fa-sliders-h"></i> Mixes</a></li>
-                    <li><a href="#"><i class="fas fa-user-friends"></i> Artistas</a></li>
-                    <li><a href="#"><i class="fas fa-database"></i> Sample Library</a></li>
-                </ul>
-            </div>
-            
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Tus proyectos</h3>
-                <ul class="sidebar-menu">
-                    <li><a href="#"><i class="fas fa-plus-circle"></i> Crear nuevo proyecto</a></li>
-                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Midnight Vibes</a></li>
-                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Summer Dreams</a></li>
-                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Ocean Breeze</a></li>
-                    <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
-                </ul>
-            </div>
-            
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Tus grupos</h3>
-                <ul class="sidebar-menu">
-                    <li><a href="#"><i class="fas fa-plus-circle"></i> Crear grupo</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Productores Urbanos</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Synth Enthusiasts</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Beatmakers MX</a></li>
-                    <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
-                </ul>
-            </div>
-        </aside>
+        </header>
         
         <!-- Main Content -->
-        <main class="main-content">
-            <!-- Create Post -->
-            <div class="create-post" id="createPost">
-                <div class="post-input">
-                    <img src="https://picsum.photos/seed/100/42/42" alt="User" id="userAvatar">
-                    <input type="text" placeholder="¿Qué estás creando hoy?" id="postContent">
+        <div class="container">
+            <!-- Left Sidebar -->
+            <aside class="left-sidebar">
+                <div class="sidebar-section">
+                    <ul class="sidebar-menu">
+                        <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="#"><i class="fas fa-fire"></i> Trending</a></li>
+                        <li><a href="#"><i class="fas fa-compass"></i> Descubrir</a></li>
+                        <li><a href="#"><i class="fas fa-newspaper"></i> Feed</a></li>
+                        <li><a href="#"><i class="fas fa-sliders-h"></i> Mixes</a></li>
+                        <li><a href="#"><i class="fas fa-user-friends"></i> Artistas</a></li>
+                        <li><a href="#"><i class="fas fa-database"></i> Sample Library</a></li>
+                    </ul>
                 </div>
-                <div class="post-actions">
-                    <div class="post-action photo">
-                        <i class="fas fa-image"></i>
-                        <span>Foto/Video</span>
-                    </div>
-                    <div class="post-action music">
-                        <i class="fas fa-music"></i>
-                        <span>Audio</span>
-                    </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Tus proyectos</h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="#"><i class="fas fa-plus-circle"></i> Crear nuevo proyecto</a></li>
+                        <li><a href="#"><i class="fas fa-record-vinyl"></i> Midnight Vibes</a></li>
+                        <li><a href="#"><i class="fas fa-record-vinyl"></i> Summer Dreams</a></li>
+                        <li><a href="#"><i class="fas fa-record-vinyl"></i> Ocean Breeze</a></li>
+                        <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
+                    </ul>
                 </div>
-            </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Tus grupos</h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="#"><i class="fas fa-plus-circle"></i> Crear grupo</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Productores Urbanos</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Synth Enthusiasts</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Beatmakers MX</a></li>
+                        <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
+                    </ul>
+                </div>
+            </aside>
             
-            <!-- Feed -->
-            <div class="feed">
-                <div class="feed-header">
-                    <h2 class="section-title">Trending ahora</h2>
-                    <div class="filters">
-                        <button class="active">Todos</button>
-                        <button>Música</button>
-                        <button>Beats</button>
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Create Post -->
+                <div class="create-post" id="createPost">
+                    <div class="post-input">
+                        <img src="https://picsum.photos/seed/100/42/42" alt="User" id="userAvatar">
+                        <input type="text" placeholder="¿Qué estás creando hoy?" id="postContent">
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action photo">
+                            <i class="fas fa-image"></i>
+                            <span>Foto/Video</span>
+                        </div>
+                        <div class="post-action music">
+                            <i class="fas fa-music"></i>
+                            <span>Audio</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div id="postsContainer">
-                    <!-- Posts will be loaded here -->
+                <!-- Feed -->
+                <div class="feed">
+                    <div class="feed-header">
+                        <h2 class="section-title">Trending ahora</h2>
+                        <div class="filters">
+                            <button class="active">Todos</button>
+                            <button>Música</button>
+                            <button>Beats</button>
+                        </div>
+                    </div>
+                    
+                    <div id="postsContainer">
+                        <!-- Posts will be loaded here -->
+                    </div>
                 </div>
+            </main>
+            
+            <!-- Right Sidebar -->
+            <aside class="right-sidebar">
+                <div class="sidebar-section sponsored">
+                    <h3 class="sidebar-title">Patrocinado</h3>
+                    <div class="sponsored-item">
+                        <img src="https://picsum.photos/seed/1000/100/100" alt="Sponsored" class="sponsored-img">
+                        <div class="sponsored-info">
+                            <div class="sponsored-title">Nuevos Samples Pack</div>
+                            <div class="sponsored-desc">Descarga gratis 50 samples exclusivos</div>
+                        </div>
+                    </div>
+                    <div class="sponsored-item">
+                        <img src="https://picsum.photos/seed/1001/100/100" alt="Sponsored" class="sponsored-img">
+                        <div class="sponsored-info">
+                            <div class="sponsored-title">Mastering Profesional</div>
+                            <div class="sponsored-desc">Oferta especial: 20% de descuento</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section birthdays">
+                    <h3 class="sidebar-title">Cumpleaños</h3>
+                    <div class="birthday-item">
+                        <div class="birthday-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="birthday-info">
+                            <div class="birthday-text">Es el cumpleaños de <strong>Carlos Rodríguez</strong> y <strong>2 personas más</strong>.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section contacts">
+                    <h3 class="sidebar-title">Contactos</h3>
+                    <div class="contact-item">
+                        <img src="https://picsum.photos/seed/10/36/36" alt="Contact" class="contact-img">
+                        <div class="contact-name">Alex Rivera</div>
+                    </div>
+                    <div class="contact-item">
+                        <img src="https://picsum.photos/seed/11/36/36" alt="Contact" class="contact-img">
+                        <div class="contact-name">Maya Chen</div>
+                    </div>
+                    <div class="contact-item">
+                        <img src="https://picsum.photos/seed/12/36/36" alt="Contact" class="contact-img">
+                        <div class="contact-name">Carlos Rodríguez</div>
+                    </div>
+                    <div class="contact-item">
+                        <img src="https://picsum.photos/seed/13/36/36" alt="Contact" class="contact-img">
+                        <div class="contact-name">Sofia Martínez</div>
+                    </div>
+                    <div class="contact-item">
+                        <img src="https://picsum.photos/seed/14/36/36" alt="Contact" class="contact-img">
+                        <div class="contact-name">David Kim</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Chat Global -->
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header" id="chatToggle">
+                <div class="chat-title">Chat Global</div>
+                <div class="online-count"><span id="onlineCount">0</span> Online</div>
             </div>
-        </main>
-        
-        <!-- Right Sidebar -->
-        <aside class="right-sidebar">
-            <div class="sidebar-section sponsored">
-                <h3 class="sidebar-title">Patrocinado</h3>
-                <div class="sponsored-item">
-                    <img src="https://picsum.photos/seed/1000/100/100" alt="Sponsored" class="sponsored-img">
-                    <div class="sponsored-info">
-                        <div class="sponsored-title">Nuevos Samples Pack</div>
-                        <div class="sponsored-desc">Descarga gratis 50 samples exclusivos</div>
-                    </div>
-                </div>
-                <div class="sponsored-item">
-                    <img src="https://picsum.photos/seed/1001/100/100" alt="Sponsored" class="sponsored-img">
-                    <div class="sponsored-info">
-                        <div class="sponsored-title">Mastering Profesional</div>
-                        <div class="sponsored-desc">Oferta especial: 20% de descuento</div>
-                    </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message received">
+                    <div class="message-sender">Sistema</div>
+                    <div class="message-text">¡Bienvenido al chat global! Escribe un mensaje para comenzar.</div>
                 </div>
             </div>
             
-            <div class="sidebar-section birthdays">
-                <h3 class="sidebar-title">Cumpleaños</h3>
-                <div class="birthday-item">
-                    <div class="birthday-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <div class="birthday-info">
-                        <div class="birthday-text">Es el cumpleaños de <strong>Carlos Rodríguez</strong> y <strong>2 personas más</strong>.</div>
-                    </div>
-                </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Escribe tu mensaje..." id="messageInput">
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
             </div>
-            
-            <div class="sidebar-section contacts">
-                <h3 class="sidebar-title">Contactos</h3>
-                <div class="contact-item">
-                    <img src="https://picsum.photos/seed/10/36/36" alt="Contact" class="contact-img">
-                    <div class="contact-name">Alex Rivera</div>
-                </div>
-                <div class="contact-item">
-                    <img src="https://picsum.photos/seed/11/36/36" alt="Contact" class="contact-img">
-                    <div class="contact-name">Maya Chen</div>
-                </div>
-                <div class="contact-item">
-                    <img src="https://picsum.photos/seed/12/36/36" alt="Contact" class="contact-img">
-                    <div class="contact-name">Carlos Rodríguez</div>
-                </div>
-                <div class="contact-item">
-                    <img src="https://picsum.photos/seed/13/36/36" alt="Contact" class="contact-img">
-                    <div class="contact-name">Sofia Martínez</div>
-                </div>
-                <div class="contact-item">
-                    <img src="https://picsum.photos/seed/14/36/36" alt="Contact" class="contact-img">
-                    <div class="contact-name">David Kim</div>
-                </div>
-            </div>
-        </aside>
-    </div>
+        </div>
 
-    <!-- Chat Global -->
-    <div class="chat-container" id="chatContainer">
-        <div class="chat-header" id="chatToggle">
-            <div class="chat-title">Chat Global</div>
-            <div class="online-count"><span id="onlineCount">0</span> Online</div>
+        <div class="notification" id="notification">
+            <span id="notification-message"></span>
         </div>
-        
-        <div class="chat-messages" id="chatMessages">
-            <div class="message received">
-                <div class="message-sender">Sistema</div>
-                <div class="message-text">¡Bienvenido al chat global! Escribe un mensaje para comenzar.</div>
-            </div>
-        </div>
-        
-        <div class="chat-input">
-            <input type="text" placeholder="Escribe tu mensaje..." id="messageInput">
-            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-
-    <div class="notification" id="notification">
-        <span id="notification-message"></span>
     </div>
 
     <script>
@@ -1132,17 +1207,17 @@
         const database = firebase.database();
         
         // Elementos del DOM
-        const authModal = document.getElementById('authModal');
+        const loginScreen = document.getElementById('loginScreen');
+        const mainContent = document.getElementById('mainContent');
         const loginTab = document.getElementById('loginTab');
         const registerTab = document.getElementById('registerTab');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
         const loginError = document.getElementById('loginError');
         const registerError = document.getElementById('registerError');
-        const loginLink = document.getElementById('loginLink');
-        const registerLink = document.getElementById('registerLink');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
         const logoutLink = document.getElementById('logoutLink');
-        const userProfileLink = document.getElementById('userProfileLink');
         const usernameDisplay = document.getElementById('usernameDisplay');
         const createPost = document.getElementById('createPost');
         const postContent = document.getElementById('postContent');
@@ -1205,9 +1280,8 @@
                         })
                         .then(() => {
                             showNotification('Cuenta creada exitosamente');
-                            switchAuthTab(loginTab);
-                            registerForm.reset();
-                            registerError.style.display = 'none';
+                            // Iniciar sesión automáticamente después del registro
+                            loginUser(username, password);
                         })
                         .catch(error => {
                             registerError.textContent = 'Error al crear la cuenta';
@@ -1232,7 +1306,8 @@
                             localStorage.setItem('currentUser', username);
                             
                             showNotification(`¡Bienvenido, ${username}!`);
-                            authModal.style.display = 'none';
+                            loginScreen.style.display = 'none';
+                            mainContent.style.display = 'block';
                             updateUIAfterLogin();
                             
                             // Establecer presencia
@@ -1263,39 +1338,22 @@
             currentUser = null;
             localStorage.removeItem('currentUser');
             
+            // Mostrar pantalla de login
+            loginScreen.style.display = 'flex';
+            mainContent.style.display = 'none';
+            
             showNotification('Sesión cerrada');
-            updateUIAfterLogout();
         }
         
         // Función para actualizar la UI después del login
         function updateUIAfterLogin() {
-            loginLink.style.display = 'none';
-            registerLink.style.display = 'none';
-            logoutLink.style.display = 'flex';
-            userProfileLink.style.display = 'flex';
             usernameDisplay.textContent = currentUser;
-            createPost.style.display = 'block';
-            chatContainer.style.display = 'flex';
             
             // Cargar avatar de usuario
             userAvatar.src = `https://picsum.photos/seed/${currentUser}/42/42`;
             
             // Cargar publicaciones
             loadPosts();
-        }
-        
-        // Función para actualizar la UI después del logout
-        function updateUIAfterLogout() {
-            loginLink.style.display = 'flex';
-            registerLink.style.display = 'flex';
-            logoutLink.style.display = 'none';
-            userProfileLink.style.display = 'none';
-            createPost.style.display = 'none';
-            chatContainer.style.display = 'none';
-            
-            // Limpiar publicaciones y mensajes
-            postsContainer.innerHTML = '';
-            chatMessages.innerHTML = '<div class="message received"><div class="message-sender">Sistema</div><div class="message-text">¡Bienvenido al chat global! Escribe un mensaje para comenzar.</div></div>';
         }
         
         // Función para crear una publicación
@@ -1324,6 +1382,8 @@
         
         // Función para cargar publicaciones
         function loadPosts() {
+            postsContainer.innerHTML = '';
+            
             postsRef.orderByChild('timestamp').limitToLast(20).on('child_added', snapshot => {
                 const post = snapshot.val();
                 const postId = snapshot.key;
@@ -1420,18 +1480,45 @@
             // Verificar si hay una sesión activa
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
-                currentUser = savedUser;
-                updateUIAfterLogin();
+                // Verificar si el usuario existe en la base de datos
+                usersRef.child(savedUser).once('value')
+                    .then(snapshot => {
+                        if (snapshot.exists()) {
+                            currentUser = savedUser;
+                            loginScreen.style.display = 'none';
+                            mainContent.style.display = 'block';
+                            updateUIAfterLogin();
+                        } else {
+                            localStorage.removeItem('currentUser');
+                        }
+                    });
             }
             
             // Configurar event listeners
             loginTab.addEventListener('click', () => switchAuthTab(loginTab));
             registerTab.addEventListener('click', () => switchAuthTab(registerTab));
             
+            switchToRegister.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchAuthTab(registerTab);
+            });
+            
+            switchToLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchAuthTab(loginTab);
+            });
+            
             loginForm.addEventListener('submit', e => {
                 e.preventDefault();
                 const username = document.getElementById('loginUsername').value;
                 const password = document.getElementById('loginPassword').value;
+                
+                if (!username || !password) {
+                    loginError.textContent = 'Por favor completa todos los campos';
+                    loginError.style.display = 'block';
+                    return;
+                }
+                
                 loginUser(username, password);
             });
             
@@ -1441,8 +1528,20 @@
                 const password = document.getElementById('registerPassword').value;
                 const confirmPassword = document.getElementById('registerConfirmPassword').value;
                 
+                if (!username || !password || !confirmPassword) {
+                    registerError.textContent = 'Por favor completa todos los campos';
+                    registerError.style.display = 'block';
+                    return;
+                }
+                
                 if (password !== confirmPassword) {
                     registerError.textContent = 'Las contraseñas no coinciden';
+                    registerError.style.display = 'block';
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    registerError.textContent = 'La contraseña debe tener al menos 6 caracteres';
                     registerError.style.display = 'block';
                     return;
                 }
@@ -1450,27 +1549,9 @@
                 registerUser(username, password);
             });
             
-            loginLink.addEventListener('click', e => {
-                e.preventDefault();
-                authModal.style.display = 'flex';
-                switchAuthTab(loginTab);
-            });
-            
-            registerLink.addEventListener('click', e => {
-                e.preventDefault();
-                authModal.style.display = 'flex';
-                switchAuthTab(registerTab);
-            });
-            
             logoutLink.addEventListener('click', e => {
                 e.preventDefault();
                 logoutUser();
-            });
-            
-            authModal.addEventListener('click', e => {
-                if (e.target === authModal) {
-                    authModal.style.display = 'none';
-                }
             });
             
             postContent.addEventListener('keypress', e => {
@@ -1503,8 +1584,6 @@
                 const count = Object.keys(users).length;
                 onlineCount.textContent = count;
             });
-            
-            showNotification("Bienvenido a Smile");
         });
     </script>
     <!-- Firebase SDK -->
