@@ -56,15 +56,8 @@
         }
         
         .logo-img {
-            height: 36px;
+            height: 42px;
             width: auto;
-        }
-        
-        .logo-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #7e57c2;
-            margin-top: 2px;
         }
         
         .search-bar {
@@ -132,6 +125,104 @@
         
         .user-actions .sign-up:hover {
             background-color: #6c5ce7;
+        }
+        
+        /* Auth Modal */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .auth-content {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 30px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .auth-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .auth-tab.active {
+            color: #7e57c2;
+            border-bottom: 2px solid #7e57c2;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            font-size: 15px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #7e57c2;
+        }
+        
+        .auth-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #7e57c2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .auth-submit:hover {
+            background-color: #6c5ce7;
+        }
+        
+        .auth-error {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
         }
         
         /* Left Sidebar */
@@ -216,6 +307,7 @@
             padding: 16px;
             margin-bottom: 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: none;
         }
         
         .post-input {
@@ -563,6 +655,7 @@
             max-height: 450px;
             border: 1px solid #333;
             transition: all 0.3s ease;
+            display: none;
         }
         
         .chat-header {
@@ -766,10 +859,6 @@
                 right: 10px;
                 bottom: 10px;
             }
-            
-            .logo-text {
-                font-size: 20px;
-            }
         }
         
         @media (max-width: 480px) {
@@ -807,21 +896,63 @@
     </style>
 </head>
 <body>
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="loginTab">Iniciar Sesión</div>
+                <div class="auth-tab" id="registerTab">Registrarse</div>
+            </div>
+            
+            <form class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Usuario</label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="auth-submit">Ingresar</button>
+                <div class="auth-error" id="loginError"></div>
+            </form>
+            
+            <form class="auth-form" id="registerForm">
+                <div class="form-group">
+                    <label for="registerUsername">Usuario</label>
+                    <input type="text" id="registerUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Contraseña</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirmar Contraseña</label>
+                    <input type="password" id="registerConfirmPassword" required>
+                </div>
+                <button type="submit" class="auth-submit">Crear Cuenta</button>
+                <div class="auth-error" id="registerError"></div>
+            </form>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-content">
             <a href="#" class="logo">
                 <img src="logo.png" alt="Smile Logo" class="logo-img">
-                <span class="logo-text">Smile</span>
             </a>
             <div class="search-bar">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Buscar en Smile">
             </div>
             <div class="user-actions">
-                <a href="#"><i class="fas fa-home"></i> <span class="desktop-text">Inicio</span></a>
-                <a href="#"><i class="fas fa-users"></i> <span class="desktop-text">Comunidad</span></a>
-                <a href="#" class="sign-up">Crear publicación</a>
+                <a href="#" id="userProfileLink" style="display: none;">
+                    <i class="fas fa-user"></i> <span class="desktop-text" id="usernameDisplay"></span>
+                </a>
+                <a href="#" id="loginLink"><i class="fas fa-sign-in-alt"></i> <span class="desktop-text">Ingresar</span></a>
+                <a href="#" class="sign-up" id="registerLink">Registrarse</a>
+                <a href="#" id="logoutLink" style="display: none;"><i class="fas fa-sign-out-alt"></i> <span class="desktop-text">Salir</span></a>
             </div>
         </div>
     </header>
@@ -868,10 +999,10 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Create Post -->
-            <div class="create-post">
+            <div class="create-post" id="createPost">
                 <div class="post-input">
-                    <img src="https://picsum.photos/seed/100/42/42" alt="User">
-                    <input type="text" placeholder="¿Qué estás creando hoy?">
+                    <img src="https://picsum.photos/seed/100/42/42" alt="User" id="userAvatar">
+                    <input type="text" placeholder="¿Qué estás creando hoy?" id="postContent">
                 </div>
                 <div class="post-actions">
                     <div class="post-action photo">
@@ -896,103 +1027,8 @@
                     </div>
                 </div>
                 
-                <!-- Post 1 -->
-                <div class="post-card">
-                    <div class="post-header">
-                        <img src="https://picsum.photos/seed/1/44/44" alt="User">
-                        <div class="post-user-info">
-                            <div class="post-user-name">DJ Nova</div>
-                            <div class="post-time">Hace 3 horas · <i class="fas fa-globe-americas"></i></div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <p class="post-text">Acabo de publicar mi nuevo track "Midnight Vibes". ¡Déjenme saber qué opinan!</p>
-                        <img src="https://picsum.photos/seed/1/600/300" alt="Post" class="post-image">
-                    </div>
-                    <div class="post-stats">
-                        <div><i class="fas fa-play"></i> 245K</div>
-                        <div>12K me gusta · 845 comentarios</div>
-                    </div>
-                    <div class="post-actions-buttons">
-                        <div class="post-action-button">
-                            <i class="fas fa-play"></i> Reproducir
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-heart"></i> Me gusta
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-comment"></i> Comentar
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-share"></i> Compartir
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Post 2 -->
-                <div class="post-card">
-                    <div class="post-header">
-                        <img src="https://picsum.photos/seed/2/44/44" alt="User">
-                        <div class="post-user-info">
-                            <div class="post-user-name">Luna</div>
-                            <div class="post-time">Ayer · <i class="fas fa-globe-americas"></i></div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <p class="post-text">"Summer Dreams" ya está disponible en todas las plataformas. ¡Gracias por todo el apoyo!</p>
-                        <img src="https://picsum.photos/seed/2/600/300" alt="Post" class="post-image">
-                    </div>
-                    <div class="post-stats">
-                        <div><i class="fas fa-play"></i> 189K</div>
-                        <div>9.5K me gusta · 621 comentarios</div>
-                    </div>
-                    <div class="post-actions-buttons">
-                        <div class="post-action-button">
-                            <i class="fas fa-play"></i> Reproducir
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-heart"></i> Me gusta
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-comment"></i> Comentar
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-share"></i> Compartir
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Post 3 -->
-                <div class="post-card">
-                    <div class="post-header">
-                        <img src="https://picsum.photos/seed/3/44/44" alt="User">
-                        <div class="post-user-info">
-                            <div class="post-user-name">The Beatmakers</div>
-                            <div class="post-time">Hace 2 días · <i class="fas fa-globe-americas"></i></div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <p class="post-text">Nuestro nuevo álbum "Urban Rhythm" ya está disponible. Incluye 12 tracks originales.</p>
-                        <img src="https://picsum.photos/seed/3/600/300" alt="Post" class="post-image">
-                    </div>
-                    <div class="post-stats">
-                        <div><i class="fas fa-play"></i> 312K</div>
-                        <div>15K me gusta · 1.2K comentarios</div>
-                    </div>
-                    <div class="post-actions-buttons">
-                        <div class="post-action-button">
-                            <i class="fas fa-play"></i> Reproducir
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-heart"></i> Me gusta
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-comment"></i> Comentar
-                        </div>
-                        <div class="post-action-button">
-                            <i class="fas fa-share"></i> Compartir
-                        </div>
-                    </div>
+                <div id="postsContainer">
+                    <!-- Posts will be loaded here -->
                 </div>
             </div>
         </main>
@@ -1056,7 +1092,7 @@
     </div>
 
     <!-- Chat Global -->
-    <div class="chat-container">
+    <div class="chat-container" id="chatContainer">
         <div class="chat-header" id="chatToggle">
             <div class="chat-title">Chat Global</div>
             <div class="online-count"><span id="onlineCount">0</span> Online</div>
@@ -1096,18 +1132,34 @@
         const database = firebase.database();
         
         // Elementos del DOM
+        const authModal = document.getElementById('authModal');
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const loginError = document.getElementById('loginError');
+        const registerError = document.getElementById('registerError');
+        const loginLink = document.getElementById('loginLink');
+        const registerLink = document.getElementById('registerLink');
+        const logoutLink = document.getElementById('logoutLink');
+        const userProfileLink = document.getElementById('userProfileLink');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        const createPost = document.getElementById('createPost');
+        const postContent = document.getElementById('postContent');
+        const postsContainer = document.getElementById('postsContainer');
+        const chatContainer = document.getElementById('chatContainer');
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendMessage');
         const chatToggle = document.getElementById('chatToggle');
-        const chatContainer = document.querySelector('.chat-container');
+        const onlineCount = document.getElementById('onlineCount');
         const notification = document.getElementById('notification');
         const notificationMessage = document.getElementById('notification-message');
-        const onlineCount = document.getElementById('onlineCount');
+        const userAvatar = document.getElementById('userAvatar');
         
         // Variables globales
-        let username = '';
-        let messagesRef, presenceRef;
+        let currentUser = null;
+        let messagesRef, postsRef, presenceRef, usersRef;
         
         // Función para mostrar notificaciones
         function showNotification(message, type = 'success') {
@@ -1123,31 +1175,209 @@
             }, 3000);
         }
         
-        // Función para establecer el nombre de usuario
-        function setUsername() {
-            const newUsername = prompt("Por favor ingresa tu nombre de usuario:");
+        // Función para cambiar entre pestañas de login/registro
+        function switchAuthTab(tab) {
+            loginTab.classList.remove('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.remove('active');
+            registerForm.classList.remove('active');
             
-            if (!newUsername) {
-                showNotification("Por favor ingresa un nombre válido", "warning");
-                return false;
+            tab.classList.add('active');
+            if (tab.id === 'loginTab') {
+                loginForm.classList.add('active');
+            } else {
+                registerForm.classList.add('active');
             }
-            
-            if (newUsername.length > 20) {
-                showNotification("El nombre no puede tener más de 20 caracteres", "warning");
-                return false;
-            }
-            
-            username = newUsername;
-            showNotification(`¡Bienvenido, ${username}!`);
-            return true;
         }
         
-        // Función para enviar mensaje
-        function sendMessage() {
+        // Función para registrar un nuevo usuario
+        function registerUser(username, password) {
+            usersRef.child(username).once('value')
+                .then(snapshot => {
+                    if (snapshot.exists()) {
+                        registerError.textContent = 'El usuario ya existe';
+                        registerError.style.display = 'block';
+                    } else {
+                        // Crear usuario
+                        usersRef.child(username).set({
+                            password: password,
+                            createdAt: Date.now()
+                        })
+                        .then(() => {
+                            showNotification('Cuenta creada exitosamente');
+                            switchAuthTab(loginTab);
+                            registerForm.reset();
+                            registerError.style.display = 'none';
+                        })
+                        .catch(error => {
+                            registerError.textContent = 'Error al crear la cuenta';
+                            registerError.style.display = 'block';
+                        });
+                    }
+                })
+                .catch(error => {
+                    registerError.textContent = 'Error de conexión';
+                    registerError.style.display = 'block';
+                });
+        }
+        
+        // Función para iniciar sesión
+        function loginUser(username, password) {
+            usersRef.child(username).once('value')
+                .then(snapshot => {
+                    if (snapshot.exists()) {
+                        const userData = snapshot.val();
+                        if (userData.password === password) {
+                            currentUser = username;
+                            localStorage.setItem('currentUser', username);
+                            
+                            showNotification(`¡Bienvenido, ${username}!`);
+                            authModal.style.display = 'none';
+                            updateUIAfterLogin();
+                            
+                            // Establecer presencia
+                            const userPresenceRef = presenceRef.child(username);
+                            userPresenceRef.set(true);
+                            userPresenceRef.onDisconnect().remove();
+                        } else {
+                            loginError.textContent = 'Contraseña incorrecta';
+                            loginError.style.display = 'block';
+                        }
+                    } else {
+                        loginError.textContent = 'Usuario no encontrado';
+                        loginError.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    loginError.textContent = 'Error de conexión';
+                    loginError.style.display = 'block';
+                });
+        }
+        
+        // Función para cerrar sesión
+        function logoutUser() {
+            if (currentUser) {
+                presenceRef.child(currentUser).remove();
+            }
+            
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            
+            showNotification('Sesión cerrada');
+            updateUIAfterLogout();
+        }
+        
+        // Función para actualizar la UI después del login
+        function updateUIAfterLogin() {
+            loginLink.style.display = 'none';
+            registerLink.style.display = 'none';
+            logoutLink.style.display = 'flex';
+            userProfileLink.style.display = 'flex';
+            usernameDisplay.textContent = currentUser;
+            createPost.style.display = 'block';
+            chatContainer.style.display = 'flex';
+            
+            // Cargar avatar de usuario
+            userAvatar.src = `https://picsum.photos/seed/${currentUser}/42/42`;
+            
+            // Cargar publicaciones
+            loadPosts();
+        }
+        
+        // Función para actualizar la UI después del logout
+        function updateUIAfterLogout() {
+            loginLink.style.display = 'flex';
+            registerLink.style.display = 'flex';
+            logoutLink.style.display = 'none';
+            userProfileLink.style.display = 'none';
+            createPost.style.display = 'none';
+            chatContainer.style.display = 'none';
+            
+            // Limpiar publicaciones y mensajes
+            postsContainer.innerHTML = '';
+            chatMessages.innerHTML = '<div class="message received"><div class="message-sender">Sistema</div><div class="message-text">¡Bienvenido al chat global! Escribe un mensaje para comenzar.</div></div>';
+        }
+        
+        // Función para crear una publicación
+        function createNewPost() {
+            const content = postContent.value.trim();
+            if (content && currentUser) {
+                const post = {
+                    user: currentUser,
+                    content: content,
+                    timestamp: Date.now(),
+                    likes: 0,
+                    comments: 0,
+                    shares: 0
+                };
+                
+                postsRef.push(post)
+                    .then(() => {
+                        postContent.value = '';
+                        showNotification('Publicación creada');
+                    })
+                    .catch(error => {
+                        showNotification('Error al crear la publicación', 'error');
+                    });
+            }
+        }
+        
+        // Función para cargar publicaciones
+        function loadPosts() {
+            postsRef.orderByChild('timestamp').limitToLast(20).on('child_added', snapshot => {
+                const post = snapshot.val();
+                const postId = snapshot.key;
+                
+                displayPost(post, postId);
+            });
+        }
+        
+        // Función para mostrar una publicación
+        function displayPost(post, postId) {
+            const postElement = document.createElement('div');
+            postElement.className = 'post-card';
+            postElement.id = `post-${postId}`;
+            
+            const postTime = new Date(post.timestamp);
+            const timeString = postTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            postElement.innerHTML = `
+                <div class="post-header">
+                    <img src="https://picsum.photos/seed/${post.user}/44/44" alt="User">
+                    <div class="post-user-info">
+                        <div class="post-user-name">${post.user}</div>
+                        <div class="post-time">${timeString} · <i class="fas fa-globe-americas"></i></div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p class="post-text">${post.content}</p>
+                </div>
+                <div class="post-stats">
+                    <div><i class="fas fa-heart"></i> ${post.likes || 0}</div>
+                    <div>${post.comments || 0} comentarios · ${post.shares || 0} compartidos</div>
+                </div>
+                <div class="post-actions-buttons">
+                    <div class="post-action-button">
+                        <i class="fas fa-heart"></i> Me gusta
+                    </div>
+                    <div class="post-action-button">
+                        <i class="fas fa-comment"></i> Comentar
+                    </div>
+                    <div class="post-action-button">
+                        <i class="fas fa-share"></i> Compartir
+                    </div>
+                </div>
+            `;
+            
+            postsContainer.prepend(postElement);
+        }
+        
+        // Función para enviar mensaje de chat
+        function sendChatMessage() {
             const message = messageInput.value.trim();
-            if (message && username) {
+            if (message && currentUser) {
                 const messageObj = {
-                    sender: username,
+                    sender: currentUser,
                     content: message,
                     timestamp: Date.now()
                 };
@@ -1157,24 +1387,15 @@
                         messageInput.value = '';
                     })
                     .catch(error => {
-                        console.error("Error al enviar mensaje:", error);
-                        showNotification("Error al enviar mensaje", "error");
+                        showNotification('Error al enviar mensaje', 'error');
                     });
-            } else if (!username) {
-                if (setUsername()) {
-                    // Reintentar enviar el mensaje después de establecer el nombre de usuario
-                    setTimeout(() => {
-                        messageInput.value = message;
-                        sendMessage();
-                    }, 100);
-                }
             }
         }
         
-        // Función para mostrar mensajes
-        function displayMessage(data) {
+        // Función para mostrar mensajes de chat
+        function displayChatMessage(data) {
             const messageElement = document.createElement('div');
-            const isCurrentUser = data.sender === username;
+            const isCurrentUser = data.sender === currentUser;
             
             messageElement.className = `message ${isCurrentUser ? 'sent' : 'received'}`;
             messageElement.innerHTML = `
@@ -1192,45 +1413,98 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Referencias de Firebase
             messagesRef = database.ref('messages');
+            postsRef = database.ref('posts');
             presenceRef = database.ref('presence');
+            usersRef = database.ref('users');
+            
+            // Verificar si hay una sesión activa
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = savedUser;
+                updateUIAfterLogin();
+            }
             
             // Configurar event listeners
-            messageInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    sendMessage();
+            loginTab.addEventListener('click', () => switchAuthTab(loginTab));
+            registerTab.addEventListener('click', () => switchAuthTab(registerTab));
+            
+            loginForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                loginUser(username, password);
+            });
+            
+            registerForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const username = document.getElementById('registerUsername').value;
+                const password = document.getElementById('registerPassword').value;
+                const confirmPassword = document.getElementById('registerConfirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    registerError.textContent = 'Las contraseñas no coinciden';
+                    registerError.style.display = 'block';
+                    return;
+                }
+                
+                registerUser(username, password);
+            });
+            
+            loginLink.addEventListener('click', e => {
+                e.preventDefault();
+                authModal.style.display = 'flex';
+                switchAuthTab(loginTab);
+            });
+            
+            registerLink.addEventListener('click', e => {
+                e.preventDefault();
+                authModal.style.display = 'flex';
+                switchAuthTab(registerTab);
+            });
+            
+            logoutLink.addEventListener('click', e => {
+                e.preventDefault();
+                logoutUser();
+            });
+            
+            authModal.addEventListener('click', e => {
+                if (e.target === authModal) {
+                    authModal.style.display = 'none';
                 }
             });
             
-            sendButton.addEventListener('click', sendMessage);
+            postContent.addEventListener('keypress', e => {
+                if (e.key === 'Enter') {
+                    createNewPost();
+                }
+            });
+            
+            messageInput.addEventListener('keypress', e => {
+                if (e.key === 'Enter') {
+                    sendChatMessage();
+                }
+            });
+            
+            sendButton.addEventListener('click', sendChatMessage);
             
             chatToggle.addEventListener('click', () => {
                 chatContainer.classList.toggle('chat-minimized');
             });
             
-            // Escuchar nuevos mensajes
-            messagesRef.limitToLast(20).on('child_added', (snapshot) => {
+            // Escuchar nuevos mensajes de chat
+            messagesRef.limitToLast(50).on('child_added', snapshot => {
                 const data = snapshot.val();
-                displayMessage(data);
+                displayChatMessage(data);
             });
             
             // Monitorear usuarios en línea
-            presenceRef.on('value', (snapshot) => {
+            presenceRef.on('value', snapshot => {
                 const users = snapshot.val() || {};
                 const count = Object.keys(users).length;
                 onlineCount.textContent = count;
             });
             
-            // Establecer presencia del usuario
-            const userPresenceRef = presenceRef.push();
-            userPresenceRef.set(true);
-            userPresenceRef.onDisconnect().remove();
-            
-            // Solicitar nombre de usuario
-            setTimeout(() => {
-                setUsername();
-            }, 1000);
-            
-            showNotification("Chat cargado correctamente");
+            showNotification("Bienvenido a Smile");
         });
     </script>
     <!-- Firebase SDK -->
