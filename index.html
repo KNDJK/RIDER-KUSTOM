@@ -14,157 +14,10 @@
         }
         
         body {
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #f0f2f5;
+            color: #1c1e21;
             line-height: 1.6;
             overflow-x: hidden;
-        }
-        
-        /* Pantalla de Login */
-        #loginScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .login-container {
-            background-color: #1e1e1e;
-            border-radius: 16px;
-            padding: 40px;
-            width: 400px;
-            max-width: 90%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-        
-        .login-logo {
-            margin-bottom: 30px;
-        }
-        
-        .login-logo img {
-            height: 80px;
-            width: auto;
-            margin-bottom: 15px;
-        }
-        
-        .login-title {
-            font-size: 28px;
-            font-weight: bold;
-            color: #7e57c2;
-            margin-bottom: 5px;
-        }
-        
-        .login-subtitle {
-            color: #aaa;
-            margin-bottom: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #e0e0e0;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            background-color: #2d2d2d;
-            color: #e0e0e0;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #7e57c2;
-            box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.3);
-        }
-        
-        .auth-submit {
-            width: 100%;
-            padding: 14px;
-            background-color: #7e57c2;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-        
-        .auth-submit:hover {
-            background-color: #6c5ce7;
-            transform: translateY(-2px);
-        }
-        
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 25px;
-            border-bottom: 1px solid #333;
-        }
-        
-        .auth-tab {
-            flex: 1;
-            padding: 12px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .auth-tab.active {
-            color: #7e57c2;
-            border-bottom: 2px solid #7e57c2;
-        }
-        
-        .auth-form {
-            display: none;
-        }
-        
-        .auth-form.active {
-            display: block;
-        }
-        
-        .auth-error {
-            color: #e74c3c;
-            margin-top: 10px;
-            font-size: 14px;
-            display: none;
-        }
-        
-        .auth-switch {
-            margin-top: 20px;
-            color: #aaa;
-            font-size: 14px;
-        }
-        
-        .auth-switch a {
-            color: #7e57c2;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        
-        /* Contenido principal (oculto inicialmente) */
-        #mainContent {
-            display: none;
         }
         
         .container {
@@ -177,13 +30,13 @@
         
         /* Header Styles */
         header {
-            background-color: #1e1e1e;
-            padding: 12px 0;
+            background-color: #ffffff;
+            padding: 8px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-            border-bottom: 1px solid #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #dddfe2;
         }
         
         .header-content {
@@ -203,8 +56,14 @@
         }
         
         .logo-img {
-            height: 50px;
+            height: 40px;
             width: auto;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1877f2;
         }
         
         .search-bar {
@@ -219,16 +78,15 @@
             padding: 10px 15px 10px 40px;
             border-radius: 20px;
             border: none;
-            background-color: #2d2d2d;
-            color: #e0e0e0;
+            background-color: #f0f2f5;
+            color: #1c1e21;
             font-size: 15px;
             transition: all 0.3s ease;
         }
         
         .search-bar input:focus {
             outline: none;
-            background-color: #383838;
-            box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.5);
+            background-color: #e4e6eb;
         }
         
         .search-bar i {
@@ -236,7 +94,7 @@
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: #aaa;
+            color: #65676b;
         }
         
         .user-actions {
@@ -246,7 +104,7 @@
         }
         
         .user-actions a {
-            color: #e0e0e0;
+            color: #1c1e21;
             text-decoration: none;
             font-weight: 500;
             display: flex;
@@ -257,7 +115,7 @@
         }
         
         .user-actions a:hover {
-            background-color: #2d2d2d;
+            background-color: #f0f2f5;
         }
         
         .user-actions a i {
@@ -266,12 +124,130 @@
         }
         
         .user-actions .sign-up {
-            background-color: #7e57c2;
+            background-color: #1877f2;
             color: white;
         }
         
         .user-actions .sign-up:hover {
-            background-color: #6c5ce7;
+            background-color: #166fe5;
+        }
+        
+        /* Auth Modal */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .auth-content {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #dddfe2;
+        }
+        
+        .auth-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .auth-tab.active {
+            color: #1877f2;
+            border-bottom: 2px solid #1877f2;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1c1e21;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #dddfe2;
+            background-color: #f5f6f7;
+            color: #1c1e21;
+            font-size: 15px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+        
+        .auth-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .auth-submit:hover {
+            background-color: #166fe5;
+        }
+        
+        .auth-error {
+            color: #f02849;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+            text-align: center;
+            padding: 8px;
+            background-color: #ffe6e6;
+            border-radius: 4px;
+        }
+        
+        .auth-success {
+            color: #36a420;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+            text-align: center;
+            padding: 8px;
+            background-color: #e6f4ea;
+            border-radius: 4px;
         }
         
         /* Left Sidebar */
@@ -285,20 +261,21 @@
         }
         
         .sidebar-section {
-            background-color: #1e1e1e;
-            border-radius: 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
             padding: 16px;
             margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dddfe2;
         }
         
         .sidebar-title {
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #7e57c2;
+            color: #1877f2;
             padding-bottom: 8px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #dddfe2;
         }
         
         .sidebar-menu {
@@ -314,33 +291,32 @@
             align-items: center;
             padding: 10px 12px;
             text-decoration: none;
-            color: #e0e0e0;
+            color: #1c1e21;
             border-radius: 8px;
             font-size: 15px;
             transition: all 0.2s ease;
         }
         
         .sidebar-menu a:hover {
-            background-color: #2d2d2d;
-            transform: translateX(5px);
+            background-color: #f0f2f5;
         }
         
         .sidebar-menu a i {
             margin-right: 12px;
             font-size: 18px;
-            color: #7e57c2;
+            color: #1877f2;
             width: 24px;
             text-align: center;
         }
         
         .sidebar-menu a.active {
-            background-color: #7e57c2;
-            color: white;
+            background-color: #e7f3ff;
+            color: #1877f2;
             font-weight: 600;
         }
         
         .sidebar-menu a.active i {
-            color: white;
+            color: #1877f2;
         }
         
         /* Main Content */
@@ -350,45 +326,98 @@
             padding: 20px 0;
         }
         
+        .stories {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        
+        .story {
+            min-width: 100px;
+            height: 180px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .story img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .story-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .create-story {
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #1877f2;
+        }
+        
+        .create-story i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
         .create-post {
-            background-color: #1e1e1e;
-            border-radius: 12px;
+            background-color: #ffffff;
+            border-radius: 8px;
             padding: 16px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dddfe2;
+            display: none;
         }
         
         .post-input {
             display: flex;
             align-items: center;
             padding-bottom: 15px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #dddfe2;
             margin-bottom: 12px;
         }
         
         .post-input img {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             margin-right: 12px;
             object-fit: cover;
-            border: 2px solid #7e57c2;
+            border: 2px solid #1877f2;
         }
         
         .post-input input {
             flex-grow: 1;
-            background-color: #2d2d2d;
+            background-color: #f0f2f5;
             border: none;
             border-radius: 20px;
             padding: 12px 18px;
             font-size: 15px;
-            color: #aaa;
+            color: #65676b;
             cursor: pointer;
             transition: all 0.3s ease;
         }
         
         .post-input input:hover {
-            background-color: #383838;
+            background-color: #e4e6eb;
         }
         
         .post-actions {
@@ -401,16 +430,14 @@
             align-items: center;
             padding: 10px 16px;
             border-radius: 8px;
-            color: #aaa;
+            color: #65676b;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
         }
         
         .post-action:hover {
-            background-color: #2d2d2d;
-            color: #e0e0e0;
-            transform: translateY(-2px);
+            background-color: #f0f2f5;
         }
         
         .post-action i {
@@ -423,7 +450,7 @@
         }
         
         .post-action.music i {
-            color: #7e57c2;
+            color: #1877f2;
         }
         
         /* Feed */
@@ -439,9 +466,9 @@
         }
         
         .section-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            color: #e0e0e0;
+            color: #1c1e21;
         }
         
         .filters {
@@ -450,37 +477,39 @@
         }
         
         .filters button {
-            background-color: #2d2d2d;
+            background-color: #f0f2f5;
             border: none;
-            color: #e0e0e0;
+            color: #1c1e21;
             padding: 8px 16px;
-            border-radius: 20px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: 500;
             transition: all 0.2s ease;
         }
         
         .filters button:hover {
-            background-color: #383838;
+            background-color: #e4e6eb;
         }
         
         .filters button.active {
-            background-color: #7e57c2;
+            background-color: #1877f2;
             color: white;
         }
         
         /* Post Cards */
         .post-card {
-            background-color: #1e1e1e;
-            border-radius: 12px;
-            padding: 18px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 16px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dddfe2;
             transition: transform 0.2s ease;
         }
         
         .post-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .post-header {
@@ -490,32 +519,28 @@
         }
         
         .post-header img {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             margin-right: 12px;
             object-fit: cover;
-            border: 2px solid #7e57c2;
+            border: 2px solid #1877f2;
         }
         
         .post-user-info {
             flex-grow: 1;
-            overflow: hidden;
         }
         
         .post-user-name {
             font-weight: 600;
             font-size: 16px;
-            color: #e0e0e0;
+            color: #1c1e21;
             margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         
         .post-time {
             font-size: 13px;
-            color: #aaa;
+            color: #65676b;
         }
         
         .post-content {
@@ -526,25 +551,24 @@
             margin-bottom: 16px;
             font-size: 15px;
             line-height: 1.5;
-            color: #e0e0e0;
-            word-break: break-word;
+            color: #1c1e21;
         }
         
         .post-image {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 8px;
             margin-bottom: 16px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
         
         .post-stats {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
+            border-top: 1px solid #dddfe2;
+            border-bottom: 1px solid #dddfe2;
             margin-bottom: 8px;
-            color: #aaa;
+            color: #65676b;
             font-size: 14px;
         }
         
@@ -559,7 +583,7 @@
             align-items: center;
             padding: 8px 12px;
             border-radius: 8px;
-            color: #aaa;
+            color: #65676b;
             font-weight: 500;
             cursor: pointer;
             flex-grow: 1;
@@ -568,13 +592,24 @@
         }
         
         .post-action-button:hover {
-            background-color: #2d2d2d;
-            color: #e0e0e0;
+            background-color: #f0f2f5;
         }
         
         .post-action-button i {
             margin-right: 8px;
             font-size: 16px;
+        }
+        
+        .post-action-button.like i {
+            color: #1877f2;
+        }
+        
+        .post-action-button.comment i {
+            color: #45bd62;
+        }
+        
+        .post-action-button.share i {
+            color: #f7b928;
         }
         
         /* Right Sidebar */
@@ -595,14 +630,16 @@
             display: flex;
             align-items: center;
             padding: 12px;
-            border-radius: 10px;
+            border-radius: 8px;
             margin-bottom: 12px;
             transition: all 0.2s ease;
+            background-color: #ffffff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dddfe2;
         }
         
         .sponsored-item:hover {
-            background-color: #2d2d2d;
-            transform: translateX(5px);
+            background-color: #f0f2f5;
         }
         
         .sponsored-img {
@@ -621,12 +658,12 @@
             font-weight: 600;
             font-size: 15px;
             margin-bottom: 6px;
-            color: #e0e0e0;
+            color: #1c1e21;
         }
         
         .sponsored-desc {
             font-size: 13px;
-            color: #aaa;
+            color: #65676b;
         }
         
         .birthdays {
@@ -637,20 +674,23 @@
             display: flex;
             align-items: center;
             padding: 12px;
-            border-radius: 10px;
+            border-radius: 8px;
             margin-bottom: 12px;
             transition: all 0.2s ease;
+            background-color: #ffffff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dddfe2;
         }
         
         .birthday-item:hover {
-            background-color: #2d2d2d;
+            background-color: #f0f2f5;
         }
         
         .birthday-icon {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #7e57c2;
+            background-color: #1877f2;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -667,14 +707,16 @@
             display: flex;
             align-items: center;
             padding: 10px 12px;
-            border-radius: 10px;
+            border-radius: 8px;
             margin-bottom: 8px;
             transition: all 0.2s ease;
+            background-color: #ffffff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dddfe2;
         }
         
         .contact-item:hover {
-            background-color: #2d2d2d;
-            transform: translateX(5px);
+            background-color: #f0f2f5;
         }
         
         .contact-img {
@@ -683,13 +725,13 @@
             border-radius: 50%;
             margin-right: 12px;
             object-fit: cover;
-            border: 2px solid #7e57c2;
+            border: 2px solid #1877f2;
         }
         
         .contact-name {
             font-weight: 500;
             font-size: 15px;
-            color: #e0e0e0;
+            color: #1c1e21;
         }
         
         /* Chat Global Section */
@@ -697,21 +739,22 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 350px;
+            width: 320px;
             z-index: 1000;
-            background-color: #1e1e1e;
+            background-color: #ffffff;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             max-height: 450px;
-            border: 1px solid #333;
+            border: 1px solid #dddfe2;
             transition: all 0.3s ease;
+            display: none;
         }
         
         .chat-header {
-            background-color: #7e57c2;
+            background-color: #1877f2;
             padding: 14px 16px;
             display: flex;
             justify-content: space-between;
@@ -726,8 +769,8 @@
         }
         
         .online-count {
-            background-color: #121212;
-            color: #7e57c2;
+            background-color: #ffffff;
+            color: #1877f2;
             padding: 4px 10px;
             border-radius: 12px;
             font-size: 12px;
@@ -742,6 +785,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            background-color: #f0f2f5;
         }
         
         .message {
@@ -759,14 +803,15 @@
         }
         
         .message.received {
-            background-color: #2d2d2d;
+            background-color: #ffffff;
             align-self: flex-start;
             border-bottom-left-radius: 6px;
-            color: #e0e0e0;
+            color: #1c1e21;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
         
         .message.sent {
-            background-color: #7e57c2;
+            background-color: #1877f2;
             align-self: flex-end;
             border-bottom-right-radius: 6px;
             color: white;
@@ -776,18 +821,18 @@
             font-weight: bold;
             margin-bottom: 4px;
             font-size: 12px;
-            color: #aaa;
+            color: #65676b;
         }
         
         .message.sent .message-sender {
             text-align: right;
-            color: #d0b8ff;
+            color: #e7f3ff;
         }
         
         .chat-input {
             padding: 16px;
-            background-color: #1e1e1e;
-            border-top: 1px solid #333;
+            background-color: #ffffff;
+            border-top: 1px solid #dddfe2;
             display: flex;
             gap: 10px;
         }
@@ -797,18 +842,18 @@
             padding: 12px 16px;
             border-radius: 20px;
             border: none;
-            background-color: #2d2d2d;
-            color: #e0e0e0;
+            background-color: #f0f2f5;
+            color: #1c1e21;
             font-size: 14px;
         }
         
         .chat-input input:focus {
             outline: none;
-            background-color: #383838;
+            background-color: #e4e6eb;
         }
         
         .chat-input button {
-            background-color: #7e57c2;
+            background-color: #1877f2;
             border: none;
             width: 42px;
             height: 42px;
@@ -822,7 +867,7 @@
         }
         
         .chat-input button:hover {
-            background-color: #6c5ce7;
+            background-color: #166fe5;
             transform: scale(1.05);
         }
         
@@ -840,11 +885,11 @@
             bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #00b894 0%, #7e57c2 100%);
+            background: linear-gradient(135deg, #1877f2 0%, #42b72a 100%);
             color: white;
             padding: 14px 24px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             z-index: 100;
             opacity: 0;
             transition: all 0.3s ease;
@@ -852,6 +897,7 @@
             align-items: center;
             gap: 10px;
             max-width: 90%;
+            font-weight: 500;
         }
         
         .notification.show {
@@ -859,11 +905,11 @@
         }
 
         .notification.error {
-            background: linear-gradient(135deg, #d63031 0%, #e84393 100%);
+            background: linear-gradient(135deg, #f02849 0%, #e66465 100%);
         }
 
         .notification.warning {
-            background: linear-gradient(135deg, #fdcb6e 0%, #fd79a8 100%);
+            background: linear-gradient(135deg, #f7b928 0%, #f5c969 100%);
         }
         
         /* Responsive Design */
@@ -926,12 +972,13 @@
                 width: calc(100% - 20px);
             }
             
-            .login-container {
-                padding: 30px 20px;
+            .stories {
+                gap: 5px;
             }
             
-            .login-logo img {
-                height: 70px;
+            .story {
+                min-width: 80px;
+                height: 150px;
             }
         }
         
@@ -941,30 +988,24 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: #1a1a1a;
+            background: #f1f1f1;
             border-radius: 10px;
         }
         
         ::-webkit-scrollbar-thumb {
-            background-color: #7e57c2;
+            background-color: #ccd0d5;
             border-radius: 10px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background-color: #6c5ce7;
+            background-color: #a8acb3;
         }
     </style>
 </head>
 <body>
-    <!-- Pantalla de Login -->
-    <div id="loginScreen">
-        <div class="login-container">
-            <div class="login-logo">
-                <img src="https://via.placeholder.com/80/7e57c2/ffffff?text=S" alt="Smile Logo" class="logo-img">
-                <div class="login-title">Smile</div>
-                <div class="login-subtitle">Conectando músicos alrededor del mundo</div>
-            </div>
-            
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
             <div class="auth-tabs">
                 <div class="auth-tab active" id="loginTab">Iniciar Sesión</div>
                 <div class="auth-tab" id="registerTab">Registrarse</div>
@@ -973,221 +1014,226 @@
             <form class="auth-form active" id="loginForm">
                 <div class="form-group">
                     <label for="loginUsername">Usuario</label>
-                    <input type="text" id="loginUsername" required placeholder="Ingresa tu usuario">
+                    <input type="text" id="loginUsername" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Contraseña</label>
-                    <input type="password" id="loginPassword" required placeholder="Ingresa tu contraseña">
+                    <input type="password" id="loginPassword" required>
                 </div>
                 <button type="submit" class="auth-submit">Ingresar</button>
                 <div class="auth-error" id="loginError"></div>
-                
-                <div class="auth-switch">
-                    ¿No tienes cuenta? <a id="switchToRegister">Regístrate aquí</a>
-                </div>
             </form>
             
             <form class="auth-form" id="registerForm">
                 <div class="form-group">
                     <label for="registerUsername">Usuario</label>
-                    <input type="text" id="registerUsername" required placeholder="Crea un nombre de usuario">
+                    <input type="text" id="registerUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Correo electrónico</label>
+                    <input type="email" id="registerEmail" required>
                 </div>
                 <div class="form-group">
                     <label for="registerPassword">Contraseña</label>
-                    <input type="password" id="registerPassword" required placeholder="Crea una contraseña segura">
+                    <input type="password" id="registerPassword" required>
                 </div>
                 <div class="form-group">
                     <label for="registerConfirmPassword">Confirmar Contraseña</label>
-                    <input type="password" id="registerConfirmPassword" required placeholder="Repite tu contraseña">
+                    <input type="password" id="registerConfirmPassword" required>
                 </div>
                 <button type="submit" class="auth-submit">Crear Cuenta</button>
                 <div class="auth-error" id="registerError"></div>
-                
-                <div class="auth-switch">
-                    ¿Ya tienes cuenta? <a id="switchToLogin">Inicia sesión aquí</a>
-                </div>
+                <div class="auth-success" id="registerSuccess"></div>
             </form>
         </div>
     </div>
 
-    <!-- Contenido Principal (oculto inicialmente) -->
-    <div id="mainContent">
-        <!-- Header -->
-        <header>
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <img src="https://via.placeholder.com/50/7e57c2/ffffff?text=S" alt="Smile Logo" class="logo-img">
-                </a>
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Buscar en Smile">
-                </div>
-                <div class="user-actions">
-                    <a href="#" id="userProfileLink">
-                        <i class="fas fa-user"></i> <span class="desktop-text" id="usernameDisplay"></span>
-                    </a>
-                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> <span class="desktop-text">Salir</span></a>
-                </div>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-text">Smile</div>
+            </a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar en Smile">
             </div>
-        </header>
+            <div class="user-actions">
+                <a href="#" id="userProfileLink" style="display: none;">
+                    <i class="fas fa-user"></i> <span class="desktop-text" id="usernameDisplay"></span>
+                </a>
+                <a href="#" id="loginLink"><i class="fas fa-sign-in-alt"></i> <span class="desktop-text">Ingresar</span></a>
+                <a href="#" class="sign-up" id="registerLink">Registrarse</a>
+                <a href="#" id="logoutLink" style="display: none;"><i class="fas fa-sign-out-alt"></i> <span class="desktop-text">Salir</span></a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <div class="sidebar-section">
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#"><i class="fas fa-fire"></i> Trending</a></li>
+                    <li><a href="#"><i class="fas fa-compass"></i> Descubrir</a></li>
+                    <li><a href="#"><i class="fas fa-newspaper"></i> Feed</a></li>
+                    <li><a href="#"><i class="fas fa-sliders-h"></i> Mixes</a></li>
+                    <li><a href="#"><i class="fas fa-user-friends"></i> Artistas</a></li>
+                    <li><a href="#"><i class="fas fa-database"></i> Sample Library</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Tus proyectos</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-plus-circle"></i> Crear nuevo proyecto</a></li>
+                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Midnight Vibes</a></li>
+                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Summer Dreams</a></li>
+                    <li><a href="#"><i class="fas fa-record-vinyl"></i> Ocean Breeze</a></li>
+                    <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Tus grupos</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-plus-circle"></i> Crear grupo</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Productores Urbanos</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Synth Enthusiasts</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Beatmakers MX</a></li>
+                    <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
+                </ul>
+            </div>
+        </aside>
         
         <!-- Main Content -->
-        <div class="container">
-            <!-- Left Sidebar -->
-            <aside class="left-sidebar">
-                <div class="sidebar-section">
-                    <ul class="sidebar-menu">
-                        <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
-                        <li><a href="#"><i class="fas fa-fire"></i> Trending</a></li>
-                        <li><a href="#"><i class="fas fa-compass"></i> Descubrir</a></li>
-                        <li><a href="#"><i class="fas fa-newspaper"></i> Feed</a></li>
-                        <li><a href="#"><i class="fas fa-sliders-h"></i> Mixes</a></li>
-                        <li><a href="#"><i class="fas fa-user-friends"></i> Artistas</a></li>
-                        <li><a href="#"><i class="fas fa-database"></i> Sample Library</a></li>
-                    </ul>
+        <main class="main-content">
+            <!-- Stories -->
+            <div class="stories" id="storiesContainer">
+                <div class="story create-story">
+                    <i class="fas fa-plus-circle"></i>
+                    <div class="story-overlay">Crear story</div>
                 </div>
-                
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Tus proyectos</h3>
-                    <ul class="sidebar-menu">
-                        <li><a href="#"><i class="fas fa-plus-circle"></i> Crear nuevo proyecto</a></li>
-                        <li><a href="#"><i class="fas fa-record-vinyl"></i> Midnight Vibes</a></li>
-                        <li><a href="#"><i class="fas fa-record-vinyl"></i> Summer Dreams</a></li>
-                        <li><a href="#"><i class="fas fa-record-vinyl"></i> Ocean Breeze</a></li>
-                        <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
-                    </ul>
-                </div>
-                
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Tus grupos</h3>
-                    <ul class="sidebar-menu">
-                        <li><a href="#"><i class="fas fa-plus-circle"></i> Crear grupo</a></li>
-                        <li><a href="#"><i class="fas fa-users"></i> Productores Urbanos</a></li>
-                        <li><a href="#"><i class="fas fa-users"></i> Synth Enthusiasts</a></li>
-                        <li><a href="#"><i class="fas fa-users"></i> Beatmakers MX</a></li>
-                        <li><a href="#"><i class="fas fa-ellipsis-h"></i> Ver más</a></li>
-                    </ul>
-                </div>
-            </aside>
+                <!-- Stories will be loaded here -->
+            </div>
             
-            <!-- Main Content -->
-            <main class="main-content">
-                <!-- Create Post -->
-                <div class="create-post" id="createPost">
-                    <div class="post-input">
-                        <img src="https://picsum.photos/seed/100/42/42" alt="User" id="userAvatar">
-                        <input type="text" placeholder="¿Qué estás creando hoy?" id="postContent">
+            <!-- Create Post -->
+            <div class="create-post" id="createPost">
+                <div class="post-input">
+                    <img src="https://picsum.photos/seed/user/40/40" alt="User" id="userAvatar">
+                    <input type="text" placeholder="¿Qué estás creando hoy?" id="postContent">
+                </div>
+                <div class="post-actions">
+                    <div class="post-action photo">
+                        <i class="fas fa-image"></i>
+                        <span>Foto/Video</span>
                     </div>
-                    <div class="post-actions">
-                        <div class="post-action photo">
-                            <i class="fas fa-image"></i>
-                            <span>Foto/Video</span>
-                        </div>
-                        <div class="post-action music">
-                            <i class="fas fa-music"></i>
-                            <span>Audio</span>
-                        </div>
+                    <div class="post-action music">
+                        <i class="fas fa-music"></i>
+                        <span>Audio</span>
                     </div>
                 </div>
-                
-                <!-- Feed -->
-                <div class="feed">
-                    <div class="feed-header">
-                        <h2 class="section-title">Trending ahora</h2>
-                        <div class="filters">
-                            <button class="active">Todos</button>
-                            <button>Música</button>
-                            <button>Beats</button>
-                        </div>
-                    </div>
-                    
-                    <div id="postsContainer">
-                        <!-- Posts will be loaded here -->
-                    </div>
-                </div>
-            </main>
+            </div>
             
-            <!-- Right Sidebar -->
-            <aside class="right-sidebar">
-                <div class="sidebar-section sponsored">
-                    <h3 class="sidebar-title">Patrocinado</h3>
-                    <div class="sponsored-item">
-                        <img src="https://picsum.photos/seed/1000/100/100" alt="Sponsored" class="sponsored-img">
-                        <div class="sponsored-info">
-                            <div class="sponsored-title">Nuevos Samples Pack</div>
-                            <div class="sponsored-desc">Descarga gratis 50 samples exclusivos</div>
-                        </div>
-                    </div>
-                    <div class="sponsored-item">
-                        <img src="https://picsum.photos/seed/1001/100/100" alt="Sponsored" class="sponsored-img">
-                        <div class="sponsored-info">
-                            <div class="sponsored-title">Mastering Profesional</div>
-                            <div class="sponsored-desc">Oferta especial: 20% de descuento</div>
-                        </div>
+            <!-- Feed -->
+            <div class="feed">
+                <div class="feed-header">
+                    <h2 class="section-title">Trending ahora</h2>
+                    <div class="filters">
+                        <button class="active">Todos</button>
+                        <button>Música</button>
+                        <button>Beats</button>
                     </div>
                 </div>
                 
-                <div class="sidebar-section birthdays">
-                    <h3 class="sidebar-title">Cumpleaños</h3>
-                    <div class="birthday-item">
-                        <div class="birthday-icon">
-                            <i class="fas fa-gift"></i>
-                        </div>
-                        <div class="birthday-info">
-                            <div class="birthday-text">Es el cumpleaños de <strong>Carlos Rodríguez</strong> y <strong>2 personas más</strong>.</div>
-                        </div>
+                <div id="postsContainer">
+                    <!-- Posts will be loaded here -->
+                </div>
+            </div>
+        </main>
+        
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="sidebar-section sponsored">
+                <h3 class="sidebar-title">Patrocinado</h3>
+                <div class="sponsored-item">
+                    <img src="https://picsum.photos/seed/1000/100/100" alt="Sponsored" class="sponsored-img">
+                    <div class="sponsored-info">
+                        <div class="sponsored-title">Nuevos Samples Pack</div>
+                        <div class="sponsored-desc">Descarga gratis 50 samples exclusivos</div>
                     </div>
                 </div>
-                
-                <div class="sidebar-section contacts">
-                    <h3 class="sidebar-title">Contactos</h3>
-                    <div class="contact-item">
-                        <img src="https://picsum.photos/seed/10/36/36" alt="Contact" class="contact-img">
-                        <div class="contact-name">Alex Rivera</div>
-                    </div>
-                    <div class="contact-item">
-                        <img src="https://picsum.photos/seed/11/36/36" alt="Contact" class="contact-img">
-                        <div class="contact-name">Maya Chen</div>
-                    </div>
-                    <div class="contact-item">
-                        <img src="https://picsum.photos/seed/12/36/36" alt="Contact" class="contact-img">
-                        <div class="contact-name">Carlos Rodríguez</div>
-                    </div>
-                    <div class="contact-item">
-                        <img src="https://picsum.photos/seed/13/36/36" alt="Contact" class="contact-img">
-                        <div class="contact-name">Sofia Martínez</div>
-                    </div>
-                    <div class="contact-item">
-                        <img src="https://picsum.photos/seed/14/36/36" alt="Contact" class="contact-img">
-                        <div class="contact-name">David Kim</div>
+                <div class="sponsored-item">
+                    <img src="https://picsum.photos/seed/1001/100/100" alt="Sponsored" class="sponsored-img">
+                    <div class="sponsored-info">
+                        <div class="sponsored-title">Mastering Profesional</div>
+                        <div class="sponsored-desc">Oferta especial: 20% de descuento</div>
                     </div>
                 </div>
-            </aside>
-        </div>
+            </div>
+            
+            <div class="sidebar-section birthdays">
+                <h3 class="sidebar-title">Cumpleaños</h3>
+                <div class="birthday-item">
+                    <div class="birthday-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="birthday-info">
+                        <div class="birthday-text">Es el cumpleaños de <strong>Carlos Rodríguez</strong> y <strong>2 personas más</strong>.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section contacts">
+                <h3 class="sidebar-title">Contactos</h3>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/10/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">Alex Rivera</div>
+                </div>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/11/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">Maya Chen</div>
+                </div>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/12/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">Carlos Rodríguez</div>
+                </div>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/13/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">Sofia Martínez</div>
+                </div>
+                <div class="contact-item">
+                    <img src="https://picsum.photos/seed/14/36/36" alt="Contact" class="contact-img">
+                    <div class="contact-name">David Kim</div>
+                </div>
+            </div>
+        </aside>
+    </div>
 
-        <!-- Chat Global -->
-        <div class="chat-container" id="chatContainer">
-            <div class="chat-header" id="chatToggle">
-                <div class="chat-title">Chat Global</div>
-                <div class="online-count"><span id="onlineCount">0</span> Online</div>
-            </div>
-            
-            <div class="chat-messages" id="chatMessages">
-                <div class="message received">
-                    <div class="message-sender">Sistema</div>
-                    <div class="message-text">¡Bienvenido al chat global! Escribe un mensaje para comenzar.</div>
-                </div>
-            </div>
-            
-            <div class="chat-input">
-                <input type="text" placeholder="Escribe tu mensaje..." id="messageInput">
-                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+    <!-- Chat Global -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header" id="chatToggle">
+            <div class="chat-title">Chat Global</div>
+            <div class="online-count"><span id="onlineCount">0</span> Online</div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message received">
+                <div class="message-sender">Sistema</div>
+                <div class="message-text">¡Bienvenido al chat global! Escribe un mensaje para comenzar.</div>
             </div>
         </div>
+        
+        <div class="chat-input">
+            <input type="text" placeholder="Escribe tu mensaje..." id="messageInput">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
-        <div class="notification" id="notification">
-            <span id="notification-message"></span>
-        </div>
+    <div class="notification" id="notification">
+        <span id="notification-message"></span>
     </div>
 
     <script>
@@ -1207,21 +1253,23 @@
         const database = firebase.database();
         
         // Elementos del DOM
-        const loginScreen = document.getElementById('loginScreen');
-        const mainContent = document.getElementById('mainContent');
+        const authModal = document.getElementById('authModal');
         const loginTab = document.getElementById('loginTab');
         const registerTab = document.getElementById('registerTab');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
         const loginError = document.getElementById('loginError');
         const registerError = document.getElementById('registerError');
-        const switchToRegister = document.getElementById('switchToRegister');
-        const switchToLogin = document.getElementById('switchToLogin');
+        const registerSuccess = document.getElementById('registerSuccess');
+        const loginLink = document.getElementById('loginLink');
+        const registerLink = document.getElementById('registerLink');
         const logoutLink = document.getElementById('logoutLink');
+        const userProfileLink = document.getElementById('userProfileLink');
         const usernameDisplay = document.getElementById('usernameDisplay');
         const createPost = document.getElementById('createPost');
         const postContent = document.getElementById('postContent');
         const postsContainer = document.getElementById('postsContainer');
+        const storiesContainer = document.getElementById('storiesContainer');
         const chatContainer = document.getElementById('chatContainer');
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
@@ -1234,7 +1282,7 @@
         
         // Variables globales
         let currentUser = null;
-        let messagesRef, postsRef, presenceRef, usersRef;
+        let messagesRef, postsRef, presenceRef, usersRef, storiesRef;
         
         // Función para mostrar notificaciones
         function showNotification(message, type = 'success') {
@@ -1266,32 +1314,45 @@
         }
         
         // Función para registrar un nuevo usuario
-        function registerUser(username, password) {
+        function registerUser(username, email, password) {
             usersRef.child(username).once('value')
                 .then(snapshot => {
                     if (snapshot.exists()) {
                         registerError.textContent = 'El usuario ya existe';
                         registerError.style.display = 'block';
+                        registerSuccess.style.display = 'none';
                     } else {
                         // Crear usuario
                         usersRef.child(username).set({
+                            email: email,
                             password: password,
                             createdAt: Date.now()
                         })
                         .then(() => {
-                            showNotification('Cuenta creada exitosamente');
-                            // Iniciar sesión automáticamente después del registro
-                            loginUser(username, password);
+                            registerSuccess.textContent = '¡Cuenta creada exitosamente! Ahora puedes iniciar sesión.';
+                            registerSuccess.style.display = 'block';
+                            registerError.style.display = 'none';
+                            
+                            // Limpiar formulario
+                            registerForm.reset();
+                            
+                            // Cambiar a pestaña de login después de 2 segundos
+                            setTimeout(() => {
+                                switchAuthTab(loginTab);
+                                registerSuccess.style.display = 'none';
+                            }, 2000);
                         })
                         .catch(error => {
-                            registerError.textContent = 'Error al crear la cuenta';
+                            registerError.textContent = 'Error al crear la cuenta: ' + error.message;
                             registerError.style.display = 'block';
+                            registerSuccess.style.display = 'none';
                         });
                     }
                 })
                 .catch(error => {
-                    registerError.textContent = 'Error de conexión';
+                    registerError.textContent = 'Error de conexión: ' + error.message;
                     registerError.style.display = 'block';
+                    registerSuccess.style.display = 'none';
                 });
         }
         
@@ -1306,8 +1367,7 @@
                             localStorage.setItem('currentUser', username);
                             
                             showNotification(`¡Bienvenido, ${username}!`);
-                            loginScreen.style.display = 'none';
-                            mainContent.style.display = 'block';
+                            authModal.style.display = 'none';
                             updateUIAfterLogin();
                             
                             // Establecer presencia
@@ -1324,7 +1384,7 @@
                     }
                 })
                 .catch(error => {
-                    loginError.textContent = 'Error de conexión';
+                    loginError.textContent = 'Error de conexión: ' + error.message;
                     loginError.style.display = 'block';
                 });
         }
@@ -1338,22 +1398,43 @@
             currentUser = null;
             localStorage.removeItem('currentUser');
             
-            // Mostrar pantalla de login
-            loginScreen.style.display = 'flex';
-            mainContent.style.display = 'none';
-            
             showNotification('Sesión cerrada');
+            updateUIAfterLogout();
         }
         
         // Función para actualizar la UI después del login
         function updateUIAfterLogin() {
+            loginLink.style.display = 'none';
+            registerLink.style.display = 'none';
+            logoutLink.style.display = 'flex';
+            userProfileLink.style.display = 'flex';
             usernameDisplay.textContent = currentUser;
+            createPost.style.display = 'block';
+            chatContainer.style.display = 'flex';
             
             // Cargar avatar de usuario
-            userAvatar.src = `https://picsum.photos/seed/${currentUser}/42/42`;
+            userAvatar.src = `https://picsum.photos/seed/${currentUser}/40/40`;
             
             // Cargar publicaciones
             loadPosts();
+            
+            // Cargar stories
+            loadStories();
+        }
+        
+        // Función para actualizar la UI después del logout
+        function updateUIAfterLogout() {
+            loginLink.style.display = 'flex';
+            registerLink.style.display = 'flex';
+            logoutLink.style.display = 'none';
+            userProfileLink.style.display = 'none';
+            createPost.style.display = 'none';
+            chatContainer.style.display = 'none';
+            
+            // Limpiar publicaciones y mensajes
+            postsContainer.innerHTML = '';
+            storiesContainer.innerHTML = '<div class="story create-story"><i class="fas fa-plus-circle"></i><div class="story-overlay">Crear story</div></div>';
+            chatMessages.innerHTML = '<div class="message received"><div class="message-sender">Sistema</div><div class="message-text">¡Bienvenido al chat global! Escribe un mensaje para comenzar.</div></div>';
         }
         
         // Función para crear una publicación
@@ -1382,8 +1463,6 @@
         
         // Función para cargar publicaciones
         function loadPosts() {
-            postsContainer.innerHTML = '';
-            
             postsRef.orderByChild('timestamp').limitToLast(20).on('child_added', snapshot => {
                 const post = snapshot.val();
                 const postId = snapshot.key;
@@ -1403,7 +1482,7 @@
             
             postElement.innerHTML = `
                 <div class="post-header">
-                    <img src="https://picsum.photos/seed/${post.user}/44/44" alt="User">
+                    <img src="https://picsum.photos/seed/${post.user}/40/40" alt="User">
                     <div class="post-user-info">
                         <div class="post-user-name">${post.user}</div>
                         <div class="post-time">${timeString} · <i class="fas fa-globe-americas"></i></div>
@@ -1417,19 +1496,44 @@
                     <div>${post.comments || 0} comentarios · ${post.shares || 0} compartidos</div>
                 </div>
                 <div class="post-actions-buttons">
-                    <div class="post-action-button">
+                    <div class="post-action-button like">
                         <i class="fas fa-heart"></i> Me gusta
                     </div>
-                    <div class="post-action-button">
+                    <div class="post-action-button comment">
                         <i class="fas fa-comment"></i> Comentar
                     </div>
-                    <div class="post-action-button">
+                    <div class="post-action-button share">
                         <i class="fas fa-share"></i> Compartir
                     </div>
                 </div>
             `;
             
             postsContainer.prepend(postElement);
+        }
+        
+        // Función para cargar stories
+        function loadStories() {
+            // Limpiar stories existentes excepto el de crear
+            storiesContainer.innerHTML = '<div class="story create-story"><i class="fas fa-plus-circle"></i><div class="story-overlay">Crear story</div></div>';
+            
+            // Obtener algunos stories de ejemplo
+            const exampleStories = [
+                { user: 'Alex Rivera', image: 'https://picsum.photos/seed/story1/100/180' },
+                { user: 'Maya Chen', image: 'https://picsum.photos/seed/story2/100/180' },
+                { user: 'Carlos Rodríguez', image: 'https://picsum.photos/seed/story3/100/180' },
+                { user: 'Sofia Martínez', image: 'https://picsum.photos/seed/story4/100/180' },
+                { user: 'David Kim', image: 'https://picsum.photos/seed/story5/100/180' }
+            ];
+            
+            exampleStories.forEach(story => {
+                const storyElement = document.createElement('div');
+                storyElement.className = 'story';
+                storyElement.innerHTML = `
+                    <img src="${story.image}" alt="Story">
+                    <div class="story-overlay">${story.user}</div>
+                `;
+                storiesContainer.appendChild(storyElement);
+            });
         }
         
         // Función para enviar mensaje de chat
@@ -1476,82 +1580,85 @@
             postsRef = database.ref('posts');
             presenceRef = database.ref('presence');
             usersRef = database.ref('users');
+            storiesRef = database.ref('stories');
             
             // Verificar si hay una sesión activa
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
-                // Verificar si el usuario existe en la base de datos
-                usersRef.child(savedUser).once('value')
-                    .then(snapshot => {
-                        if (snapshot.exists()) {
-                            currentUser = savedUser;
-                            loginScreen.style.display = 'none';
-                            mainContent.style.display = 'block';
-                            updateUIAfterLogin();
-                        } else {
-                            localStorage.removeItem('currentUser');
-                        }
-                    });
+                currentUser = savedUser;
+                updateUIAfterLogin();
             }
             
             // Configurar event listeners
             loginTab.addEventListener('click', () => switchAuthTab(loginTab));
             registerTab.addEventListener('click', () => switchAuthTab(registerTab));
             
-            switchToRegister.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchAuthTab(registerTab);
-            });
-            
-            switchToLogin.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchAuthTab(loginTab);
-            });
-            
             loginForm.addEventListener('submit', e => {
                 e.preventDefault();
                 const username = document.getElementById('loginUsername').value;
                 const password = document.getElementById('loginPassword').value;
-                
-                if (!username || !password) {
-                    loginError.textContent = 'Por favor completa todos los campos';
-                    loginError.style.display = 'block';
-                    return;
-                }
-                
                 loginUser(username, password);
             });
             
             registerForm.addEventListener('submit', e => {
                 e.preventDefault();
                 const username = document.getElementById('registerUsername').value;
+                const email = document.getElementById('registerEmail').value;
                 const password = document.getElementById('registerPassword').value;
                 const confirmPassword = document.getElementById('registerConfirmPassword').value;
                 
-                if (!username || !password || !confirmPassword) {
-                    registerError.textContent = 'Por favor completa todos los campos';
+                // Validaciones
+                if (username.length < 3) {
+                    registerError.textContent = 'El usuario debe tener al menos 3 caracteres';
                     registerError.style.display = 'block';
-                    return;
-                }
-                
-                if (password !== confirmPassword) {
-                    registerError.textContent = 'Las contraseñas no coinciden';
-                    registerError.style.display = 'block';
+                    registerSuccess.style.display = 'none';
                     return;
                 }
                 
                 if (password.length < 6) {
                     registerError.textContent = 'La contraseña debe tener al menos 6 caracteres';
                     registerError.style.display = 'block';
+                    registerSuccess.style.display = 'none';
                     return;
                 }
                 
-                registerUser(username, password);
+                if (password !== confirmPassword) {
+                    registerError.textContent = 'Las contraseñas no coinciden';
+                    registerError.style.display = 'block';
+                    registerSuccess.style.display = 'none';
+                    return;
+                }
+                
+                registerUser(username, email, password);
+            });
+            
+            loginLink.addEventListener('click', e => {
+                e.preventDefault();
+                authModal.style.display = 'flex';
+                switchAuthTab(loginTab);
+                loginError.style.display = 'none';
+            });
+            
+            registerLink.addEventListener('click', e => {
+                e.preventDefault();
+                authModal.style.display = 'flex';
+                switchAuthTab(registerTab);
+                registerError.style.display = 'none';
+                registerSuccess.style.display = 'none';
             });
             
             logoutLink.addEventListener('click', e => {
                 e.preventDefault();
                 logoutUser();
+            });
+            
+            authModal.addEventListener('click', e => {
+                if (e.target === authModal) {
+                    authModal.style.display = 'none';
+                    loginError.style.display = 'none';
+                    registerError.style.display = 'none';
+                    registerSuccess.style.display = 'none';
+                }
             });
             
             postContent.addEventListener('keypress', e => {
@@ -1584,6 +1691,11 @@
                 const count = Object.keys(users).length;
                 onlineCount.textContent = count;
             });
+            
+            // Cargar stories iniciales
+            loadStories();
+            
+            showNotification("Bienvenido a Smile");
         });
     </script>
     <!-- Firebase SDK -->
